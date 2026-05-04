@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Horizon · AI Design Deployment Deliverables</title>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.9/dist/purify.min.js"></script>
+<link rel="preconnect" href="https://rsms.me/" />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+<style>
+  :root {
+    --bg: #FAFAF9;
+    --surface: #FFFFFF;
+    --border: #E7E5E4;
+    --muted: #F5F5F4;
+    --text: #0C0A09;
+    --text-2: #44403C;
+    --text-3: #78716C;
+    --accent: #0A0A0A;
+    --link: #2563EB;
+    --code-bg: #F5F5F4;
+    --pre-bg: #0C0A09;
+    --pre-fg: #F5F5F4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0C0A09; --surface: #1C1917; --border: #292524;
+      --muted: #1C1917; --text: #FAFAF9; --text-2: #D6D3D1; --text-3: #A8A29E;
+      --accent: #FAFAF9; --link: #60A5FA;
+      --code-bg: #1C1917; --pre-bg: #0C0A09; --pre-fg: #FAFAF9;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body {
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background: var(--bg); color: var(--text);
+    -webkit-font-smoothing: antialiased; font-feature-settings: 'cv11','ss01','ss03';
+    line-height: 1.55;
+  }
+  header.shell {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in oklab, var(--bg) 92%, transparent);
+    backdrop-filter: saturate(140%) blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .shell-inner {
+    max-width: 1280px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:600; letter-spacing:-0.01em; }
+  .brand-mark { width:28px; height:28px; border-radius:8px; background:
+    conic-gradient(from 220deg, #0EA5E9, #6366F1, #EC4899, #F59E0B, #10B981, #0EA5E9);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.18);
+  }
+  .meta { color: var(--text-3); font-size: 13px; margin-left:auto; }
+  main { max-width: 1280px; margin: 0 auto; padding: 32px 24px 96px; display:grid;
+         grid-template-columns: 260px 1fr; gap: 40px; }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } aside.toc { position:static !important; } }
+  aside.toc {
+    position: sticky; top: 80px; align-self: start; max-height: calc(100vh - 100px);
+    overflow: auto; padding-right: 8px;
+  }
+  .toc h4 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+            color: var(--text-3); margin: 24px 0 8px; }
+  .toc h4:first-child { margin-top: 0; }
+  .toc a { display:block; padding: 6px 10px; border-radius: 6px; color: var(--text-2);
+           text-decoration:none; font-size: 13px; }
+  .toc a:hover { background: var(--muted); color: var(--text); }
+  .toc a.active { background: var(--accent); color: var(--bg); }
+  .doc { background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+         padding: 56px 64px; min-width: 0; box-shadow: 0 1px 0 rgba(0,0,0,.02); }
+  @media (max-width: 700px) { .doc { padding: 28px 22px; } }
+  .doc h1 { font-size: 36px; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 8px; }
+  .doc h2 { font-size: 24px; line-height: 1.2; letter-spacing: -0.015em; margin: 48px 0 12px;
+            padding-top: 16px; border-top: 1px solid var(--border); }
+  .doc h3 { font-size: 18px; line-height: 1.3; letter-spacing: -0.01em; margin: 28px 0 8px; }
+  .doc h4 { font-size: 15px; margin: 20px 0 6px; }
+  .doc p, .doc li { font-size: 15px; color: var(--text-2); }
+  .doc strong { color: var(--text); font-weight: 600; }
+  .doc a { color: var(--link); }
+  .doc code { font: 13px/1.5 ui-monospace, SF Mono, Menlo, monospace;
+              background: var(--code-bg); padding: 2px 6px; border-radius: 4px;
+              color: var(--text); }
+  .doc pre { background: var(--pre-bg); color: var(--pre-fg); padding: 18px 20px;
+             border-radius: 12px; overflow:auto; font: 13px/1.5 ui-monospace, SF Mono, Menlo, monospace; }
+  .doc pre code { background: transparent; padding:0; color: inherit; }
+  .doc blockquote { margin: 16px 0; padding: 12px 18px; border-left: 3px solid var(--accent);
+                    background: var(--muted); border-radius: 0 8px 8px 0; color: var(--text-2); }
+  .doc table { width:100%; border-collapse: collapse; margin: 16px 0; font-size: 14px;
+               border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .doc th, .doc td { text-align:left; padding: 10px 14px; border-bottom: 1px solid var(--border);
+                     vertical-align: top; }
+  .doc th { background: var(--muted); font-weight: 600; color: var(--text); font-size: 13px;
+            letter-spacing: .01em; }
+  .doc tr:last-child td { border-bottom: 0; }
+  .doc hr { border: 0; border-top: 1px solid var(--border); margin: 32px 0; }
+  .tabs { display:flex; gap:4px; padding: 6px; background: var(--muted);
+          border:1px solid var(--border); border-radius: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab { appearance:none; background: transparent; border: 0; cursor:pointer;
+         padding: 8px 14px; border-radius: 8px; font: 500 13px/1 'Inter', system-ui;
+         color: var(--text-2); }
+  .tab:hover { color: var(--text); }
+  .tab[aria-selected="true"] { background: var(--surface); color: var(--text);
+                               box-shadow: 0 1px 0 rgba(0,0,0,.06), 0 0 0 1px var(--border); }
+  .toolbar { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom: 24px; }
+  .btn { appearance:none; cursor:pointer; border-radius: 8px; border:1px solid var(--border);
+         background: var(--surface); color: var(--text); padding: 8px 14px;
+         font: 500 13px/1 'Inter', system-ui; text-decoration:none; display:inline-flex;
+         align-items:center; gap:6px; }
+  .btn:hover { background: var(--muted); }
+  .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .btn-primary:hover { opacity: .92; background: var(--accent); }
+  .pill { display:inline-flex; align-items:center; gap:6px; height: 22px; padding: 0 8px;
+          border-radius: 9999px; background: var(--muted); color: var(--text-2);
+          font: 500 11px/1 'Inter', system-ui; border: 1px solid var(--border); }
+  .pill .dot { width:6px; height:6px; border-radius:50%; background:#10B981; }
+  .doc-meta { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin: 0 0 28px; color: var(--text-3); font-size: 13px; }
+  .empty { padding: 32px; color: var(--text-3); text-align:center; border:1px dashed var(--border); border-radius: 12px; }
+  @media print {
+    header.shell, aside.toc, .toolbar, .tabs { display:none !important; }
+    main { display:block; padding: 0; max-width: 100%; }
+    .doc { border: 0; border-radius: 0; box-shadow: none; padding: 0; }
+    body { background: white; color: black; }
+    .doc h2 { break-before: page; }
+  }
+</style>
+</head>
+<body>
+  <header class="shell">
+    <div class="shell-inner">
+      <span class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        Horizon Design System · AI Design Deployment
+      </span>
+      <span class="pill"><span class="dot"></span> v2 · 2026-05-04</span>
+      <span class="meta">Product Team @BlogVault</span>
+    </div>
+  </header>
+
+  <main>
+    <aside class="toc" aria-label="Section index">
+      <h4>Documents</h4>
+      <a href="#tab-guidelines" data-tab-link="guidelines">Guidelines · Product Design</a>
+      <a href="#tab-design"     data-tab-link="design">design.md</a>
+      <a href="#tab-agent"      data-tab-link="agent">Atlas — product designer</a>
+      <a href="#tab-sirius"     data-tab-link="sirius">Sirius — frontend designer</a>
+      <a href="#tab-readme"     data-tab-link="readme">Read me</a>
+      <h4>On this page</h4>
+      <div id="page-toc"></div>
+    </aside>
+
+    <section>
+      <div class="toolbar">
+        <a class="btn btn-primary" id="downloadBtn" href="#" download>↓ Download current</a>
+        <button class="btn" onclick="window.print()">⌘ Print to PDF</button>
+        <a class="btn" id="rawBtn" href="#" target="_blank">View raw</a>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" data-tab="guidelines" aria-selected="true">📘 Guidelines · Product Design</button>
+        <button class="tab" role="tab" data-tab="design"     aria-selected="false">🌉 design.md</button>
+        <button class="tab" role="tab" data-tab="agent"      aria-selected="false">🧠 Atlas (design)</button>
+        <button class="tab" role="tab" data-tab="sirius"     aria-selected="false">⚡ Sirius (frontend)</button>
+        <button class="tab" role="tab" data-tab="readme"     aria-selected="false">📖 Read me</button>
+      </div>
+
+      <article class="doc" id="doc"></article>
+    </section>
+  </main>
+
+<script>
+const FILES = {
+  guidelines: { path: 'Guidelines_Product%20Design.md', label: 'Guidelines · Product Design' },
+  design:     { path: 'design.md',                                  label: 'design.md' },
+  agent:      { path: 'product-designer.agent.md',                  label: 'Atlas agent' },
+  sirius:     { path: 'sirius.agent.md',                            label: 'Sirius agent' },
+  readme:     { path: 'README.md',                                  label: 'README' },
+};
+const doc = document.getElementById('doc');
+const dl  = document.getElementById('downloadBtn');
+const raw = document.getElementById('rawBtn');
+const pageToc = document.getElementById('page-toc');
+
+function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
+
+async function loadTab(name){
+  const f = FILES[name];
+  if(!f){return;}
+  document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected', t.dataset.tab===name?'true':'false'));
+  document.querySelectorAll('[data-tab-link]').forEach(a=>a.classList.toggle('active', a.dataset.tabLink===name));
+  dl.href = f.path; dl.setAttribute('download', f.path);
+  raw.href = f.path;
+  doc.innerHTML = '<div class="empty">Loading…</div>';
+  try {
+    const r = await fetch(f.path, {cache:'no-store'});
+    if(!r.ok) throw new Error('Could not load ' + f.path);
+    let md = await r.text();
+    // strip YAML front-matter for nicer rendering
+    md = md.replace(/^---\n[\s\S]*?\n---\n/, '');
+    const html = DOMPurify.sanitize(marked.parse(md, {gfm:true, breaks:false}));
+    doc.innerHTML = html;
+    // build in-page TOC from h2s
+    const h2s = doc.querySelectorAll('h2');
+    pageToc.innerHTML = '';
+    h2s.forEach(h=>{
+      const id = slugify(h.textContent);
+      h.id = id;
+      const a = document.createElement('a');
+      a.href = '#' + id; a.textContent = h.textContent;
+      pageToc.appendChild(a);
+    });
+    window.scrollTo({top: 0, behavior:'instant'});
+  } catch(e) {
+    doc.innerHTML = '<div class="empty">' + e.message + '</div>';
+  }
+}
+
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click', ()=>loadTab(t.dataset.tab));
+});
+document.querySelectorAll('[data-tab-link]').forEach(a=>{
+  a.addEventListener('click', e=>{ e.preventDefault(); loadTab(a.dataset.tabLink); });
+});
+loadTab('guidelines');
+</script>
+</body>
+</html>
