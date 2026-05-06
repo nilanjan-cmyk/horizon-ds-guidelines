@@ -177,8 +177,16 @@ const FILES = {
   design:     { path: 'design.md',                                  label: 'design.md' },
   agent:      { path: 'product-designer.agent.md',                  label: 'Atlas agent' },
   sirius:     { path: 'sirius.agent.md',                            label: 'Sirius agent' },
+  tokens:     { path: 'tokens/README.md',                           label: 'Tokens' },
   readme:     { path: 'README.md',                                  label: 'README' },
 };
+const TOKEN_DOWNLOADS = [
+  { file: 'tokens/horizon-tokens.zip',     label: '↓ Bundle (zip)',         primary: true },
+  { file: 'tokens/variables.css',          label: 'variables.css' },
+  { file: 'tokens/tokens.css',             label: 'tokens.css' },
+  { file: 'tokens/tokens.json',            label: 'tokens.json' },
+  { file: 'tokens/tailwind.tokens.js',     label: 'tailwind.tokens.js' },
+];
 const doc = document.getElementById('doc');
 const dl  = document.getElementById('downloadBtn');
 const raw = document.getElementById('rawBtn');
