@@ -167,15 +167,22 @@ const SHADOWS = {
 };
 
 /* ───────── 6. Helpers ───────── */
-const slug = s => s
-  .toLowerCase()
-  .replace(/^typography\//,'')
-  .replace(/^charts\/chart /,'chart-')
-  .replace(/^surface\//,'surface-')
-  .replace(/^alpha\//,'alpha-')
-  .replace(/[\s/]+/g,'-')
-  .replace(/[^a-z0-9-]/g,'-')
-  .replace(/-+/g,'-');
+const slug = s => {
+  let out = s
+    .toLowerCase()
+    .replace(/^typography\//,'')
+    .replace(/^charts\/chart /,'chart-')
+    .replace(/^surface\//,'surface-')
+    .replace(/^alpha\//,'alpha-')
+    .replace(/[\s/]+/g,'-')
+    .replace(/[^a-z0-9-]/g,'-')
+    .replace(/-+/g,'-');
+  // Collapse repeated adjacent segments: slate-slate-50 → slate-50
+  const parts = out.split('-');
+  const dedup = [];
+  for (const p of parts) if (p !== dedup[dedup.length-1]) dedup.push(p);
+  return dedup.join('-');
+};
 
 const banner = (file) => `/* Horizon Design System · ${file}
  * Auto-generated from Figma file UfHICFSU9PJl9OkE84mUk9 (⚙️ Horizon Design System ✨)
