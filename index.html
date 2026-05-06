@@ -222,6 +222,17 @@ async function loadTab(name){
       a.href = '#' + id; a.textContent = h.textContent;
       pageToc.appendChild(a);
     });
+    // For the Tokens tab, prepend a row of download buttons
+    if (name === 'tokens') {
+      const row = document.createElement('div');
+      row.className = 'toolbar';
+      row.style.marginTop = '0';
+      row.style.marginBottom = '24px';
+      row.innerHTML = TOKEN_DOWNLOADS.map(d =>
+        `<a class="btn ${d.primary?'btn-primary':''}" href="${d.file}" download>${d.label}</a>`
+      ).join('');
+      doc.prepend(row);
+    }
     window.scrollTo({top: 0, behavior:'instant'});
   } catch(e) {
     doc.innerHTML = '<div class="empty">' + e.message + '</div>';
