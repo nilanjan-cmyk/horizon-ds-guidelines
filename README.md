@@ -4,6 +4,10 @@
 
 This folder contains every artifact produced for the Figma ↔ Code AI bridge.
 
+## 📦 Plugin download
+
+**[horizon-ds-plugin.zip](horizon-ds-plugin.zip)** — the entire kit as a Claude Code plugin (manifest, 2 agents, 4 skills, 4 slash-commands, all reference docs). Unzip into `~/.claude/plugins/` (or `<project>/.claude/plugins/`) and restart Claude Code.
+
 ## Files
 
 | File | Purpose | Audience |
