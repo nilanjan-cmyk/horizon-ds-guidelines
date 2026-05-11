@@ -1,7 +1,7 @@
 ---
 name: WPRemote · BlogVault · MalCare · Airlift — design.md
-version: 1.1.0
-last_synced: 2026-05-04
+version: 1.2.0
+last_synced: 2026-05-11
 design_system:
   name: Horizon Design System
   display_name: "⚙️ Horizon Design System ✨"
@@ -61,8 +61,10 @@ include:
 10. [Output & AI options](#10-output--ai-options)
 11. [Do / Don't rules](#11-do--dont-rules)
 12. [MCP integration](#12-mcp-integration)
-13. [Design taste — break from convention](#13-design-taste--break-from-convention)
-14. [Versioning](#14-versioning)
+13. [Reading Figma frames — names, artifacts, components, and properties](#13-reading-figma-frames)
+14. [Reading annotations — discuss when ambiguous](#14-reading-annotations)
+15. [Design taste — break from convention](#15-design-taste--break-from-convention)
+16. [Versioning](#16-versioning)
 
 ---
 
@@ -80,7 +82,7 @@ include:
 
 **Stable IDs.** Every component below has both a `figma_node_id` (where applicable) and a `code_symbol`. Agents bidirectionally resolve via either.
 
-**Token references** use DTCG aliasing: `{color.surface.card-background}`, `{spacing.gap.16}`, `{type.sm.normal.medium}`.
+**Token references** use DTCG aliasing: `{color.surface.card-background}`, `{spacing.gap.gap_4}` (16 px), `{type.sm.normal.medium}`.
 
 ---
 
@@ -190,44 +192,49 @@ color:
 
 ### 3.2 Layout — radius
 
+> **Naming convention (rem-based):** 1 rem = 4 px. Name = `rounded_{value ÷ 4}`. E.g. 8 px → `rounded_2`, 2 px → `rounded_0,5`.
+
 ```yaml
 radius:
-  rounded_0: { $type: dimension, $value: "0px" }
-  rounded_2: { $type: dimension, $value: "2px" }
-  rounded_4: { $type: dimension, $value: "4px" }
-  rounded_6: { $type: dimension, $value: "6px" }
-  rounded_8: { $type: dimension, $value: "8px" }
-  rounded_10: { $type: dimension, $value: "10px" }
-  rounded_12: { $type: dimension, $value: "12px" }
-  rounded_14: { $type: dimension, $value: "14px" }
-  rounded_16: { $type: dimension, $value: "16px" }
-  rounded_18: { $type: dimension, $value: "18px" }
-  rounded_20: { $type: dimension, $value: "20px" }
-  rounded_22: { $type: dimension, $value: "22px" }
-  rounded_24: { $type: dimension, $value: "24px" }
-  # … step of 2 up to rounded_80
+  rounded_0:    { $type: dimension, $value: "0px" }
+  rounded_0,5:  { $type: dimension, $value: "2px" }
+  rounded_1:    { $type: dimension, $value: "4px" }
+  rounded_1,5:  { $type: dimension, $value: "6px" }
+  rounded_2:    { $type: dimension, $value: "8px" }
+  rounded_2,5:  { $type: dimension, $value: "10px" }
+  rounded_3:    { $type: dimension, $value: "12px" }
+  rounded_3,5:  { $type: dimension, $value: "14px" }
+  rounded_4:    { $type: dimension, $value: "16px" }
+  rounded_4,5:  { $type: dimension, $value: "18px" }
+  rounded_5:    { $type: dimension, $value: "20px" }
+  # … continues in steps of 0,5 rem (2 px) up to rounded_20 (80 px)
   rounded_9999: { $type: dimension, $value: "9999px", $description: "Pill" }
 ```
 
 ### 3.3 Layout — spacing/gap
 
-**Allowed values for any gutter / padding / gap / margin:** `0, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200`. The Horizon Layout collection ships finer-grained tokens (`#gap_1, #gap_6, #gap_10, #gap_12, #gap_14, #gap_18, #gap_20, #gap_28, #gap_36, #gap_44, #gap_52, #gap_60, #gap_68`) — these exist for component internals already shipped by the library and **must not be reached for** in new layouts.
+> **Naming convention (rem-based):** 1 rem = 4 px. Name = `gap_{value ÷ 4}`. E.g. 8 px → `gap_2`, 16 px → `gap_4`, 2 px → `gap_0,5`.
+
+**Allowed values for any gutter / padding / gap / margin:** `0, 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80` and all multiples of 8 up to 240. The Horizon Layout collection ships finer-grained tokens for component internals — **do not reach for them in new layouts.**
 
 ```yaml
 spacing.gap:
-  "0":   { $type: dimension, $value: "0px" }
-  "2":   { $type: dimension, $value: "2px" }
-  "4":   { $type: dimension, $value: "4px" }
-  "8":   { $type: dimension, $value: "8px" }
-  "12":  { $type: dimension, $value: "12px" }
-  "16":  { $type: dimension, $value: "16px" }
-  "24":  { $type: dimension, $value: "24px" }
-  "32":  { $type: dimension, $value: "32px" }
-  "40":  { $type: dimension, $value: "40px" }
-  "48":  { $type: dimension, $value: "48px" }
-  "56":  { $type: dimension, $value: "56px" }
-  "64":  { $type: dimension, $value: "64px" }
-  # … up through "200"
+  gap_0:    { $type: dimension, $value: "0px" }
+  gap_0,5:  { $type: dimension, $value: "2px" }
+  gap_1:    { $type: dimension, $value: "4px" }
+  gap_2:    { $type: dimension, $value: "8px" }
+  gap_3:    { $type: dimension, $value: "12px" }
+  gap_4:    { $type: dimension, $value: "16px" }
+  gap_5:    { $type: dimension, $value: "20px" }
+  gap_6:    { $type: dimension, $value: "24px" }
+  gap_8:    { $type: dimension, $value: "32px" }
+  gap_10:   { $type: dimension, $value: "40px" }
+  gap_12:   { $type: dimension, $value: "48px" }
+  gap_14:   { $type: dimension, $value: "56px" }
+  gap_16:   { $type: dimension, $value: "64px" }
+  gap_18:   { $type: dimension, $value: "72px" }
+  gap_20:   { $type: dimension, $value: "80px" }
+  # … continues in steps of gap_2 (8 px) up to gap_60 (240 px)
 ```
 
 ### 3.4 Tailwind mapping
@@ -516,9 +523,10 @@ tier_0_variables:
     alpha:     [10, 20, 30, 40, 50, 60, 70, 80, 90]
     charts:    [Chart 1, Chart 2, Chart 3, Chart 4, Chart 5]
   layout:                     # Layout collection (358 vars).
-    radius:    [0, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 80, 9999]
-    spacing:   [0, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112,
-                120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200]
+    radius:    [rounded_0, rounded_0,5, rounded_1, rounded_2, rounded_4, rounded_6, rounded_8, rounded_10, rounded_12, rounded_14, rounded_16, rounded_20, rounded_9999]
+    spacing:   [gap_0, gap_0,5, gap_1, gap_2, gap_3, gap_4, gap_5, gap_6, gap_8, gap_10, gap_12, gap_14, gap_16, gap_18, gap_20, … gap_60]
+    opacity:   [opacity_0 (0%), opacity_1 (5%), opacity_2 (10%), … opacity_20 (100%)]  # sequential 0–20
+    stroke:    [border-0 (0px), border-0,25 (1px), border-0,5 (2px), border-1 (4px), border-2 (8px)]
   typography:                 # 84+ text styles
     family:    Inter
     sizes:     [xs 12, sm 14, base 16, lg 18, xl 20, 2xl 24, 3xl 30, 4xl 36, 5xl 48, 6xl 60, 7xl 72]
@@ -903,6 +911,8 @@ Mirrors the Figma Specs plugin's "Output & AI options" panel verbatim. These fla
 - Light + Dark mode both verified.
 - Match `instance_of` from Specs YAML to §6 component map.
 - Use `https://placehold.co/{w}x{h}` for missing assets.
+- **Read frame names, component properties, auto-layout, and artifacts before generating or auditing (§13).**
+- **Read all annotations, comments, and TODOs — ask the user when ambiguous (§14).**
 
 **Don't**
 - Hardcode hex / px / shadow values.
@@ -914,6 +924,9 @@ Mirrors the Figma Specs plugin's "Output & AI options" panel verbatim. These fla
 - Let the script return without a `screenshot`/`return-IDs` step.
 - Assume the agent's first generation is correct — diff against the spec.
 - Add decorative gradients on UI surfaces.
+- **Ignore annotations or comments in the Figma file — they are design intent.**
+- **Silently resolve ambiguous annotations — always ask the user.**
+- **Skip frame-name inspection — "Frame 43" or "Untitled" is a finding, not acceptable.**
 
 ---
 
@@ -951,7 +964,123 @@ fallbacks:
 
 ---
 
-## 13. Design taste — break from convention
+## 13. Reading Figma frames — names, artifacts, components, and properties
+
+Every AI agent **must** read and judge the Figma frame tree before generating or auditing. This is not optional — frame names, component names, property values, and artifact structure are the primary source of intent.
+
+### 13.1 What to read
+
+```yaml
+frame_inspection:
+  1_frame_name:
+    - Read the frame name (e.g. "Members / List / Desktop"). Frame names encode: feature, view, and breakpoint.
+    - Judge: does the name follow the pattern "{Feature} / {View} / {Breakpoint}"? Flag non-conforming names.
+    - Nested frame names carry hierarchy — "Header", "Content", "Footer" inside a page frame are structural intent.
+  2_component_instances:
+    - For every component instance, read `instance_of` → resolve to the Horizon component catalog (§6).
+    - Read all exposed properties and their current values (variant, size, state, label text).
+    - Judge: is the correct variant selected? Is the size appropriate for context? Is the state valid?
+  3_component_properties:
+    - Read `componentProperties` on every instance — these expose the designer's intent (which slots are filled, which booleans are toggled, what text was entered).
+    - Boolean properties (e.g. `showIcon`, `hasSubtext`) indicate intentional inclusion/exclusion — respect them.
+    - Text properties are the designer's copy intent — use them verbatim in code unless the /ux-copy skill overrides.
+  4_auto_layout:
+    - Read direction, gap, padding, primaryAxisAlignItems, counterAxisAlignItems, layoutWrap.
+    - Judge: does the gap match the 8-grid? Does padding use a Horizon spacing token?
+  5_fills_strokes_effects:
+    - Read bound variables on every fill, stroke, and effect.
+    - Judge: is every visual property bound to a Horizon variable? Flag any raw hex/px.
+  6_artifacts:
+    - Read non-component children: raw text nodes, rectangles, vectors, images.
+    - Judge: should these be component instances instead? A rectangle acting as a card surface is a violation.
+    - Images/assets: extract dimensions and note the asset name for placeholder generation.
+```
+
+### 13.2 How to read (MCP tools)
+
+```
+1. get_metadata(fileKey, nodeId)       → frame tree with names and types
+2. get_design_context(fileKey, nodeId) → YAML spec with resolved properties + tokens
+3. get_screenshot(fileKey, nodeId)     → visual reference
+4. use_figma → custom script           → deep property inspection (componentProperties, boundVariables, fills, strokes, auto-layout)
+```
+
+### 13.3 Judging frame quality (checklist)
+
+| Check | Pass | Fail |
+|---|---|---|
+| Frame name follows `{Feature} / {View} / {Breakpoint}` | ✓ descriptive | ✗ "Frame 43" or "Untitled" |
+| Every component instance resolves to Horizon catalog | ✓ all matched | ✗ unknown or detached instances |
+| Properties are set intentionally (not default everywhere) | ✓ customized | ✗ all defaults on a shipped screen |
+| Auto-layout gaps use 8-grid tokens | ✓ bound variable | ✗ raw `13px` or unbound |
+| No raw shapes mimicking DS components | ✓ all instances | ✗ rectangles-as-cards |
+| Asset layers have descriptive names | ✓ "hero-illustration" | ✗ "image 2" |
+
+---
+
+## 14. Reading annotations — discuss when ambiguous
+
+Designers leave annotations, comments, and sticky notes in Figma frames. AI agents **must** read these and use them as design intent signals. When annotations are ambiguous or contradictory, the agent **must ask for clarification** — never silently guess.
+
+### 14.1 What counts as an annotation
+
+```yaml
+annotation_sources:
+  figma_comments:
+    - Thread comments attached to specific nodes (via Figma's native comment system).
+    - Read via `get_metadata` or the Figma REST API (`GET /v1/files/:key/comments`).
+  sticky_notes:
+    - FigJam-style sticky notes placed near frames or inside them.
+    - Often contain: requirements, edge cases, open questions, "TODO" markers.
+  text_annotations:
+    - Text nodes with a name starting with "Note:", "TODO:", "Q:", "Annotation:", or "⚠".
+    - These are intentional designer callouts — never treat them as UI copy.
+  frame_descriptions:
+    - The `description` field on any frame or component instance.
+    - Horizon components carry descriptions explaining usage — read these before overriding.
+  named_markers:
+    - Frames or groups named "annotation", "spec-note", "redline", "callout".
+    - These contain measurement lines, color callouts, or behavioral notes.
+```
+
+### 14.2 How to handle annotations
+
+```
+1. READ   — Scan all annotation sources on the target frame and its ancestors.
+2. PARSE  — Extract intent signals: requirements, constraints, open questions, TODOs.
+3. APPLY  — Requirements and constraints feed directly into code/design generation.
+4. FLAG   — Open questions and TODOs are reported to the user before proceeding.
+5. ASK    — When two annotations contradict, or when an annotation is ambiguous,
+             STOP and ask the user which interpretation to follow.
+             Never silently pick one reading over another.
+```
+
+### 14.3 Ambiguity triggers (when to ask)
+
+| Signal | Action |
+|---|---|
+| Annotation says "maybe" / "TBD" / "discuss" / "?" | **Ask** — do not implement a "maybe." |
+| Two annotations on the same element give different specs | **Ask** — cite both, ask which wins. |
+| A TODO references a feature that doesn't exist yet | **Ask** — is this in scope for the current task? |
+| A comment thread is unresolved | **Ask** — show the thread, ask if it's been decided. |
+| A sticky note describes behavior not reflected in the design | **Ask** — is the note or the design correct? |
+| An annotation references a component/token that doesn't exist in Horizon | **Ask** — is this a proposal or an error? |
+
+### 14.4 Annotation-aware workflow addition
+
+Add this step to **every workflow** (§2.A, §2.B, §2.C, §2.D):
+
+```
+AFTER reading the target frame/spec, BEFORE generating output:
+  → Scan all annotation sources (§14.1)
+  → If any ambiguity triggers (§14.3) fire, STOP and ask the user
+  → If annotations contain clear requirements, incorporate them
+  → Report all annotations found in the output summary
+```
+
+---
+
+## 15. Design taste — break from convention
 
 This product is **not** a generic SaaS dashboard. The brief is deliberately to avoid the Bootstrap / Material lookalike trap. When generating new screens, draw from these movements:
 
@@ -973,7 +1102,7 @@ Forbidden patterns (anti-trends in 2026):
 
 ---
 
-## 14. Versioning
+## 16. Versioning
 
 ```
 schema:        1.0.0
@@ -989,11 +1118,13 @@ When Horizon publishes a new version, run the sync command, review the diff, bum
 
 ---
 
-## 15. Quick reference card (for humans skimming)
+## 17. Quick reference card (for humans skimming)
 
 ```
-Spacing:  0 2 4 8 16 24 32 40 48 56 64 …       (multiples of 8; only 2/4 below)
-Radius:   4 8 16 24 32 …                        (token radius/rounded_n)
+Spacing:  0 2 4 8 12 16 20 24 32 40…80…240     (rem-based: gap_{px÷4})
+Radius:   0 2 4 8 16 24 32…80 9999             (rem-based: rounded_{px÷4})
+Opacity:  0–20 sequential                       (opacity_{n}, each step = 5%)
+Stroke:   0, 0.25, 0.5, 1, 2                   (rem-based: border-{px÷4})
 Type:     12/16  14/20  16/24  18/28  24/32  30/36
 Surface:  page · card · widget · muted · overlay · border · {destructive,warning,success}-bg
 Text:     primary · secondary · tertiary · destructive · warning · success · url

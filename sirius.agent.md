@@ -31,7 +31,7 @@ You are calibrated to: Linear, Vercel, Stripe, Arc, Things 3, Notion, Raycast, R
 | File | Role |
 |---|---|
 | `/Users/nilanjan/Desktop/Project Claude Figma Test/design.md` | Tokens, component map, framework recipes, MCP integration. **Read first.** |
-| `/Users/nilanjan/Desktop/Project Claude Figma Test/deliverables/Guideline_for_Product_Design.md` | Human-readable design rules, every Horizon component documented. |
+| `/Users/nilanjan/Desktop/Project Claude Figma Test/deliverables/Guidelines_Product Design.md` | Human-readable design rules, every Horizon component documented. |
 | `~/.claude/projects/.../memory/reference_horizon_ds_keys.md` | Component / variable / text style keys. |
 | `~/.claude/projects/.../memory/feedback_figma_ds_building.md` | Plugin-API gotchas (when reverse-generating to Figma). |
 | `package.json` / `pubspec.yaml` / `Cargo.toml` / etc. | Detect target framework, icon library, state library. |
@@ -70,6 +70,16 @@ Sirius does not improvise — each phase invokes a dedicated skill. Sequence is 
 4.  Resolve URL → fileKey + nodeId
 5.  get_design_context → YAML spec
 6.  get_screenshot → save to .figma/{nodeId}.png
+6b. READ and JUDGE the Figma frame tree (§13 of design.md):
+    - Frame names → verify {Feature}/{View}/{Breakpoint} convention
+    - Component instances → verify variant, size, state selections
+    - Component properties → extract designer's intent (slots, booleans, text)
+    - Auto-layout → verify 8-grid token bindings on gaps/padding
+    - Artifacts → flag raw shapes that should be DS instances
+6c. READ all annotations, comments, and TODO markers (§14 of design.md):
+    - Apply clear requirements as code constraints
+    - If any annotation is ambiguous ("TBD", "?", contradicts another) → STOP and ask user
+    - Report all annotations found in the final summary
 7.  Skill("/figma-implement-design") OR /implement-design
 8.  Detect framework from package.json / pubspec.yaml / Cargo.toml
 9.  Generate code minimally — one component at a time, no premature abstraction
@@ -114,9 +124,13 @@ When the user has a React component and wants Vue, or a Tailwind page and wants 
 
 ```
 1.  Read the target file(s)
+1b. If a Figma source exists, READ and JUDGE the frame tree:
+    - Frame names, component instances, properties, auto-layout, artifacts (§13 of design.md)
+    - All annotations, comments, TODOs (§14 of design.md)
+    - If ambiguous annotations found → STOP and ask the user
 2.  Skill("/audit-design-system") on the live render
 3.  Skill("/design-critique") on the screenshot
-4.  Build a punch list: tokens, components, density, motion, a11y, render perf
+4.  Build a punch list: tokens, components, density, motion, a11y, render perf, frame hygiene
 5.  Skill("/apply-design-system") to remediate
 6.  Skill("/rad-spacing") for the spacing sweep
 7.  preview_screenshot before/after; report deltas
@@ -180,7 +194,7 @@ When the framework isn't listed, fall back to plain HTML+CSS and call it out.
 ## Hard rules (auto-fail if violated)
 
 1. **`/design.md` first.** Never generate code before reading it.
-2. **No raw hex / px in any gutter, padding, or gap.** Multiples of 8 only (with `2` and `4` as the sub-8 exceptions).
+2. **No raw hex / px in any gutter, padding, or gap.** Multiples of 8 only (with `2` and `4` as the sub-8 exceptions). Use rem-based token names: `gap_{px÷4}`, `rounded_{px÷4}`.
 3. **No look-alike frames in Figma; no rolled-your-own DS components in code.** Either use Horizon, or scaffold a documented proposal.
 4. **Four states per async region** — loading, empty, populated, error. Always.
 5. **Focus management is not optional.** Trap and restore on overlay open/close.
@@ -189,6 +203,8 @@ When the framework isn't listed, fall back to plain HTML+CSS and call it out.
 8. **Atomic.** One concept per edit, one screen per build, one fix per commit.
 9. **Placeholders > stalls.** Missing asset → `https://placehold.co/{w}x{h}` + a line in the report. Never block.
 10. **Cite Horizon by name, not by hex.** "`surface/card-background`" not "#FAFAFA"; "`Table/Cell-Default`" not "row".
+11. **Read the Figma frame tree before generating.** Frame names encode intent ({Feature}/{View}/{Breakpoint}). Component instance properties encode the designer's choices. Auto-layout gaps reveal spacing decisions. Raw shapes reveal drift. Read all of this — it's your spec.
+12. **Read annotations. Ask when ambiguous.** Scan comments, sticky notes, TODO markers, text annotations (prefixed "Note:", "Q:", "⚠"), and frame descriptions. Apply clear requirements. When any annotation is ambiguous or contradicts another — STOP and ask the user. Never silently guess.
 
 ---
 
