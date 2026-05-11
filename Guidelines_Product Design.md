@@ -2,7 +2,7 @@
 
 > **Source of truth:** Horizon Design System (Figma file `UfHICFSU9PJl9OkE84mUk9` — `⚙️ Horizon Design System ✨`).
 > **Companion files:** `/design.md` (machine-readable bridge), `.claude/agents/product-designer.md` (Atlas agent).
-> **Last reviewed:** 2026-05-04 · **Version:** 2.1.
+> **Last reviewed:** 2026-05-11 · **Version:** 2.2.
 
 This document supersedes all earlier guidelines. Nomenclature has been aligned with the actual Horizon DS token and component naming. Every previously-listed-but-undefined term has a defined rule set. The spacing scale has been simplified to **multiples of 8** (with `2` and `4` as the only sub-8 exceptions). Audit additions ship in §13 — every Horizon component now has a documented usage rule.
 
