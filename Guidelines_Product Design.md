@@ -618,7 +618,7 @@ Designers leave annotations, comments, and TODO markers in Figma. These are **de
 
 ---
 
-## 16. Glossary changes from earlier versions
+## 18. Glossary changes from earlier versions
 
 | Earlier term | Current term | Reason |
 |---|---|---|
