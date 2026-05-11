@@ -615,6 +615,10 @@ Designers leave annotations, comments, and TODO markers in Figma. These are **de
 - [ ] Loading state (Skeleton) designed for every async region.
 - [ ] Error state designed for every form.
 - [ ] Page has been screenshotted and visually compared to the spec.
+- [ ] All Figma frame names follow `{Feature} / {View} / {Breakpoint}` convention (no "Untitled").
+- [ ] All component instance properties inspected and judged (correct variant, size, state).
+- [ ] All annotations, comments, and TODOs read and resolved (no ambiguous "TBD" left unaddressed).
+- [ ] No raw shapes mimicking DS components — all replaced with Horizon instances.
 
 ---
 
