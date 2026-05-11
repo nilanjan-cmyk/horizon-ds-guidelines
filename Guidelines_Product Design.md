@@ -135,7 +135,7 @@ Full machine-readable list lives in `/design.md` §3. The categories are:
 
 ### 3.1 Allowed radius values
 
-`0, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 80, 9999 (pill)`. Use `radius/rounded_{n}`. (Horizon ships finer-grained radius tokens such as 6/10/12 — these exist but are reserved for component internals already defined by the library; do not reach for them in new layouts.)
+`0, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 80, 9999 (pill)`. Use `radius/rounded_{rem}` — e.g. `rounded_2` = 8 px, `rounded_4` = 16 px, `rounded_0,5` = 2 px. (Horizon ships finer-grained radius tokens such as 6/10/12 — these exist but are reserved for component internals already defined by the library; do not reach for them in new layouts.)
 
 ### 3.2 Allowed spacing values
 
