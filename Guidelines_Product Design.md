@@ -601,7 +601,7 @@ Designers leave annotations, comments, and TODO markers in Figma. These are **de
 - [ ] All fills/strokes/effects bound to a Horizon variable (no raw hex).
 - [ ] All gaps/paddings/margins are multiples of 8 (only `2` and `4` allowed below 8).
 - [ ] No `12 / 20 / 22` px in any gutter, padding or gap.
-- [ ] All radii use `radius/rounded_{n}` tokens.
+- [ ] All radii use `radius/rounded_{rem}` tokens (1 rem = 4 px).
 - [ ] All text uses a `type/{size}/{lh}/{weight}` style.
 - [ ] Every component is a Horizon instance (no look-alike frames).
 - [ ] One primary CTA per page.
