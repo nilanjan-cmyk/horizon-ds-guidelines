@@ -104,7 +104,7 @@ The terms below are **canonical**. Use them in all design files, code, comments,
 
 ## 2. General rules
 
-1. **Spacing scale (multiples of 8):** the only allowed values for any **gutter, padding, gap, or margin** are `0, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128…`. **No 12, no 20, no 22, no 6, no 10, no 14, no 18, no 28, no 36, no 44.** Tokens: `spacing_gap/#gap_{n}`. The two sub-8 exceptions (`2`, `4`) exist only for hairline gaps inside dense components (e.g. Title-Subtext 4 px, icon-text 4 px micro-gap).
+1. **Spacing scale (multiples of 8):** the only allowed values for any **gutter, padding, gap, or margin** are `0, 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80` and all multiples of 8 up to 240. Tokens use rem-based naming (1 rem = 4 px): `spacing_gap/gap_{rem}` — e.g. `gap_4` = 16 px, `gap_6` = 24 px. The two sub-8 exceptions (`2`, `4`) exist only for hairline gaps inside dense components (e.g. Title-Subtext 4 px, icon-text 4 px micro-gap).
 2. **Padding & spacing are always even numbers.**
 3. **The Page is composed of three regions:** Top Nav, Sidebar, and Page Content Area.
 4. **Read on the left, act on the right.** Primary actions live in the right side of any container.
