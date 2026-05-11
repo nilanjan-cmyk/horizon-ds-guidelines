@@ -596,7 +596,7 @@ Designers leave annotations, comments, and TODO markers in Figma. These are **de
 
 ---
 
-## 15. Audit Checklist (use this for every PR)
+## 17. Audit Checklist (use this for every PR)
 
 - [ ] All fills/strokes/effects bound to a Horizon variable (no raw hex).
 - [ ] All gaps/paddings/margins are multiples of 8 (only `2` and `4` allowed below 8).
