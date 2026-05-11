@@ -533,7 +533,60 @@ This section documents every component page in the Horizon DS. Each entry: 4–8
 
 ---
 
-## 14. Accessibility (non-negotiable)
+## 14. Reading Figma frames — names, artifacts, components, and properties
+
+Every designer, reviewer, and AI agent **must** read the Figma frame tree as a source of design intent — not just the visual screenshot.
+
+### 14.1 Frame naming convention
+
+All frames must follow the pattern: **`{Feature} / {View} / {Breakpoint}`** — e.g. `Members / List / Desktop`. Frames named "Frame 43" or "Untitled" are rejected in review.
+
+### 14.2 What to inspect
+
+| Element | What to look for |
+|---|---|
+| **Frame names** | Descriptive, convention-following, encode feature + view + breakpoint |
+| **Component instances** | Correct variant, size, and state selected; all properties intentionally set |
+| **Component properties** | Slot fills, boolean toggles, text overrides — these are the designer's explicit intent |
+| **Auto-layout** | Direction, gap (8-grid?), padding (8-grid?), alignment |
+| **Fills / strokes / effects** | Bound to Horizon variables — no raw hex |
+| **Raw shapes** | Rectangles / vectors acting as DS components = violation; flag for replacement |
+| **Assets** | Named descriptively ("hero-illustration" not "image 2"); dimensions noted for placeholders |
+
+### 14.3 Judging quality
+
+During audit or pre-implementation review, score frame quality against the checklist above. Every "Frame 43", every detached instance, every unbound property is a finding in the audit report.
+
+---
+
+## 15. Reading annotations — discuss when ambiguous
+
+Designers leave annotations, comments, and TODO markers in Figma. These are **design intent signals** — they must be read before generating code or auditing.
+
+### 15.1 Annotation sources
+
+- **Figma comments** — threads attached to specific nodes.
+- **Sticky notes** — placed near or inside frames (often requirements, edge cases, open questions).
+- **Text annotations** — text nodes named "Note:", "TODO:", "Q:", "⚠", or "Annotation:". These are callouts, not UI copy.
+- **Frame descriptions** — the `description` field on frames and component instances.
+- **Named markers** — frames/groups named "annotation", "spec-note", "redline", "callout".
+
+### 15.2 When to ask for clarification
+
+| Signal | Required action |
+|---|---|
+| Annotation says "maybe", "TBD", "discuss", or "?" | **Ask the designer/user** — do not implement a "maybe" |
+| Two annotations on the same element give different specs | **Ask** — cite both, ask which wins |
+| A TODO references a feature that doesn't exist yet | **Ask** — is this in scope? |
+| An unresolved comment thread | **Ask** — has this been decided? |
+| Sticky note describes behavior not reflected in the design | **Ask** — is the note or the design correct? |
+| Annotation references a component/token not in Horizon | **Ask** — proposal or error? |
+
+**Never silently resolve ambiguity.** When in doubt, ask.
+
+---
+
+## 16. Accessibility (non-negotiable)
 
 - **Contrast:** WCAG AA — body text ≥ 4.5:1, large text ≥ 3:1.
 - **Target size:** any clickable target ≥ 24×24 px on desktop, ≥ 48×48 px on mobile.
