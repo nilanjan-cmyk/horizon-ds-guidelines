@@ -68,7 +68,7 @@ cmd_watch() {
   echo "Watching $HERE for changes (.md, .html, .css, .js)..."
   echo "Each save → commit → push → GitHub Pages rebuild (~30–60 s)."
   echo "Stop: Ctrl-C"
-  fswatch -o -e ".*" -i '\.md$' -i '\.html$' -i '\.css$' -i '\.js$' "$HERE" \
+  fswatch -o -e ".*" -i '\.md$' -i '\.html$' -i '\.css$' -i '\.js$' -i '\.mjs$' -i '\.json$' -i '\.zip$' "$HERE" \
     | while read -r _; do
         sleep 1   # debounce burst saves
         cmd_deploy || true

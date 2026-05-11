@@ -126,7 +126,12 @@ Full machine-readable list lives in `/design.md` §3. The categories are:
   - `alpha/10` … `alpha/90`
   - `charts/Chart 1` … `charts/Chart 5`
 - **`System Colours`** (333 primitives) — the raw palette. *Do not use directly on UI; alias via Mode.*
-- **`Layout`** (358 vars) — `radius/rounded_{0..80, 9999}` and `spacing_gap/#gap_{0..200}`. **Use only the multiples-of-8 subset for gap/padding (see §2).** Radius may use any token in the radius set.
+- **`Layout`** (358+ vars) — Rem-based naming (1 rem = 4 px):
+  - `radius/rounded_{rem}` — e.g. `rounded_2` = 8 px, `rounded_0,5` = 2 px, up to `rounded_20` (80 px) + `rounded_9999` (pill).
+  - `spacing_gap/gap_{rem}` — e.g. `gap_4` = 16 px, `gap_0,5` = 2 px, up to `gap_60` (240 px).
+  - `opacity/opacity_{0..20}` — sequential: `opacity_0` = 0%, `opacity_1` = 5%, …, `opacity_20` = 100%.
+  - `stroke-width/border-{rem}` — e.g. `border-0,25` = 1 px, `border-0,5` = 2 px, `border-1` = 4 px, `border-2` = 8 px.
+  - **Use only the multiples-of-8 subset for gap/padding (see §2).** Radius may use any token in the radius set.
 
 ### 3.1 Allowed radius values
 
