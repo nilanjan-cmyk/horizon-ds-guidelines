@@ -635,7 +635,7 @@ Designers leave annotations, comments, and TODO markers in Figma. These are **de
 
 ---
 
-## 17. Living document
+## 19. Living document
 
 Open a PR against `deliverables/Guidelines_Product Design.md`. Every change must:
 1. Cite the Horizon node, component key, or token name being formalized.
