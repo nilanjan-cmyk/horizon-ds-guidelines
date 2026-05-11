@@ -139,7 +139,7 @@ Full machine-readable list lives in `/design.md` §3. The categories are:
 
 ### 3.2 Allowed spacing values
 
-See §2 rule 1. Use `spacing_gap/#gap_{n}`.
+See §2 rule 1. Use `spacing_gap/gap_{rem}` (1 rem = 4 px).
 
 ### 3.3 Type ramp
 
