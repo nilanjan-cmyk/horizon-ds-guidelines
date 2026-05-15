@@ -530,10 +530,12 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.24 Switch
 
-- Sizes **Small 24×16 / Medium 32×24**.
-- Track radius `radius/rounded_9999`. Thumb circle, padding 2 px from track edge.
-- Off `surface/muted-background`. On `typography/text-primary` background, thumb `surface/card-background`.
-- 160 ms ease-out toggle.
+- Track sizes: **Small 24×16 / Medium 36×20**. Thumb: SM 12 px · MD 16 px, 2 px inset.
+- Track radius `border radius/full` = 9999. Thumb `surface/card-background` with `shadow/lg`.
+- Off: `Flat/zinc/zinc-200` (#e4e4e7). On: `BlogVault Brand/bv-emerald-900` (#064e3b). **Correction:** previous docs said off = `surface/muted-background`, on = `typography/text-primary`.
+- 160 ms ease-out toggle. Disabled: `opacity/opacity-50`.
+- Focus: 2 px ring `BlogVault Brand/bv-emerald-900` offset 2 px.
+- Label: `type/sm/tight/medium` (14/14/500), gap `spacing/2` = 8.
 
 ### 13.25 Radio Button
 
