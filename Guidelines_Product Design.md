@@ -465,9 +465,11 @@ This section documents every component page in the Horizon DS. Each entry covers
 ### 13.14 Avatar
 
 - Sizes: **xs 16 / sm 24 / md 32 / lg 40 / xl 48 / 2xl 64 px**.
-- Shape: circle (default) or `radius/rounded_8` (square).
-- Content: photo, initials (1–2 chars in `type/sm/tight/medium`), or icon.
-- Avatar group: overlap **−8 px**, max 4 visible + `+N` counter.
+- Shape: circle (`border radius/full` = 9999) or square (`radius/rounded_2` = 8).
+- Content: photo, initials (1–2 chars), or icon fallback (`typography/text-tertiary`).
+- Initials bg: `Flat/zinc/zinc-200`. Text: `typography/text-primary`. Typography scales per size: xs `type/micro-8`, sm `type/micro-10`, md `type/xs/normal/medium`, lg `type/sm/normal/medium`, xl `type/base/normal/medium`, 2xl `type/lg/normal/medium`.
+- Group: overlap **−8 px**, max 4 visible + `+N` counter (`Flat/zinc/zinc-100` bg, `type/xs/normal/medium`).
+- Border: 1 px `surface/border` when stacked. Online indicator: 8 px `Flat/emerald/emerald-500` dot, bottom-right.
 
 ### 13.15 Badge (vs Pill)
 
