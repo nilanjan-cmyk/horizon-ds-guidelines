@@ -488,10 +488,12 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.16 Stepper (Step-Wizard)
 
-- Horizontal (default) or vertical.
-- Step circle 24 px, gap to label **8 px**, gap between steps **24 px**.
-- Connector line 1 px in `surface/border` (incomplete) or `typography/text-primary` (complete).
-- States: pending / current / complete / error.
+- Horizontal (default) or vertical. Step circle 24 px, gap to label **8 px**, gap between steps **24 px**.
+- Circle pending: `Flat/zinc/zinc-300`. Current: `BlogVault Brand/bv-emerald-900`. Complete: `BlogVault Brand/bv-emerald-700`. Error: `typography/text-destructive`.
+- Circle text: `typography/text-white` (current/complete), `typography/text-primary` (pending). Number: `type/xs/normal/medium` (12/16/500).
+- Connector line 1 px: incomplete `surface/border`, complete `BlogVault Brand/bv-emerald-700`.
+- Label: `type/xs/tight/regular` (12/12/400) `typography/text-secondary`. Active: `type/xs/normal/medium`.
+- States: pending / current / complete / error. Vertical gap `spacing_gap/gap_2` = 8.
 
 ### 13.17 Indicator (status dot)
 
