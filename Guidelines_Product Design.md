@@ -609,6 +609,59 @@ This section documents every component page in the Horizon DS. Each entry covers
 - Modals become full-screen Sheets below 640 px viewport.
 - Tabs become scrollable horizontally; the underline becomes a pill on small screens.
 
+### 13.35 Navigation Bars
+
+- **Top Nav:** Height 80 px, bg `surface/navigation-background` (#ffffff), bottom `Box Shadow/shadow-sm`.
+  - Logo 28 h, left-aligned. Nav items: `type/sm/tight/medium` (14/14/500), gap `spacing_gap/gap_2` = 8, height 28 (`height/h-7`).
+  - Active nav item: `typography/text-primary` + `Flat/emerald/emerald-50` bg + `border radius/md` = 6.
+  - Account menu: Avatar md 32 + dropdown.
+- **Sidebar:** Open 296 w, collapsed 48 w. Bg `surface/page-background-content`, border-right 1 px `surface/border`.
+  - Menu item: 32 h, padding `px-3`/`py-2` = 12/8, radius `border radius/md` = 6.
+  - Active: `Flat/emerald/emerald-50` bg, `BlogVault Brand/bv-emerald-900` text. Hover: `Flat/zinc/zinc-100` bg.
+  - Icon 16×16, gap `spacing_gap/gap_2` = 8. Section header: `type/xs/tight/medium` `typography/text-tertiary`, 24 px top margin.
+  - Collapsed: show tooltip on hover.
+- **Mobile Nav:** 56 h, hamburger 24×24 opens Sheet Slider sidebar.
+
+### 13.36 Tables
+
+- **Cell:** Height 72 default / 40 compact. Padding `pl-4`=16 L, `py-4`=16 V, `spacing/2-5`=10 R.
+- **Head:** 40 h, bg `Flat/zinc/zinc-50`, `type/sm/normal/medium` (14/20/500) `typography/text-secondary`. Sort icon 16×16.
+- **Cell text:** `type/sm/normal/regular` (14/20/400) primary. Secondary text: `type/xs/normal/regular` (12/16/400).
+- **Row border:** 1 px `surface/border` bottom. Hover: `Flat/zinc/zinc-50` bg. Selected: `Flat/emerald/emerald-50` bg.
+- **Checkbox column:** 44 px width. Action column: right-aligned, icon-only 32×32.
+- **Footer:** 56 h, padding 16. Pagination right-aligned. Bulk action bar: 48 h, padding 12, `shadow/sm`, sticky bottom.
+- **Layout:** Column-major — vertical auto-layout columns inside horizontal Columns frame.
+- Optional stripe: `Flat/zinc/zinc-50` on even rows.
+
+### 13.37 Forms (complete anatomy)
+
+- **Single form:** Max-width `max-w-sm` = 384 px, top-left in content area.
+- **Double form:** Full content area width, 2-column grid.
+- Field gap `spacing/3` = 12. Section gap `spacing/6` = 24.
+- Label: `type/sm/tight/medium` (14/14/500). Required: red asterisk `typography/text-destructive`.
+- Helper: `type/xs/normal/regular` (12/16/400) `typography/text-secondary`. Error: same in `typography/text-destructive`.
+- Button group gap `spacing_gap/gap_4` = 16. Double form function container: `surface/border` border, `border radius/lg` = 8.
+
+### 13.38 Menu / Dropdown
+
+- Width min 200 px, max 320 px. Outer padding `spacing/1` = 4.
+- Item: 32 h, padding `px-3`=12 / `py-2`=8, radius `border radius/sm` = 2.
+- Hover: `Flat/zinc/zinc-100` bg. Active: `Flat/zinc/zinc-100` + check icon right.
+- Separator: 1 px `surface/border`, `spacing_gap/gap_0,5` = 2 V margin.
+- Section label: `type/xs/normal/medium` (12/16/500) `typography/text-secondary`, padding `spacing/1` = 4.
+- Icon 16×16. Shadow `shadow/md`. Container radius `radius/rounded_3` = 12. Border 1 px `surface/border`.
+- Destructive items: `typography/text-destructive`. Nested: 8 px chevron-right.
+
+### 13.39 Feedback / Banner
+
+- Padding `p-4` = 16. Radius `rounded` = 4. Icon 16×16.
+- Title: `type/sm/tight/semibold` (14/14/600). Body: `type/xs/tight/regular` (12/12/400).
+- Success: bg `surface/success-background`, left 3 px `Flat/emerald/emerald-700`, icon `typography/text-success`.
+- Warning: bg `surface/warning-background`, left 3 px `Flat/amber/amber-600`, icon `typography/text-warning`.
+- Destructive: bg `surface/destructive-background`, left 3 px `typography/text-destructive`.
+- Info: bg `Flat/sky/sky-50`, left 3 px `Flat/sky/sky-700`, icon `Flat/sky/sky-600`.
+- Dismiss: 16×16 icon, right-aligned.
+
 ---
 
 ## 14. Reading Figma frames — names, artifacts, components, and properties
