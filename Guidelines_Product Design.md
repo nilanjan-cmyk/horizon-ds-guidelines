@@ -473,10 +473,12 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.15 Badge (vs Pill)
 
-- Use **Badge** for state markers attached to another element (e.g. unread count, status dot). Use **Pill** as a stand-alone label.
-- Badge sizes: **Dot 8 px** / **Small 16 px** / **Medium 24 px**.
-- Variants: Information / Warning / Success / Destructive — token pairs same as Pill.
-- Position: top-right of host with **−4 px** outset.
+- Use **Badge** for state markers attached to another element. Use **Pill** as a stand-alone label.
+- Sizes: **Dot 8** / **Small 16** / **Medium 24**. Radius: SM/MD `border radius/md` = 6, Dot `border radius/full`.
+- Information: bg `Flat/sky/sky-50`, text `Flat/sky/sky-600`. Warning: bg `surface/warning-background`, text `typography/text-warning`. Success: bg `surface/success-background`, text `typography/text-success`. Destructive: bg `surface/destructive-background`, text `typography/text-destructive`.
+- Typography: SM `type/xs/normal/semibold` (12/16/600), MD `type/xs/tight/semibold`.
+- Padding: SM `spacing/0-5` = 2 H, MD `spacing/1` = 4 H / `spacing/0-5` = 2 V. Icon: 24 in MD.
+- Position: top-right of host with **−4 px** outset. Shadow `shadow/base` on outlined variants.
 
 ### 13.16 Stepper (Step-Wizard)
 
