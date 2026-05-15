@@ -401,11 +401,13 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.6 Tabs
 
-- Underline-style by default. **16 px** horizontal padding per tab, **8 px** vertical.
-- Active: `typography/text-primary` + 2 px bottom border in `typography/text-primary`.
+- Underline-style by default. **12 px** (`spacing/3`) horizontal padding per tab, **8 px** (`spacing/2`) vertical. **Correction:** previous docs said 16 H — actual is 12.
+- Active: `typography/text-primary` + 2 px bottom border in `Flat/emerald/emerald-600` (#059669). **Correction:** previous docs said underline color `typography/text-primary` — actual is emerald-600.
 - Inactive: `typography/text-secondary`. Hover: `typography/text-primary`.
-- Gap between tabs: 0 (the underline itself separates them).
+- Gap between tabs: 0.
 - Variants: underline (default), pill, segmented.
+- Pill variant: `spacing/2` = 8 H, `spacing/1` = 4 V. Active bg `surface/card-background` + `shadow/sm`. Container `radius/rounded_2` = 8.
+- Tab height: content-driven, typically 40 px. Icon in tab: 16×16, gap `spacing_gap/gap_0,5` = 2.
 
 ### 13.7 Tooltip
 
