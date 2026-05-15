@@ -411,10 +411,13 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.7 Tooltip
 
-- Padding **8 px H · 4 px V**. Radius `radius/rounded_4`.
-- Background `surface/overlay-background` with `alpha/90`. Text `typography/text-white`.
-- Type `type/xs/normal/medium`.
+- Padding `px-3` = 12 H, `p-1,5` = 6 V. **Correction:** previous docs said 8 H / 4 V — actual is 12 / 6.
+- Radius `border radius/lg` = 8. **Correction:** previous docs said `radius/rounded_4` = 16 — actual is 8.
+- Background `Flat/zinc/zinc-950` (#09090b). **Correction:** previous docs said `surface/overlay-background` + `alpha/90` — actual is solid zinc-950.
+- Text `typography/text-white`. Type `type/xs/normal/medium` (12/16/500).
 - Triangle marker 8 px, positions: top / bottom / left / right · orient left / center / right.
+- Shadow: `Box Shadow/shadow` (base). Max width 320 px.
+- Delays: show 200 ms, hide 0 ms.
 
 ### 13.8 Toast
 
