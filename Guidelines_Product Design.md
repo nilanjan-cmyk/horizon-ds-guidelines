@@ -569,9 +569,11 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.27 Progress
 
-- **Linear** (default): height 8 px, radius `radius/rounded_9999`. Fill `typography/text-primary`.
+- **Linear** (default): height 8 px, radius `border radius/full` = 9999. Track: `Flat/zinc/zinc-100`. Fill: `BlogVault Brand/bv-emerald-600`.
 - **Circular**: 24 / 32 / 40 / 48 px diameter, stroke 4 px.
-- **Ring** (KPI): 64 / 80 px, stroke 8 px, value rendered centre in `type/lg/tight/semibold`.
+- **Ring** (KPI): 64 / 80 px, stroke 8 px, value centre in `type/lg/tight/semibold`.
+- Semantic fills: success `BlogVault Brand/bv-emerald-700`, warning `typography/text-warning`, destructive `typography/text-destructive`.
+- Label: `type/sm/tight/medium` (14/14/500). Value: `type/micro-10/normal/regular` (10/14/400) or larger per ring size.
 - Indeterminate state animates 1 600 ms loop.
 
 ### 13.28 Data Visualization (Charts)
