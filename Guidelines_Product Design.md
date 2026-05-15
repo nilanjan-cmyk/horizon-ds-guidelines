@@ -386,9 +386,13 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.4 Drawer
 
-- Right-anchored. Width tiers: **400 / 560 / 720 px**.
-- Header 64 px, padding 24 px L/R, 16 px T/B.
-- Body scrolls; footer is sticky if present.
+- Right-anchored (default) or Left. Width tiers: **400 / 560 / 720 px**.
+- Header 64 px, padding `spacing/4` = 16 all around. **Correction:** previous docs said 24 L/R, 16 T/B — actual is 16 uniform.
+- Header: `type/lg/normal/medium` (18/28/500). Close button 32×32 icon-only, top-right.
+- Body scrolls; padding `spacing/4` = 16 L/R, `spacing/3` = 12 T/B.
+- Footer sticky, min 56 h, padding `spacing/4` = 16. 1 px `surface/border` dividers.
+- Shadow: `shadow/sm` + `shadow/base` layered. Backdrop: `surface/foreground` at 20% opacity.
+- Animation: slide from edge, 200 ms ease-out.
 
 ### 13.5 Sheet Slider (mobile)
 
