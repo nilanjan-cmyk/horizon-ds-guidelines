@@ -449,11 +449,16 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.12 Pill / Pill Button
 
-- Sizes **Small (24 px height)** / **Medium (32 px height)**.
-- Padding: **8 px L/R** for Small, **16 px L/R** for Medium.
-- Radius `radius/rounded_9999`.
-- Variants: Neutral / Success / Informative / Warning / Destructive — each maps to a `surface/*-background` and `typography/text-*`.
-- Pill Button adds hover (alpha/10 darken) and pressed (alpha/20 darken) states.
+- Sizes **Small (24 h)** / **Medium (32 h)**. Padding: SM 8 H / MD 16 H. Radius `border radius/full` = 9999.
+- Typography: SM `type/xs/normal/medium` (12/16/500), MD `type/sm/normal/medium` (14/20/500).
+- Icon: SM 8 (`width/w-2`), MD 16 (`width/w-4`). Gap icon→text `spacing/1` = 4.
+- **Token map per variant:**
+  - Neutral: bg `Flat/zinc/zinc-100`, text `typography/text-primary`, border `surface/border`.
+  - Success: bg `surface/success-background` (#ecfdf5), text `typography/text-success`.
+  - Informative: bg `Flat/sky/sky-50`, text `Flat/sky/sky-600`.
+  - Warning: bg `surface/warning-background` (#fffbeb), text `typography/text-warning`.
+  - Destructive: bg `surface/destructive-background` (#fef2f2), text `typography/text-destructive`.
+- Pill Button: hover alpha/10 darken, pressed alpha/20 darken. Shadow `shadow/md` on outlined.
 
 ### 13.13 Breadcrumb
 
