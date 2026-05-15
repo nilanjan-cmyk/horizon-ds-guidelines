@@ -539,9 +539,11 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.25 Radio Button
 
-- Sizes **Small 16 / Medium 24 px**. Outer ring 1 px `surface/border`. Inner dot 8 px (Small) / 12 px (Medium) — *internal radius is exempt from the multiples-of-8 rule because it is the published component diameter*.
-- Selected ring `typography/text-primary`. Disabled `typography/text-tertiary`.
-- Label gap **8 px**.
+- Sizes **Small 16 / Medium 24 px**. Outer ring 1 px `surface/border`. Inner dot 8 px (Small) / 12 px (Medium).
+- Selected ring: `BlogVault Brand/bv-emerald-900` (#064e3b). Inner dot: `Flat/base/base-white`. **Correction:** previous docs said `typography/text-primary`.
+- Hover: border darkens to `Flat/zinc/zinc-300`. Focus: 2 px ring offset 2 px. Shadow `shadow/base` on focus.
+- Disabled: `surface/muted-foreground` ring + dot, `opacity/opacity-50` on label.
+- Label: `type/sm/normal/regular` (14/20/400) primary · `type/sm/tight/regular` secondary. Gap **8 px**.
 
 ### 13.26 Checkbox
 
