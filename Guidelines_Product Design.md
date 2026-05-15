@@ -462,10 +462,11 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.13 Breadcrumb
 
-- Lives inside the Top Nav. Type `type/sm/normal/medium`.
-- Separator: chevron-right 16×16 in `typography/text-tertiary`.
-- Item gap **8 px**. Active (last) item `typography/text-primary`. Earlier items `typography/text-secondary`, hover → `typography/text-primary`.
-- Truncation: middle items collapse into `…` overflow menu when total width > parent.
+- Lives inside the Top Nav. Type `type/sm/normal/medium` (14/20/500).
+- Separator: chevron-right 16×16 in `typography/text-secondary`. **Correction:** previous docs said `typography/text-tertiary`.
+- Item gap **8 px**. Active (last) item `typography/text-primary`. Earlier items `typography/text-secondary`.
+- Hover: `Flat/emerald/emerald-700` underline. Links use `type/sm/tight/regular` (14/14/400), no underline until hover.
+- Home icon: 20×20 (`width/w-5`). Truncation: middle items collapse into `…` overflow menu when total width > parent.
 
 ### 13.14 Avatar
 
