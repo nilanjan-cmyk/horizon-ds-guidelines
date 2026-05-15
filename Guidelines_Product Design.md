@@ -421,9 +421,13 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.8 Toast
 
-- Width 360 px, padding 16 px, radius `radius/rounded_8`.
-- Slide in 240 ms, auto-dismiss 4 s (default).
-- Variants: success / info / warning / destructive — left-aligned 24×24 icon.
+- Width 360 px (flexible), padding 16 px, radius `border radius/lg` = 8. Shadow `shadow/lg`.
+- Background `surface/card-background`, border 1 px `surface/border`.
+- Title: `type/sm/normal/semibold` (14/20/600) `typography/text-black`. Body: `type/sm/normal/regular` (14/20/400) `typography/text-secondary`.
+- Close: 24 px icon-only, top-right.
+- Slide in 240 ms, auto-dismiss 4 s (default). Stack offset 8 px.
+- Variants: success (icon `typography/text-success`, left accent 3 px `Flat/emerald/emerald-700`) / info / warning (icon `typography/text-warning`) / destructive (icon `typography/text-destructive`).
+- Icon: 24×24 (`width/w-6`), left-aligned.
 
 ### 13.9 Empty State
 
