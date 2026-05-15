@@ -304,7 +304,53 @@ Default mappings:
 
 ## 13. Component reference (every Horizon component)
 
-This section documents every component page in the Horizon DS. Each entry: 4–8 bullets covering size, padding/gap (multiples-of-8 only), variants, and the canonical token bindings.
+This section documents every component page in the Horizon DS. Each entry covers size tiers, padding/gap, variants, states, token bindings, typography, and interaction patterns.
+
+> **Token naming convention reminder:** `spacing/N` = N×4 px, `radius/rounded_N` = N×4 px, `border-N` = N×4 px stroke.
+
+### 13.0 Button
+
+- **Size tiers:** Small 24 h · Medium 32 h · Large 40 h · X-Large 48 h (mobile only).
+- **Icon-only sizes:** SM 24×24 · MD 32×32 · LG 40×40 (square).
+- **Type variants (10):** Primary, Secondary, Outlined, Ghosted, Destructive, Link, Icon, Indicator, Special, Loading.
+- **States (8):** Default, Active (Secondary only), Hover, Pressed, Disabled, Loading, Primary Action (Ghosted), Inverted (Indicator). No explicit Focus variant — apply 2 px ring `surface/border` programmatically.
+- **Additional sub-variants (12):** Nil, Notification, Mobile Full Width (361 w), EMbed, Buffer, Mobile Primary, Count, Clear, Link, Inline, Shadow, Highlight.
+- **Device contexts:** Responsive (SM/MD/LG), Mobile (XL only), Mobile Responsive (XL + Notification).
+- **Padding (horizontal):** SM 8 · MD 12–16 · LG 16 · XL 24. Gap icon↔label `spacing/2` = 8.
+- **Border radius:** `radius/rounded_2` = 8 (all sizes).
+- **Typography:** `type/sm/tight/medium` (14/14/500) for all sizes.
+- **Token map:**
+  - Primary: bg `BlogVault Brand/bv-emerald-900` (#064e3b), text `typography/text-white`, `shadow/sm`.
+  - Secondary: bg `surface/card-background`, border 1 px `surface/border`, text `typography/text-primary`.
+  - Outlined: bg transparent, border 1 px `surface/border`, text `typography/text-primary`.
+  - Ghosted: bg transparent, no border, text `typography/text-primary`.
+  - Destructive: bg `typography/text-destructive` (#dc2626), text `typography/text-white`.
+  - Link: same as Ghosted but underlined on hover. Container variant (full height) vs Inline (text-height 16–20 only).
+- **Disabled:** `opacity/opacity-50` = 50%, no pointer events.
+
+### 13.0b Input Fields
+
+- **Size tiers:** Medium 36 h (`height/h-9`) · Small 32 h (`height/h-8`). Default width 320 px, fill-container in forms.
+- **Types:** Input, Search, Dropdown, ColourPicker, TextBox.
+- **States:** Default, Typing, Filled, Selected, Disabled, Error.
+- **Border radius:** `border radius/md` = 6.
+- **Border:** 1 px `surface/border` (#e4e4e6). Error: `typography/text-destructive`. Focus: 2 px ring `BlogVault Brand/bv-emerald-900`.
+- **Padding:** `px-3` = 12 horizontal, `py-2` = 8 vertical.
+- **Typography:** Placeholder `type/sm/normal/regular` (14/20/400) in `typography/text-secondary`. Filled text same style in `typography/text-primary`.
+- **Label:** `type/sm/tight/medium` (14/14/500) `typography/text-primary`, gap 6 (`spacing/1-5`) below.
+- **Helper text:** `type/xs/normal/regular` (12/16/400) `typography/text-secondary`, gap 4 above.
+- **Error text:** Same as helper but `typography/text-destructive`.
+- **Left icon:** 16×16 in `typography/text-secondary`. Shadow `shadow/sm` on focus.
+
+### 13.0c Accordion
+
+- **Outer wrapper:** `surface/card-background`, `radius/rounded_2` = 8, `shadow/sm`.
+- **Item min-height:** 48 px, padding 16 (`spacing/4`) all sides.
+- **Gap between items:** 0 (flush, 1 px `surface/border` bottom separator).
+- **Title:** `type/base/normal/regular` (16/24/400) `typography/text-primary`.
+- **Body:** `type/sm/normal/regular` (14/20/400) `typography/text-secondary`. Gap title→body `spacing/2` = 8.
+- **Chevron:** 16×16 `typography/text-secondary`, rotates 180° on expand (200 ms ease-out).
+- **Variants:** Single expand (only one open) · Multi expand. States: Collapsed, Expanded, Disabled.
 
 ### 13.1 Card
 
