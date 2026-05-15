@@ -378,7 +378,11 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.3 Dialog Box (confirmation)
 
-- Width 400 px, padding 24 px, single primary + secondary button. Use for destructive confirmations.
+- Width 400 px, padding 24 (`spacing/6`), radius `rounded-3xl` = 24, shadow `Box Shadow/shadow-lg`.
+- Title: `type/lg/normal/semibold` (18/28/600). Body: `type/xs/normal/regular` (12/16/400) `typography/text-secondary`.
+- Gap title→body `spacing/2` = 8. Gap body→buttons `spacing_gap/gap_6` = 24.
+- Single primary (destructive for delete confirms) + secondary button, right-aligned.
+- No close icon — dismiss via button only. Animation same as Modal.
 
 ### 13.4 Drawer
 
