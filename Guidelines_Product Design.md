@@ -367,9 +367,14 @@ This section documents every component page in the Horizon DS. Each entry covers
 - Width tiers: **Small 400 / Medium 560 / Large 720 / X-Large 960 px**.
 - Padding 24 px all sides.
 - Composition: Header (Title + close) → Body → Footer (Button Group right-aligned).
-- Backdrop: `alpha/60` over `surface/overlay-background`.
-- Radius `radius/rounded_16`.
+- Backdrop: `surface/page-background-content` at `alpha/80`. **Correction:** previous docs said `alpha/60` — actual is `alpha/80`.
+- Radius `rounded-3xl` = 24. **Correction:** previous docs said `rounded_16` — actual is 24.
 - Min vertical margin from viewport edge: **48 px**.
+- Title: `type/lg/normal/medium` (18/28/500). Body: `type/sm/normal/regular` (14/20/400).
+- Close button: 36×36 icon-only (`width/w-9`). Shadow `Box Shadow/shadow-lg`.
+- Dividers: 1 px `surface/border` between header/body and body/footer.
+- Body: `overflow-y: auto`, max-height = viewport − 96 − header − footer.
+- Animation: scale 0.95→1.0 + fade, 200 ms ease-out.
 
 ### 13.3 Dialog Box (confirmation)
 
