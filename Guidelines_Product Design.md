@@ -547,9 +547,13 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.26 Checkbox
 
-- Sizes **Small 16 / Medium 24 px**. Square `radius/rounded_4`.
+- Sizes **Small 16 / Medium 24 px**. Square `rounded` = 4.
+- Border (unchecked): 1 px `surface/border`. Checked bg: `BlogVault Brand/bv-emerald-900`.
+- Check icon: `typography/text-white`, SM 12×12 / MD 16×16. Indeterminate dash: SM 8×2 / MD 12×2.
+- Hover: border darkens to `Flat/zinc/zinc-300`. Focus: 2 px ring offset 2 px `BlogVault Brand/bv-emerald-900` + `Box Shadow/shadow-sm`.
+- Error: border → `typography/text-destructive`. Disabled: `opacity/opacity-50`.
 - States: default / hover / focus / checked / indeterminate / disabled / error.
-- Label gap **8 px**.
+- Label: `type/sm/normal/regular` (14/20/400), description `type/sm/tight/medium`. Gap **8 px**.
 
 ### 13.27 Progress
 
