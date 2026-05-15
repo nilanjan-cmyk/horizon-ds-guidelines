@@ -355,10 +355,12 @@ This section documents every component page in the Horizon DS. Each entry covers
 ### 13.1 Card
 
 - Background `surface/card-background`. Border 1 px `surface/border` (optional).
-- Radius `radius/rounded_8` (default) or `radius/rounded_16` (large).
+- Radius `radius/rounded_2` = 8 (default) or `border radius/xl` = 12 (large). **Correction:** previous docs said `rounded_16` for large — actual Figma value is 12.
 - Padding 16 px (default), 24 px (feature card).
-- Title row at top: `type/base/tight/semibold` + optional 24×24 icon + optional right-aligned action.
-- Body separated from title by **16 px**.
+- Title: `type/sm/tight/medium` (14/14/500) + optional 16×16 icon `typography/text-secondary` + optional right-aligned action.
+- Body: `type/sm/normal/regular` (14/20/400) `typography/text-secondary`. Gap title→body **16 px**.
+- Shadow: `shadow/base` default. Interactive cards: `shadow/lg` on hover + scale(1.01) 200 ms.
+- Header min-height: 36 px (`height/h-9`). Disabled: `opacity/opacity-50`.
 
 ### 13.2 Modal
 
