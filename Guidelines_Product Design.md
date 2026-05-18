@@ -507,9 +507,10 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.18 Notification (Running Task tray)
 
-- Anchored top-right of Top Nav, opens as a 400 px wide tray.
-- Each row 64 px, padding 16 px, radius `radius/rounded_8`.
-- Composition: status icon 24 → title + subtext → action / dismiss.
+- Anchored top-right of Top Nav, opens as a 400 px wide tray. Shadow `Box Shadow/shadow-lg`. Radius `radius/rounded_4` = 16.
+- Each row 64 px, padding 16 px, 1 px `surface/border` bottom. Hover: `Flat/zinc/zinc-100` bg.
+- Title: `type/sm/tight/medium` (14/14/500). Subtext: `type/xs/tight/regular` (12/12/400) `typography/text-secondary`. Time: `type/xs/tight/regular` `typography/text-tertiary`.
+- Status icon 24×24, color per variant. Composition: icon → title + subtext → action / dismiss.
 
 ### 13.19 Pre-Checks
 
