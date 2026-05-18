@@ -520,10 +520,12 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.20 Calendar / Date Picker
 
-- Cell 32×32 px, day grid gap 0.
-- Header (month/year) 48 px, padding 16 px.
+- Cell 32×32 px, cell radius `radius/rounded_2` = 8. Day grid gap 0.
+- Header (month/year) 48 px, padding 16 px. Month/year: `type/sm/tight/semibold` (14/14/600). Day labels: `type/xs/tight/regular` (12/12/400) `typography/text-secondary`.
+- Nav arrows: 16×16, gap `spacing/2` = 8 from month text.
+- Today: 1 px ring `surface/border`. Selected: bg `BlogVault Brand/bv-emerald-900`, text `typography/text-white`. Range middle: `Flat/zinc/zinc-100` bg.
+- Disabled days: `opacity/opacity-50`, no pointer events. Shadow `shadow/base` when in popover.
 - Variants: single date / range / multi.
-- Today: 1 px ring in `typography/text-url`. Selected: filled `surface/destructive-background`-style accent (Horizon's `Mode` token).
 
 ### 13.21 Command Search (⌘K palette)
 
