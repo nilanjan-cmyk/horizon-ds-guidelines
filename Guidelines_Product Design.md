@@ -884,7 +884,7 @@ BvButton (36×), Pills (22×), Switch (17×), Section Icon (15×), Search Multi-
 
 ---
 
-## 19. Living document
+## 20. Living document
 
 Open a PR against `deliverables/Guidelines_Product Design.md`. Every change must:
 1. Cite the Horizon node, component key, or token name being formalized.
