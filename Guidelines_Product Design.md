@@ -602,9 +602,11 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.30 Widget (dashboard tile)
 
-- Card with header row (Title + optional menu) and body.
+- Background `surface/widget-background` (#fdfdfd). Border 1 px `surface/border`. Shadow `shadow/sm`.
 - Sizes (responsive grid): 1×1 (264 px) / 2×1 / 2×2 / 4×2.
-- Padding 16 px, gap to next widget **16 px**, radius `radius/rounded_16`.
+- Padding 16 px, gap to next widget **16 px**, radius `rounded-3xl` = 24.
+- Header: `type/lg/normal/medium` (18/28/500) + optional 16×16 icon. Body: flexible, chart/value.
+- KPI value: `type/2xl/tight/semibold` or larger. Delta pill uses standard Pill component.
 
 ### 13.31 Summary (KPI strip)
 
