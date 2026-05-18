@@ -437,7 +437,9 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.10 Skeleton
 
-- Color: `surface/muted-background`. Pulse 1 400 ms ease-in-out.
+- Background: `Flat/zinc/zinc-200` (#e4e4e7). Pulse animation: `Flat/zinc/zinc-200` ↔ `surface/card-background`, 1400 ms ease-in-out.
+- Radius: text lines `border radius/md` = 6, avatar `border radius/full` = 9999, card block `border radius/xl` = 12.
+- Text line height: 16 px (`height/h-4`), gap between lines `spacing/2` = 8. Avatar placeholder: 48×48 circle.
 - Match the dimensions of the real content within ±4 px.
 
 ### 13.11 Search bar
