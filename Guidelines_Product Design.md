@@ -544,9 +544,9 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.23 Range Slider
 
-- Track 4 px in `surface/muted-background`, fill in `typography/text-primary`.
-- Thumb 16 px circle with 1 px `surface/border`.
-- Step ticks every 16 px on the track when `withMarks=true`.
+- Track 6 px (`height/h-1,5`) in `Flat/zinc/zinc-200`, fill `BlogVault Brand/bv-emerald-900`. Track radius `border radius/full`.
+- Thumb 16×16 (`width/w-4`, `height/h-4`) circle, `Flat/base/base-white`, `shadow/base`. Thumb border 1 px `Flat/zinc/zinc-200`.
+- Step ticks 8 px height on the track when `withMarks=true`.
 - Variants: single / dual handle.
 
 ### 13.24 Switch
