@@ -501,6 +501,8 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 - Sizes 8 / 16 / 24 px.
 - Variants: Default / Pulse (animated) / Step.
+- Colors: Success `Flat/emerald/emerald-100` bg + `typography/text-success`. Destructive `surface/destructive-background` + `typography/text-destructive`. Warning `surface/warning-background` + `Flat/amber/amber-600`. Neutral `Flat/zinc/zinc-200` + `typography/text-primary`.
+- Pulse: scale 1.0→1.4→1.0, 2000 ms infinite. Label: `type/xs/normal/regular` (12/16/400). Step number: `type/xs/tight/regular`.
 - Use inline beside text to convey state. Always paired with an aria-label.
 
 ### 13.18 Notification (Running Task tray)
