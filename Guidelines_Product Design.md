@@ -695,7 +695,20 @@ This section documents every component page in the Horizon DS. Each entry covers
 - Info: bg `Flat/sky/sky-50`, left 3 px `Flat/sky/sky-700`, icon `Flat/sky/sky-600`.
 - Dismiss: 16×16 icon, right-aligned.
 
-### 13.40 Pagination
+### 13.40 Input OTP
+
+- **Slot size:** 36×36 (`width/w-9`, `height/h-9`). Radius `border radius/md` = 6.
+- **Typography:** `type/sm/normal/regular` (14/20/400) `typography/text-primary`. Caret color: `typography/text-black`.
+- **Border:** 1 px `surface/border`. Focus: 2 px ring `BlogVault Brand/bv-emerald-900`. Shadow `shadow/sm` on focus.
+- **Background:** `surface/card-background` (#ffffff).
+- **Variants:**
+  - **Pattern:** 6 adjacent slots, gap `spacing/2` = 8. Total width 216 + gaps.
+  - **Separator:** 6 slots with a dash separator between groups of 3. Gap `spacing/2` = 8 between slots and separator.
+  - **Controlled:** 6 slots in a 2-row layout (3×2), gap `spacing/2` = 8. Total height 72 px (36 + 8 gap + 36 - but actually shows as 72h with 8px top padding).
+- **States:** Default (empty, border only), Filled (digit visible), Focus (ring + shadow).
+- **Interaction:** Auto-advance to next slot on digit entry. Backspace returns to previous slot.
+
+### 13.41 Pagination
 
 - Button size: 36×36 (`width/w-9`, `height/h-9`). Radius `border radius/md` = 6.
 - Active: bg `Flat/emerald/emerald-800`, text `typography/text-white`, `shadow/sm`.

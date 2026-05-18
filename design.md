@@ -1061,6 +1061,19 @@ mega_menu:
   link_label: "type/sm/normal/medium"
   link_subtext: "type/xs/normal/regular"
 
+input_otp:
+  slot_size: 36                                   # width/w-9, height/h-9
+  slot_radius: "border radius/md=6"
+  border: "surface/border"
+  bg: "surface/card-background"
+  typography: "type/sm/normal/regular"
+  text_color: "typography/text-primary"
+  focus: { ring: "BlogVault Brand/bv-emerald-900", width: 2, shadow: "shadow/sm" }
+  variants:
+    pattern: { slots: 6, gap: "spacing/2=8", layout: "horizontal" }
+    separator: { slots: 6, gap: "spacing/2=8", separator: "dash between groups of 3" }
+    controlled: { slots: 6, gap: "spacing/2=8", layout: "2-row 3x2", total_h: 72 }
+
 map:
   tile_size: 256
   pin: { standard: 24, large: 32, shadow: "effect/level_1" }
