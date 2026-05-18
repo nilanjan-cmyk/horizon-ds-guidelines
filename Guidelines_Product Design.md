@@ -529,10 +529,11 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.21 Command Search (⌘K palette)
 
-- Width 640 px, max-height 480 px, radius `radius/rounded_16`.
-- Padding 8 px outer; row 40 px with 16 px L/R padding and 8 px gap between icon → label → keybind hint.
-- Section headers `type/xs/tight/medium` `typography/text-tertiary`, 8 px V padding.
-- Footer 32 px with hint chips ↑↓ to navigate · ↵ to select · esc to close.
+- Width 640 px, max-height 480 px, radius `border radius/lg` = 8. Shadow `shadow/md`. Border 1 px `surface/border`.
+- Backdrop same as Modal. Input height 40 px (`height/h-10`). Search icon 16×16 `typography/text-secondary`.
+- Row 40 px, padding 16 L/R, gap 8 icon→label→keybind. Active row: `Flat/zinc/zinc-100` bg. Icon 16×16.
+- Section headers `type/xs/tight/medium` `typography/text-tertiary`, 8 px V padding. Keybind: `type/xs/normal/regular` `typography/text-secondary`.
+- Footer 32 px with hint chips ↑↓ · ↵ · esc. Empty state: `type/sm/normal/regular` centered `typography/text-secondary`.
 
 ### 13.22 Carousel
 
