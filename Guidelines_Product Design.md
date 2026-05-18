@@ -867,7 +867,7 @@ BvButton (36×), Pills (22×), Switch (17×), Section Icon (15×), Search Multi-
 
 ---
 
-## 19. Glossary changes from earlier versions
+## 19. Glossary changes from earlier versions (was §18)
 
 | Earlier term | Current term | Reason |
 |---|---|---|
