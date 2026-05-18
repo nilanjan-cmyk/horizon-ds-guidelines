@@ -396,8 +396,12 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.5 Sheet Slider (mobile)
 
-- Bottom-anchored, max-height 80vh, top radius `radius/rounded_16`.
-- Drag handle 32×4 px centered at the top, `alpha/30`.
+- Bottom-anchored, max-height 80vh. Top radius `rounded-3xl` = 24 (consistent with Modal/Drawer).
+- Drag handle 32×4 px centered at top, `opacity/opacity-70`.
+- Backdrop: same as Modal (`surface/page-background-content` at `alpha/80`). Shadow `shadow/lg`.
+- Header: `type/lg/normal/semibold` (18/28/600). Close button 36 (`height/h-9`).
+- Body scrollable, padding `spacing/4` = 16 H, `spacing/6` = 24 V. Max-width `max-w-sm` = 384 for form content.
+- Animation: slide up from bottom, 200 ms ease-out.
 
 ### 13.6 Tabs
 
