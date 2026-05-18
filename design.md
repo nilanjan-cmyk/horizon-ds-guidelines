@@ -546,7 +546,7 @@ Atoms consume Tier 0 variables and emit visual primitives. They have no internal
 
 ```yaml
 tier_1_atoms:
-  - { name: Button,        figma_page: "707:1739",   variants: [Primary, Outline, Secondary, IconNoFill · sm/md/lg · default/hover/pressed/disabled] }
+  - { name: Button,        figma_page: "707:1739",   variants: [Primary, Secondary, Outlined, Ghosted, Destructive, Link, Icon, Indicator, Special, Loading · sm(24h)/md(32h)/lg(40h)/xl(48h,mobile) · default/active/hover/pressed/disabled/loading · Additional: Nil/Notification/MobileFullWidth/Inline/Count/Clear/EMbed/Buffer/Shadow/Highlight] }
   - { name: Icon,          figma_page: "648:34695",  variants: [16, 20, 24 px · Phosphor regular weight] }
   - { name: Text,          figma_page: "2388:78",    variants: [type/{xs..7xl}/{tight,normal}/{regular..strikethrough}] }
   - { name: Avatar,        figma_page: "766:25182",  variants: [xs 16, sm 24, md 32, lg 40, xl 48, 2xl 64 · circle/square · photo/initials/icon] }
@@ -555,7 +555,7 @@ tier_1_atoms:
   - { name: Indicator,     figma_page: "725:4117",   variants: [Dot, Pulse, Step] }
   - { name: Separator,     figma_page: "760:21263",  variants: [horizontal, vertical] }
   - { name: Skeleton,      figma_page: "760:21454",  variants: [text, avatar, card-block] }
-  - { name: Switch,        figma_page: "760:21705",  variants: [sm 24×16, md 32×24 · on/off] }
+  - { name: Switch,        figma_page: "760:21705",  variants: [sm 24×16, md 36×20 · on/off · thumb sm12/md16 · off:zinc-200, on:bv-emerald-900] }
   - { name: Checkbox,      figma_page: "767:25186",  variants: [sm 16, md 24 · default/hover/focus/checked/indeterminate/disabled/error] }
   - { name: Radio,         figma_page: "760:21131",  variants: [sm 16, md 24 · default/selected/disabled] }
   - { name: Range Slider,  figma_page: "760:21488",  variants: [single, dual · with-marks, without] }
@@ -689,6 +689,259 @@ Templates  →  Pages        : a page fills template slots with real content + o
 | Are Light + Dark modes both verified? | Yes — both pass contrast ≥ 4.5:1. |
 
 > **Failure mode to watch:** "tier inversion" — a molecule reaching for primitives and bypassing its atoms (e.g. drawing a custom toggle in a settings molecule instead of using the Switch atom). This is the single most common drift cause across Horizon-consuming projects. Always prefer the canonical atom, even when it costs a few extra lines.
+
+### 6.6 Component anatomy quick-reference (token bindings)
+
+> This table gives AI agents the exact token bindings for every component's key properties. Values sourced from the Figma file via Desktop Bridge MCP. For full anatomy, see `Guidelines_Product Design.md` §13.
+
+```yaml
+button:
+  heights: { sm: 24, md: 32, lg: 40, xl: 48 }     # xl = mobile only
+  icon_only: { sm: 24x24, md: 32x32, lg: 40x40 }
+  radius: "radius/rounded_2"                         # 8px all sizes
+  typography: "type/sm/tight/medium"                  # 14/14/500
+  gap_icon_label: "spacing/2"                        # 8
+  padding_h: { sm: 8, md: 16, lg: 16, xl: 24 }
+  types:
+    primary:     { bg: "BlogVault Brand/bv-emerald-900", text: "typography/text-white", shadow: "shadow/sm" }
+    secondary:   { bg: "surface/card-background", border: "surface/border", text: "typography/text-primary" }
+    outlined:    { bg: transparent, border: "surface/border", text: "typography/text-primary" }
+    ghosted:     { bg: transparent, text: "typography/text-primary" }
+    destructive: { bg: "typography/text-destructive", text: "typography/text-white" }
+    link:        { bg: transparent, text: "typography/text-url", underline_on_hover: true }
+  disabled: "opacity/opacity-50"
+
+input_field:
+  heights: { md: 36, sm: 32 }
+  radius: "border radius/md"                         # 6
+  border: "surface/border"
+  padding: { h: "px-3=12", v: "py-2=8" }
+  typography: "type/sm/normal/regular"               # 14/20/400
+  placeholder_color: "typography/text-secondary"
+  label: { style: "type/sm/tight/medium", gap_below: "spacing/1-5=6" }
+  helper: { style: "type/xs/normal/regular", color: "typography/text-secondary" }
+  error: { border: "typography/text-destructive", text: "typography/text-destructive" }
+  focus: { ring: "BlogVault Brand/bv-emerald-900", width: 2 }
+
+card:
+  radius: { default: "radius/rounded_2=8", large: "border radius/xl=12" }
+  padding: { default: 16, feature: 24 }
+  shadow: { default: "shadow/base", hover: "shadow/lg" }
+  title: "type/sm/tight/medium"
+  body: { style: "type/sm/normal/regular", color: "typography/text-secondary" }
+
+modal:
+  widths: { sm: 400, md: 560, lg: 720, xl: 960 }
+  radius: "rounded-3xl=24"                          # Corrected from rounded_16
+  padding: 24
+  shadow: "Box Shadow/shadow-lg"
+  backdrop: { bg: "surface/page-background-content", alpha: "alpha/80" }
+  title: "type/lg/normal/medium"
+  close_btn: { size: 36 }
+
+dialog:
+  width: 400
+  radius: "rounded-3xl=24"
+  title: "type/lg/normal/semibold"
+  body: { style: "type/xs/normal/regular", color: "typography/text-secondary" }
+
+drawer:
+  widths: [400, 560, 720]
+  header_h: 64
+  header_padding: 16
+  header_title: "type/lg/normal/medium"
+  close_btn: 32
+  body_padding: { h: 16, v: 12 }
+
+tooltip:
+  padding: { h: 12, v: 6 }                          # Corrected from 8/4
+  radius: "border radius/lg=8"                       # Corrected from rounded_4=16
+  bg: "Flat/zinc/zinc-950"                           # Corrected from overlay + alpha
+  text: "typography/text-white"
+  typography: "type/xs/normal/medium"
+  max_width: 320
+
+tabs:
+  trigger_padding: { h: "spacing/3=12", v: "spacing/2=8" }  # Corrected from 16h
+  underline_color: "Flat/emerald/emerald-600"                 # Corrected from text-primary
+  active_text: "typography/text-primary"
+  inactive_text: "typography/text-secondary"
+
+switch:
+  tracks: { sm: "24x16", md: "36x20" }
+  thumb: { sm: 12, md: 16 }
+  off_track: "Flat/zinc/zinc-200"                    # Corrected from muted-background
+  on_track: "BlogVault Brand/bv-emerald-900"         # Corrected from text-primary
+
+checkbox:
+  sizes: { sm: 16, md: 24 }
+  radius: "rounded=4"
+  unchecked_border: "surface/border"
+  checked_bg: "BlogVault Brand/bv-emerald-900"
+  check_icon_color: "typography/text-white"
+
+radio:
+  sizes: { sm: 16, md: 24 }
+  outer_ring: "surface/border"
+  selected_ring: "BlogVault Brand/bv-emerald-900"    # Corrected from text-primary
+  inner_dot: "Flat/base/base-white"
+
+pill:
+  heights: { sm: 24, md: 32 }
+  radius: "border radius/full=9999"
+  typography: { sm: "type/xs/normal/medium", md: "type/sm/normal/medium" }
+  neutral:     { bg: "Flat/zinc/zinc-100", text: "typography/text-primary" }
+  success:     { bg: "surface/success-background", text: "typography/text-success" }
+  informative: { bg: "Flat/sky/sky-50", text: "Flat/sky/sky-600" }
+  warning:     { bg: "surface/warning-background", text: "typography/text-warning" }
+  destructive: { bg: "surface/destructive-background", text: "typography/text-destructive" }
+
+badge:
+  sizes: { dot: 8, sm: 16, md: 24 }
+  radius: { sm_md: "border radius/md=6", dot: "border radius/full" }
+  # Same color tokens as pill per variant
+
+toast:
+  padding: 16
+  radius: "border radius/lg=8"
+  shadow: "shadow/lg"
+  bg: "surface/card-background"
+  border: "surface/border"
+  title: "type/sm/normal/semibold"
+  body: { style: "type/sm/normal/regular", color: "typography/text-secondary" }
+  auto_dismiss: 4000
+  slide_in: 240
+
+breadcrumb:
+  text: "type/sm/normal/medium"
+  separator_color: "typography/text-secondary"       # Corrected from text-tertiary
+  hover: "Flat/emerald/emerald-700"
+  home_icon: 20
+
+accordion:
+  padding: 16
+  outer_radius: "radius/rounded_2=8"
+  title: "type/base/normal/regular"
+  body: { style: "type/sm/normal/regular", color: "typography/text-secondary" }
+  chevron: 16
+  expand_duration: 200
+
+nav_bars:
+  top_nav:
+    height: 80
+    bg: "surface/navigation-background"
+    shadow: "Box Shadow/shadow-sm"
+    item_h: 28
+    active_bg: "Flat/emerald/emerald-50"
+  sidebar:
+    open_w: 296
+    collapsed_w: 48
+    item_h: 32
+    active_bg: "Flat/emerald/emerald-50"
+    active_text: "BlogVault Brand/bv-emerald-900"
+    hover_bg: "Flat/zinc/zinc-100"
+
+table:
+  cell_h: { default: 72, compact: 40 }
+  head_h: 40
+  head_bg: "Flat/zinc/zinc-50"
+  head_text: { style: "type/sm/normal/medium", color: "typography/text-secondary" }
+  cell_text: "type/sm/normal/regular"
+  row_border: "surface/border"
+  hover_bg: "Flat/zinc/zinc-50"
+  selected_bg: "Flat/emerald/emerald-50"
+
+form:
+  single_max_w: 384
+  field_gap: "spacing/3=12"
+  section_gap: "spacing/6=24"
+  label: "type/sm/tight/medium"
+  helper: { style: "type/xs/normal/regular", color: "typography/text-secondary" }
+  error_color: "typography/text-destructive"
+
+menu:
+  min_w: 200
+  max_w: 320
+  item_h: 32
+  item_radius: "border radius/sm=2"
+  hover_bg: "Flat/zinc/zinc-100"
+  shadow: "shadow/md"
+  container_radius: "radius/rounded_3=12"
+
+feedback:
+  padding: 16
+  radius: "rounded=4"
+  title: "type/sm/tight/semibold"
+  body: "type/xs/tight/regular"
+  success: { bg: "surface/success-background", accent: "Flat/emerald/emerald-700", icon: "typography/text-success" }
+  warning: { bg: "surface/warning-background", accent: "Flat/amber/amber-600", icon: "typography/text-warning" }
+  destructive: { bg: "surface/destructive-background", accent: "typography/text-destructive" }
+  info: { bg: "Flat/sky/sky-50", accent: "Flat/sky/sky-700", icon: "Flat/sky/sky-600" }
+
+progress:
+  linear: { h: 8, radius: "border radius/full", track: "Flat/zinc/zinc-100", fill: "BlogVault Brand/bv-emerald-600" }
+  circular_diameters: [24, 32, 40, 48]
+  ring_diameters: [64, 80]
+  success_fill: "BlogVault Brand/bv-emerald-700"
+  warning_fill: "typography/text-warning"
+  destructive_fill: "typography/text-destructive"
+
+stepper:
+  circle_size: 24
+  pending: "Flat/zinc/zinc-300"
+  current: "BlogVault Brand/bv-emerald-900"
+  complete: "BlogVault Brand/bv-emerald-700"
+  error: "typography/text-destructive"
+  connector: { incomplete: "surface/border", complete: "BlogVault Brand/bv-emerald-700" }
+
+pagination:
+  btn_size: 36
+  radius: "border radius/md=6"
+  active: { bg: "Flat/emerald/emerald-800", text: "typography/text-white" }
+  gap: "spacing/1=4"
+
+skeleton:
+  bg: "Flat/zinc/zinc-200"
+  radius: { text: "border radius/md=6", avatar: "border radius/full", card: "border radius/xl=12" }
+  pulse: "1400ms ease-in-out"
+  line_h: 16
+  line_gap: "spacing/2=8"
+
+separator:
+  thickness: 1
+  color: "surface/border"
+
+range_slider:
+  track_h: 6
+  track_color: "Flat/zinc/zinc-200"
+  fill_color: "BlogVault Brand/bv-emerald-900"
+  thumb_size: 16
+  thumb_shadow: "shadow/base"
+
+calendar:
+  cell: 32x32
+  header_h: 48
+  day_label: { style: "type/xs/tight/regular", color: "typography/text-secondary" }
+  selected: { bg: "BlogVault Brand/bv-emerald-900", text: "typography/text-white" }
+  range_middle: "Flat/zinc/zinc-100"
+  today_ring: "surface/border"
+  cell_radius: "radius/rounded_2=8"
+
+command_search:
+  width: 640
+  max_h: 480
+  radius: "border radius/lg=8"
+  input_h: 40
+  row_h: 40
+  shadow: "shadow/md"
+  active_row: "Flat/zinc/zinc-100"
+
+avatar:
+  sizes: { xs: 16, sm: 24, md: 32, lg: 40, xl: 48, 2xl: 64 }
+  initials_bg: "Flat/zinc/zinc-200"
+  group_overlap: -8
+  online_dot: { size: 8, color: "Flat/emerald/emerald-500" }
+```
 
 ---
 
