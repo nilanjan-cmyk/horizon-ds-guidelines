@@ -520,7 +520,10 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 - Vertical checklist used in environment / readiness flows.
 - Each row 48 px min-height, 16 px gap between rows.
-- States: pending (grey dot) → running (spinner) → success (check) → error (cross + retry button).
+- States: pending (grey dot) → running (spinner replacing dot) → success (check `Flat/emerald/emerald-700`) → error (cross `typography/text-destructive` + retry button).
+- Status icon: 24×24. Label: `type/sm/normal/regular` (14/20/400) `typography/text-primary`. Subtext: `type/xs/normal/regular` `typography/text-secondary`.
+- Blur backdrop: `backdrop-blur/3xl` = 64 px behind the checklist overlay.
+- Container: `surface/card-background`, radius `radius/rounded_2` = 8, padding 24, shadow `shadow/lg`.
 
 ### 13.20 Calendar / Date Picker
 
@@ -691,6 +694,16 @@ This section documents every component page in the Horizon DS. Each entry covers
 - Destructive: bg `surface/destructive-background`, left 3 px `typography/text-destructive`.
 - Info: bg `Flat/sky/sky-50`, left 3 px `Flat/sky/sky-700`, icon `Flat/sky/sky-600`.
 - Dismiss: 16×16 icon, right-aligned.
+
+### 13.40 Pagination
+
+- Button size: 36×36 (`width/w-9`, `height/h-9`). Radius `border radius/md` = 6.
+- Active: bg `Flat/emerald/emerald-800`, text `typography/text-white`, `shadow/sm`.
+- Inactive: `typography/text-primary`, transparent bg. Hover: `Flat/zinc/zinc-100` bg.
+- Disabled (prev/next at bounds): `opacity/opacity-50`, no pointer events.
+- Gap between buttons: `spacing/1` = 4.
+- Ellipsis: `…` in `typography/text-secondary` when total pages > visible slots.
+- Composition: ← prev · 1 · 2 · … · 9 · 10 · next →. Always show first, last, and ±1 around current.
 
 ---
 

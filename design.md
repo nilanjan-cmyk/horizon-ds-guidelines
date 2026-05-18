@@ -910,6 +910,8 @@ skeleton:
 separator:
   thickness: 1
   color: "surface/border"
+  margin_default: "spacing/2=8"
+  orientation_label_color: "typography/text-white"  # label on dark bg variant
 
 range_slider:
   track_h: 6
@@ -939,8 +941,131 @@ command_search:
 avatar:
   sizes: { xs: 16, sm: 24, md: 32, lg: 40, xl: 48, 2xl: 64 }
   initials_bg: "Flat/zinc/zinc-200"
+  initials_text: "typography/text-primary"
+  initials_type:
+    xs: "type/micro-8/normal/regular"
+    sm: "type/micro-10/normal/regular"
+    md: "type/xs/normal/medium"
+    lg: "type/sm/normal/medium"
+    xl: "type/base/normal/medium"
+    2xl: "type/lg/normal/medium"
+  circle_radius: "border radius/full=9999"
+  square_radius: "radius/rounded_2=8"
   group_overlap: -8
+  group_max: 4                                    # +N counter after 4
+  counter_pill: { bg: "Flat/zinc/zinc-100", type: "type/xs/normal/medium" }
+  border: "surface/border"                        # 1px when stacked
   online_dot: { size: 8, color: "Flat/emerald/emerald-500" }
+  icon_fallback_color: "typography/text-tertiary"
+
+indicator:
+  sizes: [8, 16, 24]
+  variants: [Default, Pulse, Step]
+  success: { bg: "Flat/emerald/emerald-100", fg: "typography/text-success" }
+  destructive: { bg: "surface/destructive-background", fg: "typography/text-destructive" }
+  warning: { bg: "surface/warning-background", fg: "Flat/amber/amber-600" }
+  neutral: { bg: "Flat/zinc/zinc-200", fg: "typography/text-primary" }
+  pulse: "scale 1.0→1.4→1.0, 2000ms infinite"
+  label: "type/xs/normal/regular"
+  step_number: "type/xs/tight/regular"
+
+notification:
+  tray_w: 400
+  tray_shadow: "Box Shadow/shadow-lg"
+  tray_radius: "radius/rounded_4=16"
+  row_h: 64
+  row_padding: 16
+  row_border: "surface/border"                    # 1px bottom
+  row_hover: "Flat/zinc/zinc-100"
+  title: "type/sm/tight/medium"
+  subtext: { style: "type/xs/tight/regular", color: "typography/text-secondary" }
+  time: { style: "type/xs/tight/regular", color: "typography/text-tertiary" }
+  status_icon: 24
+
+pre_checks:
+  row_min_h: 48
+  row_gap: 16
+  icon_size: 24
+  success_icon: "Flat/emerald/emerald-700"
+  error_icon: "typography/text-destructive"
+  blur_backdrop: "backdrop-blur/3xl=64"
+  container: { bg: "surface/card-background", radius: "radius/rounded_2=8", padding: 24, shadow: "shadow/lg" }
+  label: "type/sm/normal/regular"
+  subtext: { style: "type/xs/normal/regular", color: "typography/text-secondary" }
+
+carousel:
+  item_gap: { default: 16, large: 24 }
+  container_radius: "border radius/xl=12"
+  arrow: { size: 40, bg: "surface/card-background", border: "surface/border", radius: "border radius/full=9999", shadow: "shadow/sm", icon: 16 }
+  dot: { size: 8, gap: 8, active: "typography/text-black", inactive: "Flat/zinc/zinc-200" }
+
+sheet_slider:
+  anchor: bottom
+  max_h: "80vh"
+  top_radius: "rounded-3xl=24"
+  drag_handle: { w: 32, h: 4, opacity: "opacity/opacity-70" }
+  backdrop: { bg: "surface/page-background-content", alpha: "alpha/80" }
+  shadow: "shadow/lg"
+  header_title: "type/lg/normal/semibold"
+  close_btn: 36
+  body_padding: { h: 16, v: 24 }
+
+empty_state:
+  icon: 48
+  gap_icon_title: 16
+  title: "type/lg/tight/semibold"
+  gap_title_subtext: 4
+  subtext: { style: "type/sm/normal/regular", color: "typography/text-secondary" }
+  gap_subtext_cta: 24
+  max_w: 360
+
+search_bar:
+  width: 320                                      # 100% on mobile
+  height: 40
+  left_icon: 16
+  placeholder_color: "typography/text-tertiary"
+
+data_viz:
+  palette: ["surface/chart-1=#2a9d90", "surface/chart-2=#e76e50", "surface/chart-3=#274754", "surface/chart-4=#e8c468", "surface/chart-5=#f4a462"]
+  axis_text: { style: "type/xs/normal/regular", color: "surface/muted-foreground" }
+  grid_line: { width: 1, color: "surface/border", opacity: "opacity/opacity-20" }
+  chart_radius: "border radius/sm=2"
+  canvas_padding: 16
+  title: "type/base/tight/semibold"
+  hero_value: "type/3xl/normal/bold"
+
+widget:
+  bg: "surface/widget-background"
+  border: "surface/border"
+  shadow: "shadow/sm"
+  radius: "rounded-3xl=24"
+  sizes: ["1x1=264", "2x1", "2x2", "4x2"]
+  padding: 16
+  gap: 16
+  header: "type/lg/normal/medium"
+  kpi_value: "type/2xl/tight/semibold"
+
+summary:
+  cell_padding: 16
+  cell_gap: 0                                     # separated by 1px border
+  divider: "surface/border"
+  label: { style: "type/xs/tight/medium", color: "typography/text-secondary" }
+  value: "type/2xl/tight/semibold"
+
+mega_menu:
+  widths: [720, 960, 1200]
+  padding: 24
+  columns: [2, 3, 4]
+  column_gap: 24
+  link_icon: 24
+  link_label: "type/sm/normal/medium"
+  link_subtext: "type/xs/normal/regular"
+
+map:
+  tile_size: 256
+  pin: { standard: 24, large: 32, shadow: "effect/level_1" }
+  heat_palette: "chart-1→chart-5"
+  heat_alpha: { min: "alpha/40", max: "alpha/80" }
 ```
 
 ---
