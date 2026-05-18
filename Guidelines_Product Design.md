@@ -779,7 +779,95 @@ Designers leave annotations, comments, and TODO markers in Figma. These are **de
 
 ---
 
-## 18. Glossary changes from earlier versions
+## 18. Page patterns (Screens page)
+
+The Figma `Screens` page (`3634:581541`) defines 11 canonical page patterns. Every new screen must start from one of these patterns. Deviations require design review approval.
+
+### 18.1 Listing Table
+- **When to use:** Browsable, filterable data (sites, members, backups, logs).
+- **Composition:** Page (Top Nav + Sidebar) → Page Header → Table (Head + Rows + Footer-Pagination) → optional Bulk Action Footer.
+- **Key components:** Table, Page Header, Button Group, Pagination, Bulk Action bar.
+- **Layout:** Default template (§13.33). Table fills available width. Pagination right-aligned in footer.
+
+### 18.2 Dashboard (Global — 1920 px)
+- **When to use:** Overview of all sites/resources. Landing page for the product.
+- **Composition:** Page → Page Header → Summary KPI strip → Widget grid (2×2 or 4×2) → optional Notification Tray.
+- **Key components:** Widget, Summary, Progress (ring), Indicator, Charts.
+- **Layout:** 12-col grid. Widgets snap to 1×1 / 2×1 / 2×2 / 4×2 responsive tiles. Gap 16 px.
+
+### 18.3 Dashboard (Site-Level — up to 1536 px)
+- **When to use:** Per-site overview (security, performance, uptime).
+- **Composition:** Same as Global but narrower grid, 2-column Widget layout max.
+- **Layout:** Responsive breakpoint ≤1536 px. Sidebar auto-collapses at ≤1024 px.
+
+### 18.4 Information / Details
+- **When to use:** Read-heavy context about a single entity (site details, backup details, scan results).
+- **Composition:** Page → Tab Header (up to 6 tabs) → Content Area (status cards, KPIs, Indicators) → optional action bar.
+- **Key components:** Tabs, Switch, Pills, Uptime Status Card (custom), BvButton.
+- **Layout:** Two-pane (§13.33): 248 px secondary nav + dynamic content.
+
+### 18.5 Form (Add / Edit)
+- **When to use:** Creating or editing a resource (add team member, configure backup schedule).
+- **Composition:** Page → Form Header → Form Function Container (inputs + button group).
+- **Key components:** Input Fields, Search Multi-Select, BvButton, optional Stepper.
+- **Layout:** Form-only template. Single form max 384 px. Double form 2-column within content area.
+
+### 18.6 Settings
+- **When to use:** Toggle-based configuration (optimization settings, notification preferences).
+- **Composition:** Page → Section headers → rows of (label + Switch/Pill + helper text).
+- **Key components:** Switch, Section Icon, Pills, Feedback/Banner.
+- **Layout:** Default template, single-column content. Group related settings under Section headers.
+
+### 18.7 Table with Log (dual-pane)
+- **When to use:** Data table alongside an activity/audit log (file manager + change log).
+- **Composition:** Page → Three-pane layout: Section 1 (Table) + Section 2 (Activity Log).
+- **Key components:** Table, Activity Log rows (timestamp + event + actor avatar).
+- **Layout:** Three-pane template (§13.33): 248 + dynamic + 320.
+
+### 18.8 Task / Process
+- **When to use:** Multi-step processes with timeline or progress (migration, malware cleanup).
+- **Composition:** Page → Page Header → Accordion or card-based steps → Pre-Checks panel.
+- **Key components:** Accordion, Section Header, Frequency indicators, Pre-Checks, Progress.
+- **Layout:** Default template. Steps stack vertically.
+
+### 18.9 Wizard (multi-step form)
+- **When to use:** Guided setup flows (backup setup, site onboarding).
+- **Composition:** Page → Stepper (horizontal) → Form steps → Summary → Confirm.
+- **Key components:** Stepper, Input Fields, BvButton, Progress (linear).
+- **Layout:** Form-only template with Stepper at top. Each step is one Form (Single).
+
+### 18.10 Base (blank canvas)
+- **When to use:** Starting point for new patterns not covered above.
+- **Composition:** Page → Annotation Canvas → Main Content Area.
+- **Layout:** Default template. Use as a starting point only — evolve into a named pattern during design.
+
+### 18.11 Empty / Error state patterns
+- **When to use:** Every async page must have these.
+- **Empty:** Centered Empty State block (§13.9) within the content area.
+- **Error:** Feedback banner (§13.39) at top of content + retry CTA.
+- **Loading:** Skeleton (§13.10) matching the content layout.
+
+### Pattern selection rules
+
+| User intent | Pattern |
+|---|---|
+| Browse a list of items | **Listing Table** (18.1) |
+| See an overview of everything | **Dashboard Global** (18.2) |
+| See an overview of one thing | **Dashboard Site-Level** (18.3) or **Information** (18.4) |
+| Read details about one thing | **Information** (18.4) |
+| Create or edit something | **Form** (18.5) |
+| Configure toggles/preferences | **Settings** (18.6) |
+| Browse data + see history | **Table with Log** (18.7) |
+| Execute a multi-step process | **Task** (18.8) |
+| Guided setup with progress | **Wizard** (18.9) |
+| None of the above | **Base** (18.10) — and file a design-pattern proposal |
+
+### Most-used component building blocks across patterns
+BvButton (36×), Pills (22×), Switch (17×), Section Icon (15×), Search Multi-Select (14×), Table (13×), Navigation Bars (12×), Page Header (10×).
+
+---
+
+## 19. Glossary changes from earlier versions
 
 | Earlier term | Current term | Reason |
 |---|---|---|
