@@ -53,7 +53,7 @@ The terms below are **canonical**. Use them in all design files, code, comments,
 
 | Term | Definition |
 |---|---|
-| **Card** | A bounded surface (`surface/card-background`) with 16 px padding, 8 px radius (default) / 16 px (large), optional 1 px border (`surface/border`). |
+| **Card** | A bounded surface (`surface/card-background`) with 16 px padding, 8 px radius (default) / 12 px (large), optional 1 px border (`surface/border`). |
 | **Band** | A full-width horizontal strip used to separate sections — typically tinted with `surface/muted-background`. |
 | **Accordion** | A vertically-stacked collapsible disclosure. Header row 48 px min-height; body inherits Card padding rules when expanded. |
 | **Step-Wizard** *(syn. Stepper)* | A horizontal numbered/labelled progression. See Horizon `Stepper` component. |
