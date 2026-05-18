@@ -587,11 +587,12 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.28 Data Visualization (Charts)
 
-- Default chart palette: `charts/Chart 1` … `charts/Chart 5`.
-- Axis text `type/xs/normal/regular` `typography/text-secondary`.
-- Grid line 1 px `surface/border` at `alpha/40`.
-- Tooltip = the standard Tooltip component (§13.7).
-- Padding around chart canvas 16 px.
+- Chart palette: `surface/chart-1` (#2a9d90), `surface/chart-2` (#e76e50), `surface/chart-3` (#274754), `surface/chart-4` (#e8c468), `surface/chart-5` (#f4a462).
+- Axis text `type/xs/normal/regular` (12/16/400) `surface/muted-foreground`. Axis tick: `type/xs/tight/regular`.
+- Grid line 1 px `surface/border` at `opacity/opacity-20`. Chart area radius `border radius/sm` = 2.
+- Tooltip = the standard Tooltip component (§13.7). Popover shadow `shadow/md`.
+- Padding around chart canvas 16 px. Title: `type/base/tight/semibold` or `type/2xl/tight/semibold` for KPI charts.
+- Value labels: `type/3xl/normal/bold` (30/36/700) or `type/4xl/normal/bold` (36/40/700) for hero numbers.
 
 ### 13.29 Map
 
