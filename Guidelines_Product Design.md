@@ -310,413 +310,1375 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.0 Button
 
-- **Size tiers:** Small 24 h · Medium 32 h · Large 40 h · X-Large 48 h (mobile only).
-- **Icon-only sizes:** SM 24×24 · MD 32×32 · LG 40×40 (square).
-- **Type variants (10):** Primary, Secondary, Outlined, Ghosted, Destructive, Link, Icon, Indicator, Special, Loading.
-- **States (8):** Default, Active (Secondary only), Hover, Pressed, Disabled, Loading, Primary Action (Ghosted), Inverted (Indicator). No explicit Focus variant — apply 2 px ring `surface/border` programmatically.
-- **Additional sub-variants (12):** Nil, Notification, Mobile Full Width (361 w), EMbed, Buffer, Mobile Primary, Count, Clear, Link, Inline, Shadow, Highlight.
-- **Device contexts:** Responsive (SM/MD/LG), Mobile (XL only), Mobile Responsive (XL + Notification).
-- **Padding (horizontal):** SM 8 · MD 12–16 · LG 16 · XL 24. Gap icon↔label `spacing/2` = 8.
-- **Border radius:** `radius/rounded_2` = 8 (all sizes).
-- **Typography:** `type/sm/tight/medium` (14/14/500) for all sizes.
-- **Token map:**
-  - Primary: bg `BlogVault Brand/bv-emerald-900` (#064e3b), text `typography/text-white`, `shadow/sm`.
-  - Secondary: bg `surface/card-background`, border 1 px `surface/border`, text `typography/text-primary`.
-  - Outlined: bg transparent, border 1 px `surface/border`, text `typography/text-primary`.
-  - Ghosted: bg transparent, no border, text `typography/text-primary`.
-  - Destructive: bg `typography/text-destructive` (#dc2626), text `typography/text-white`.
-  - Link: same as Ghosted but underlined on hover. Container variant (full height) vs Inline (text-height 16–20 only).
-- **Disabled:** `opacity/opacity-50` = 50%, no pointer events.
+```yaml
+size_tiers:
+  sm: 24  # height
+  md: 32
+  lg: 40
+  xl: "48 (mobile only)"
+
+icon_only_sizes:
+  sm: "24x24"
+  md: "32x32"
+  lg: "40x40 (square)"
+
+type_variants:  # 10 total
+  - Primary
+  - Secondary
+  - Outlined
+  - Ghosted
+  - Destructive
+  - Link
+  - Icon
+  - Indicator
+  - Special
+  - Loading
+
+states:  # 8 total
+  - Default
+  - "Active (Secondary only)"
+  - Hover
+  - Pressed
+  - Disabled
+  - Loading
+  - "Primary Action (Ghosted)"
+  - "Inverted (Indicator)"
+focus_note: "No explicit Focus variant — apply 2 px ring `surface/border` programmatically."
+
+additional_sub_variants:  # 12 total
+  - Nil
+  - Notification
+  - "Mobile Full Width (361 w)"
+  - EMbed
+  - Buffer
+  - Mobile Primary
+  - Count
+  - Clear
+  - Link
+  - Inline
+  - Shadow
+  - Highlight
+
+device_contexts:
+  - "Responsive (SM/MD/LG)"
+  - "Mobile (XL only)"
+  - "Mobile Responsive (XL + Notification)"
+
+padding_horizontal:
+  sm: 8
+  md: "12-16"
+  lg: 16
+  xl: 24
+  icon_label_gap: "spacing/2 = 8"
+
+border_radius: "radius/rounded_2 = 8 (all sizes)"
+
+typography: "type/sm/tight/medium"  # 14/14/500, for all sizes
+
+token_map:
+  primary:
+    bg: "BlogVault Brand/bv-emerald-900 (#064e3b)"
+    text: "typography/text-white"
+    shadow: "shadow/sm"
+  secondary:
+    bg: "surface/card-background"
+    border: "1 px surface/border"
+    text: "typography/text-primary"
+  outlined:
+    bg: transparent
+    border: "1 px surface/border"
+    text: "typography/text-primary"
+  ghosted:
+    bg: transparent
+    border: none
+    text: "typography/text-primary"
+  destructive:
+    bg: "typography/text-destructive (#dc2626)"
+    text: "typography/text-white"
+  link: "Same as Ghosted but underlined on hover. Container variant (full height) vs Inline (text-height 16-20 only)."
+
+disabled: "opacity/opacity-50 = 50%, no pointer events"
+```
 
 ### 13.0b Input Fields
 
-- **Size tiers:** Medium 36 h (`height/h-9`) · Small 32 h (`height/h-8`). Default width 320 px, fill-container in forms.
-- **Types:** Input, Search, Dropdown, ColourPicker, TextBox.
-- **States:** Default, Typing, Filled, Selected, Disabled, Error.
-- **Border radius:** `border radius/md` = 6.
-- **Border:** 1 px `surface/border` (#e4e4e6). Error: `typography/text-destructive`. Focus: 2 px ring `BlogVault Brand/bv-emerald-900`.
-- **Padding:** `px-3` = 12 horizontal, `py-2` = 8 vertical.
-- **Typography:** Placeholder `type/sm/normal/regular` (14/20/400) in `typography/text-secondary`. Filled text same style in `typography/text-primary`.
-- **Label:** `type/sm/tight/medium` (14/14/500) `typography/text-primary`, gap 6 (`spacing/1-5`) below.
-- **Helper text:** `type/xs/normal/regular` (12/16/400) `typography/text-secondary`, gap 4 above.
-- **Error text:** Same as helper but `typography/text-destructive`.
-- **Left icon:** 16×16 in `typography/text-secondary`. Shadow `shadow/sm` on focus.
+```yaml
+size_tiers:
+  md: "36 h (height/h-9)"
+  sm: "32 h (height/h-8)"
+default_width: 320  # px, fill-container in forms
+
+types: [Input, Search, Dropdown, ColourPicker, TextBox]
+
+states: [Default, Typing, Filled, Selected, Disabled, Error]
+
+border_radius: "border radius/md = 6"
+
+border:
+  default: "1 px surface/border (#e4e4e6)"
+  error: "typography/text-destructive"
+  focus: "2 px ring BlogVault Brand/bv-emerald-900"
+
+padding:
+  horizontal: "px-3 = 12"
+  vertical: "py-2 = 8"
+
+typography:
+  placeholder: "type/sm/normal/regular"  # 14/20/400, in typography/text-secondary
+  filled: "type/sm/normal/regular"  # 14/20/400, in typography/text-primary
+
+label:
+  style: "type/sm/tight/medium"  # 14/14/500
+  color: "typography/text-primary"
+  gap_below: "6 (spacing/1-5)"
+
+helper_text:
+  style: "type/xs/normal/regular"  # 12/16/400
+  color: "typography/text-secondary"
+  gap_above: 4
+
+error_text: "Same as helper but typography/text-destructive"
+
+left_icon:
+  size: "16x16"
+  color: "typography/text-secondary"
+  focus_shadow: "shadow/sm"
+```
 
 ### 13.0c Accordion
 
-- **Outer wrapper:** `surface/card-background`, `radius/rounded_2` = 8, `shadow/sm`.
-- **Item min-height:** 48 px, padding 16 (`spacing/4`) all sides.
-- **Gap between items:** 0 (flush, 1 px `surface/border` bottom separator).
-- **Title:** `type/base/normal/regular` (16/24/400) `typography/text-primary`.
-- **Body:** `type/sm/normal/regular` (14/20/400) `typography/text-secondary`. Gap title→body `spacing/2` = 8.
-- **Chevron:** 16×16 `typography/text-secondary`, rotates 180° on expand (200 ms ease-out).
-- **Variants:** Single expand (only one open) · Multi expand. States: Collapsed, Expanded, Disabled.
+```yaml
+outer_wrapper:
+  bg: "surface/card-background"
+  radius: "radius/rounded_2 = 8"
+  shadow: "shadow/sm"
+
+item_min_height: 48  # px
+item_padding: "16 (spacing/4) all sides"
+
+gap_between_items: "0 (flush, 1 px surface/border bottom separator)"
+
+title:
+  style: "type/base/normal/regular"  # 16/24/400
+  color: "typography/text-primary"
+
+body:
+  style: "type/sm/normal/regular"  # 14/20/400
+  color: "typography/text-secondary"
+  gap_from_title: "spacing/2 = 8"
+
+chevron:
+  size: "16x16"
+  color: "typography/text-secondary"
+  animation: "rotates 180 deg on expand (200 ms ease-out)"
+
+variants: ["Single expand (only one open)", "Multi expand"]
+states: [Collapsed, Expanded, Disabled]
+```
 
 ### 13.1 Card
 
-- Background `surface/card-background`. Border 1 px `surface/border` (optional).
-- Radius `radius/rounded_2` = 8 (default) or `border radius/xl` = 12 (large). **Correction:** previous docs said `rounded_16` for large — actual Figma value is 12.
-- Padding 16 px (default), 24 px (feature card).
-- Title: `type/sm/tight/medium` (14/14/500) + optional 16×16 icon `typography/text-secondary` + optional right-aligned action.
-- Body: `type/sm/normal/regular` (14/20/400) `typography/text-secondary`. Gap title→body **16 px**.
-- Shadow: `shadow/base` default. Interactive cards: `shadow/lg` on hover + scale(1.01) 200 ms.
-- Header min-height: 36 px (`height/h-9`). Disabled: `opacity/opacity-50`.
+```yaml
+background: "surface/card-background"
+border: "1 px surface/border (optional)"
+
+radius:
+  default: "radius/rounded_2 = 8"
+  large: "border radius/xl = 12"
+  # Correction: previous docs said rounded_16 for large — actual Figma value is 12.
+
+padding:
+  default: 16  # px
+  feature_card: 24
+
+title:
+  style: "type/sm/tight/medium"  # 14/14/500
+  optional_icon: "16x16 typography/text-secondary"
+  optional_action: "right-aligned"
+
+body:
+  style: "type/sm/normal/regular"  # 14/20/400
+  color: "typography/text-secondary"
+  gap_from_title: 16  # px
+
+shadow:
+  default: "shadow/base"
+  interactive_hover: "shadow/lg + scale(1.01) 200 ms"
+
+header_min_height: "36 px (height/h-9)"
+disabled: "opacity/opacity-50"
+```
 
 ### 13.2 Modal
 
-- Width tiers: **Small 400 / Medium 560 / Large 720 / X-Large 960 px**.
-- Padding 24 px all sides.
-- Composition: Header (Title + close) → Body → Footer (Button Group right-aligned).
-- Backdrop: `surface/page-background-content` at `alpha/80`. **Correction:** previous docs said `alpha/60` — actual is `alpha/80`.
-- Radius `rounded-3xl` = 24. **Correction:** previous docs said `rounded_16` — actual is 24.
-- Min vertical margin from viewport edge: **48 px**.
-- Title: `type/lg/normal/medium` (18/28/500). Body: `type/sm/normal/regular` (14/20/400).
-- Close button: 36×36 icon-only (`width/w-9`). Shadow `Box Shadow/shadow-lg`.
-- Dividers: 1 px `surface/border` between header/body and body/footer.
-- Body: `overflow-y: auto`, max-height = viewport − 96 − header − footer.
-- Animation: scale 0.95→1.0 + fade, 200 ms ease-out.
+```yaml
+width_tiers:
+  sm: 400
+  md: 560
+  lg: 720
+  xl: 960
+
+padding: "24 px all sides"
+
+composition: "Header (Title + close) -> Body -> Footer (Button Group right-aligned)"
+
+backdrop:
+  bg: "surface/page-background-content"
+  opacity: "alpha/80"
+  # Correction: previous docs said alpha/60 — actual is alpha/80.
+
+radius: "rounded-3xl = 24"
+# Correction: previous docs said rounded_16 — actual is 24.
+
+min_vertical_margin: 48  # px from viewport edge
+
+typography:
+  title: "type/lg/normal/medium"  # 18/28/500
+  body: "type/sm/normal/regular"  # 14/20/400
+
+close_button:
+  size: "36x36 icon-only (width/w-9)"
+  shadow: "Box Shadow/shadow-lg"
+
+dividers: "1 px surface/border between header/body and body/footer"
+
+body_overflow: "overflow-y: auto, max-height = viewport - 96 - header - footer"
+
+animation: "scale 0.95 -> 1.0 + fade, 200 ms ease-out"
+```
 
 ### 13.3 Dialog Box (confirmation)
 
-- Width 400 px, padding 24 (`spacing/6`), radius `rounded-3xl` = 24, shadow `Box Shadow/shadow-lg`.
-- Title: `type/lg/normal/semibold` (18/28/600). Body: `type/xs/normal/regular` (12/16/400) `typography/text-secondary`.
-- Gap title→body `spacing/2` = 8. Gap body→buttons `spacing_gap/gap_6` = 24.
-- Single primary (destructive for delete confirms) + secondary button, right-aligned.
-- No close icon — dismiss via button only. Animation same as Modal.
+```yaml
+width: 400  # px
+padding: "24 (spacing/6)"
+radius: "rounded-3xl = 24"
+shadow: "Box Shadow/shadow-lg"
+
+typography:
+  title: "type/lg/normal/semibold"  # 18/28/600
+  body: "type/xs/normal/regular"  # 12/16/400
+  body_color: "typography/text-secondary"
+
+gap_title_to_body: "spacing/2 = 8"
+gap_body_to_buttons: "spacing_gap/gap_6 = 24"
+
+buttons: "Single primary (destructive for delete confirms) + secondary button, right-aligned"
+
+close_icon: "None — dismiss via button only"
+animation: "Same as Modal"
+```
 
 ### 13.4 Drawer
 
-- Right-anchored (default) or Left. Width tiers: **400 / 560 / 720 px**.
-- Header 64 px, padding `spacing/4` = 16 all around. **Correction:** previous docs said 24 L/R, 16 T/B — actual is 16 uniform.
-- Header: `type/lg/normal/medium` (18/28/500). Close button 32×32 icon-only, top-right.
-- Body scrolls; padding `spacing/4` = 16 L/R, `spacing/3` = 12 T/B.
-- Footer sticky, min 56 h, padding `spacing/4` = 16. 1 px `surface/border` dividers.
-- Shadow: `shadow/sm` + `shadow/base` layered. Backdrop: `surface/foreground` at 20% opacity.
-- Animation: slide from edge, 200 ms ease-out.
+```yaml
+anchor: "Right (default) or Left"
+
+width_tiers: [400, 560, 720]
+
+header:
+  height: 64  # px
+  padding: "spacing/4 = 16 all around"
+  # Correction: previous docs said 24 L/R, 16 T/B — actual is 16 uniform.
+  typography: "type/lg/normal/medium"  # 18/28/500
+  close_button: "32x32 icon-only, top-right"
+
+body:
+  scrollable: true
+  padding_lr: "spacing/4 = 16"
+  padding_tb: "spacing/3 = 12"
+
+footer:
+  sticky: true
+  min_height: 56
+  padding: "spacing/4 = 16"
+  dividers: "1 px surface/border"
+
+shadow: "shadow/sm + shadow/base layered"
+backdrop: "surface/foreground at 20% opacity"
+animation: "slide from edge, 200 ms ease-out"
+```
 
 ### 13.5 Sheet Slider (mobile)
 
-- Bottom-anchored, max-height 80vh. Top radius `rounded-3xl` = 24 (consistent with Modal/Drawer).
-- Drag handle 32×4 px centered at top, `opacity/opacity-70`.
-- Backdrop: same as Modal (`surface/page-background-content` at `alpha/80`). Shadow `shadow/lg`.
-- Header: `type/lg/normal/semibold` (18/28/600). Close button 36 (`height/h-9`).
-- Body scrollable, padding `spacing/4` = 16 H, `spacing/6` = 24 V. Max-width `max-w-sm` = 384 for form content.
-- Animation: slide up from bottom, 200 ms ease-out.
+```yaml
+anchor: bottom
+max_height: "80vh"
+top_radius: "rounded-3xl = 24 (consistent with Modal/Drawer)"
+
+drag_handle:
+  size: "32x4 px centered at top"
+  opacity: "opacity/opacity-70"
+
+backdrop:
+  same_as: "Modal (surface/page-background-content at alpha/80)"
+  shadow: "shadow/lg"
+
+header:
+  typography: "type/lg/normal/semibold"  # 18/28/600
+  close_button: "36 (height/h-9)"
+
+body:
+  scrollable: true
+  padding_h: "spacing/4 = 16"
+  padding_v: "spacing/6 = 24"
+  max_width: "max-w-sm = 384 for form content"
+
+animation: "slide up from bottom, 200 ms ease-out"
+```
 
 ### 13.6 Tabs
 
-- Underline-style by default. **12 px** (`spacing/3`) horizontal padding per tab, **8 px** (`spacing/2`) vertical. **Correction:** previous docs said 16 H — actual is 12.
-- Active: `typography/text-primary` + 2 px bottom border in `Flat/emerald/emerald-600` (#059669). **Correction:** previous docs said underline color `typography/text-primary` — actual is emerald-600.
-- Inactive: `typography/text-secondary`. Hover: `typography/text-primary`.
-- Gap between tabs: 0.
-- Variants: underline (default), pill, segmented.
-- Pill variant: `spacing/2` = 8 H, `spacing/1` = 4 V. Active bg `surface/card-background` + `shadow/sm`. Container `radius/rounded_2` = 8.
-- Tab height: content-driven, typically 40 px. Icon in tab: 16×16, gap `spacing_gap/gap_0,5` = 2.
+```yaml
+default_style: underline
+
+padding:
+  horizontal: "12 px (spacing/3)"
+  # Correction: previous docs said 16 H — actual is 12.
+  vertical: "8 px (spacing/2)"
+
+active:
+  color: "typography/text-primary"
+  border_bottom: "2 px Flat/emerald/emerald-600 (#059669)"
+  # Correction: previous docs said underline color typography/text-primary — actual is emerald-600.
+
+inactive: "typography/text-secondary"
+hover: "typography/text-primary"
+
+gap_between_tabs: 0
+
+variants: [underline, pill, segmented]
+
+pill_variant:
+  padding_h: "spacing/2 = 8"
+  padding_v: "spacing/1 = 4"
+  active_bg: "surface/card-background + shadow/sm"
+  container_radius: "radius/rounded_2 = 8"
+
+tab_height: "content-driven, typically 40 px"
+icon_in_tab:
+  size: "16x16"
+  gap: "spacing_gap/gap_0,5 = 2"
+```
 
 ### 13.7 Tooltip
 
-- Padding `px-3` = 12 H, `p-1,5` = 6 V. **Correction:** previous docs said 8 H / 4 V — actual is 12 / 6.
-- Radius `border radius/lg` = 8. **Correction:** previous docs said `radius/rounded_4` = 16 — actual is 8.
-- Background `Flat/zinc/zinc-950` (#09090b). **Correction:** previous docs said `surface/overlay-background` + `alpha/90` — actual is solid zinc-950.
-- Text `typography/text-white`. Type `type/xs/normal/medium` (12/16/500).
-- Triangle marker 8 px, positions: top / bottom / left / right · orient left / center / right.
-- Shadow: `Box Shadow/shadow` (base). Max width 320 px.
-- Delays: show 200 ms, hide 0 ms.
+```yaml
+padding:
+  horizontal: "px-3 = 12"
+  # Correction: previous docs said 8 H / 4 V — actual is 12 / 6.
+  vertical: "p-1,5 = 6"
+
+radius: "border radius/lg = 8"
+# Correction: previous docs said radius/rounded_4 = 16 — actual is 8.
+
+background: "Flat/zinc/zinc-950 (#09090b)"
+# Correction: previous docs said surface/overlay-background + alpha/90 — actual is solid zinc-950.
+
+text_color: "typography/text-white"
+typography: "type/xs/normal/medium"  # 12/16/500
+
+triangle_marker:
+  size: 8  # px
+  positions: "top / bottom / left / right"
+  orientations: "left / center / right"
+
+shadow: "Box Shadow/shadow (base)"
+max_width: 320  # px
+
+delays:
+  show: 200  # ms
+  hide: 0
+```
 
 ### 13.8 Toast
 
-- Width 360 px (flexible), padding 16 px, radius `border radius/lg` = 8. Shadow `shadow/lg`.
-- Background `surface/card-background`, border 1 px `surface/border`.
-- Title: `type/sm/normal/semibold` (14/20/600) `typography/text-black`. Body: `type/sm/normal/regular` (14/20/400) `typography/text-secondary`.
-- Close: 24 px icon-only, top-right.
-- Slide in 240 ms, auto-dismiss 4 s (default). Stack offset 8 px.
-- Variants: success (icon `typography/text-success`, left accent 3 px `Flat/emerald/emerald-700`) / info / warning (icon `typography/text-warning`) / destructive (icon `typography/text-destructive`).
-- Icon: 24×24 (`width/w-6`), left-aligned.
+```yaml
+width: "360 px (flexible)"
+padding: 16  # px
+radius: "border radius/lg = 8"
+shadow: "shadow/lg"
+
+background: "surface/card-background"
+border: "1 px surface/border"
+
+typography:
+  title: "type/sm/normal/semibold"  # 14/20/600
+  title_color: "typography/text-black"
+  body: "type/sm/normal/regular"  # 14/20/400
+  body_color: "typography/text-secondary"
+
+close: "24 px icon-only, top-right"
+
+animation: "slide in 240 ms, auto-dismiss 4 s (default)"
+stack_offset: 8  # px
+
+variants:
+  success:
+    icon_color: "typography/text-success"
+    left_accent: "3 px Flat/emerald/emerald-700"
+  info: {}
+  warning:
+    icon_color: "typography/text-warning"
+  destructive:
+    icon_color: "typography/text-destructive"
+
+icon:
+  size: "24x24 (width/w-6)"
+  alignment: left
+```
 
 ### 13.9 Empty State
 
-- Centered within the Page Content Area or Card.
-- Icon 48×48 → 16 px gap → Title `type/lg/tight/semibold` → 4 px → Subtext `type/sm/normal/regular` `typography/text-secondary` → 24 px → CTA Button.
-- Max-width 360 px for the text block.
+```yaml
+alignment: "Centered within the Page Content Area or Card"
+
+composition:
+  - "Icon 48x48"
+  - "16 px gap"
+  - "Title: type/lg/tight/semibold"
+  - "4 px gap"
+  - "Subtext: type/sm/normal/regular, typography/text-secondary"
+  - "24 px gap"
+  - "CTA Button"
+
+max_width: 360  # px for the text block
+```
 
 ### 13.10 Skeleton
 
-- Background: `Flat/zinc/zinc-200` (#e4e4e7). Pulse animation: `Flat/zinc/zinc-200` ↔ `surface/card-background`, 1400 ms ease-in-out.
-- Radius: text lines `border radius/md` = 6, avatar `border radius/full` = 9999, card block `border radius/xl` = 12.
-- Text line height: 16 px (`height/h-4`), gap between lines `spacing/2` = 8. Avatar placeholder: 48×48 circle.
-- Match the dimensions of the real content within ±4 px.
+```yaml
+background: "Flat/zinc/zinc-200 (#e4e4e7)"
+pulse_animation: "Flat/zinc/zinc-200 <-> surface/card-background, 1400 ms ease-in-out"
+
+radius:
+  text_lines: "border radius/md = 6"
+  avatar: "border radius/full = 9999"
+  card_block: "border radius/xl = 12"
+
+text_line_height: "16 px (height/h-4)"
+text_line_gap: "spacing/2 = 8"
+avatar_placeholder: "48x48 circle"
+
+dimension_tolerance: "+/-4 px of the real content"
+```
 
 ### 13.11 Search bar
 
-- Default width 320 px (Page Header), 100% on mobile.
-- Height 40 px (Medium Input Field).
-- Left icon: magnifying glass 16×16. Right: clear `x` when filled.
-- Placeholder uses `typography/text-tertiary`.
+```yaml
+default_width: "320 px (Page Header), 100% on mobile"
+height: "40 px (Medium Input Field)"
+
+left_icon: "magnifying glass 16x16"
+right_icon: "clear x when filled"
+
+placeholder_color: "typography/text-tertiary"
+```
 
 ### 13.12 Pill / Pill Button
 
-- Sizes **Small (24 h)** / **Medium (32 h)**. Padding: SM 8 H / MD 16 H. Radius `border radius/full` = 9999.
-- Typography: SM `type/xs/normal/medium` (12/16/500), MD `type/sm/normal/medium` (14/20/500).
-- Icon: SM 8 (`width/w-2`), MD 16 (`width/w-4`). Gap icon→text `spacing/1` = 4.
-- **Token map per variant:**
-  - Neutral: bg `Flat/zinc/zinc-100`, text `typography/text-primary`, border `surface/border`.
-  - Success: bg `surface/success-background` (#ecfdf5), text `typography/text-success`.
-  - Informative: bg `Flat/sky/sky-50`, text `Flat/sky/sky-600`.
-  - Warning: bg `surface/warning-background` (#fffbeb), text `typography/text-warning`.
-  - Destructive: bg `surface/destructive-background` (#fef2f2), text `typography/text-destructive`.
-- Pill Button: hover alpha/10 darken, pressed alpha/20 darken. Shadow `shadow/md` on outlined.
+```yaml
+sizes:
+  sm:
+    height: 24
+    padding_h: 8
+  md:
+    height: 32
+    padding_h: 16
+
+radius: "border radius/full = 9999"
+
+typography:
+  sm: "type/xs/normal/medium"  # 12/16/500
+  md: "type/sm/normal/medium"  # 14/20/500
+
+icon:
+  sm: "8 (width/w-2)"
+  md: "16 (width/w-4)"
+  gap_to_text: "spacing/1 = 4"
+
+token_map:
+  neutral:
+    bg: "Flat/zinc/zinc-100"
+    text: "typography/text-primary"
+    border: "surface/border"
+  success:
+    bg: "surface/success-background (#ecfdf5)"
+    text: "typography/text-success"
+  informative:
+    bg: "Flat/sky/sky-50"
+    text: "Flat/sky/sky-600"
+  warning:
+    bg: "surface/warning-background (#fffbeb)"
+    text: "typography/text-warning"
+  destructive:
+    bg: "surface/destructive-background (#fef2f2)"
+    text: "typography/text-destructive"
+
+pill_button:
+  hover: "alpha/10 darken"
+  pressed: "alpha/20 darken"
+  outlined_shadow: "shadow/md"
+```
 
 ### 13.13 Breadcrumb
 
-- Lives inside the Top Nav. Type `type/sm/normal/medium` (14/20/500).
-- Separator: chevron-right 16×16 in `typography/text-secondary`. **Correction:** previous docs said `typography/text-tertiary`.
-- Item gap **8 px**. Active (last) item `typography/text-primary`. Earlier items `typography/text-secondary`.
-- Hover: `Flat/emerald/emerald-700` underline. Links use `type/sm/tight/regular` (14/14/400), no underline until hover.
-- Home icon: 20×20 (`width/w-5`). Truncation: middle items collapse into `…` overflow menu when total width > parent.
+```yaml
+location: "Inside the Top Nav"
+typography: "type/sm/normal/medium"  # 14/20/500
+
+separator:
+  icon: "chevron-right 16x16"
+  color: "typography/text-secondary"
+  # Correction: previous docs said typography/text-tertiary.
+
+item_gap: 8  # px
+active_item_color: "typography/text-primary (last item)"
+earlier_items_color: "typography/text-secondary"
+
+hover: "Flat/emerald/emerald-700 underline"
+link_style: "type/sm/tight/regular"  # 14/14/400, no underline until hover
+
+home_icon: "20x20 (width/w-5)"
+truncation: "Middle items collapse into ... overflow menu when total width > parent"
+```
 
 ### 13.14 Avatar
 
-- Sizes: **xs 16 / sm 24 / md 32 / lg 40 / xl 48 / 2xl 64 px**.
-- Shape: circle (`border radius/full` = 9999) or square (`radius/rounded_2` = 8).
-- Content: photo, initials (1–2 chars), or icon fallback (`typography/text-tertiary`).
-- Initials bg: `Flat/zinc/zinc-200`. Text: `typography/text-primary`. Typography scales per size: xs `type/micro-8`, sm `type/micro-10`, md `type/xs/normal/medium`, lg `type/sm/normal/medium`, xl `type/base/normal/medium`, 2xl `type/lg/normal/medium`.
-- Group: overlap **−8 px**, max 4 visible + `+N` counter (`Flat/zinc/zinc-100` bg, `type/xs/normal/medium`).
-- Border: 1 px `surface/border` when stacked. Online indicator: 8 px `Flat/emerald/emerald-500` dot, bottom-right.
+```yaml
+sizes:
+  xs: 16
+  sm: 24
+  md: 32
+  lg: 40
+  xl: 48
+  2xl: 64
+
+shape:
+  circle: "border radius/full = 9999"
+  square: "radius/rounded_2 = 8"
+
+content: "photo, initials (1-2 chars), or icon fallback (typography/text-tertiary)"
+
+initials:
+  bg: "Flat/zinc/zinc-200"
+  text: "typography/text-primary"
+  typography_per_size:
+    xs: "type/micro-8"
+    sm: "type/micro-10"
+    md: "type/xs/normal/medium"
+    lg: "type/sm/normal/medium"
+    xl: "type/base/normal/medium"
+    2xl: "type/lg/normal/medium"
+
+group:
+  overlap: "-8 px"
+  max_visible: 4
+  counter_bg: "Flat/zinc/zinc-100"
+  counter_typography: "type/xs/normal/medium"
+
+border: "1 px surface/border when stacked"
+
+online_indicator:
+  size: 8  # px
+  color: "Flat/emerald/emerald-500"
+  position: bottom-right
+```
 
 ### 13.15 Badge (vs Pill)
 
-- Use **Badge** for state markers attached to another element. Use **Pill** as a stand-alone label.
-- Sizes: **Dot 8** / **Small 16** / **Medium 24**. Radius: SM/MD `border radius/md` = 6, Dot `border radius/full`.
-- Information: bg `Flat/sky/sky-50`, text `Flat/sky/sky-600`. Warning: bg `surface/warning-background`, text `typography/text-warning`. Success: bg `surface/success-background`, text `typography/text-success`. Destructive: bg `surface/destructive-background`, text `typography/text-destructive`.
-- Typography: SM `type/xs/normal/semibold` (12/16/600), MD `type/xs/tight/semibold`.
-- Padding: SM `spacing/0-5` = 2 H, MD `spacing/1` = 4 H / `spacing/0-5` = 2 V. Icon: 24 in MD.
-- Position: top-right of host with **−4 px** outset. Shadow `shadow/base` on outlined variants.
+```yaml
+usage: "Use Badge for state markers attached to another element. Use Pill as a stand-alone label."
+
+sizes:
+  dot: 8
+  sm: 16
+  md: 24
+
+radius:
+  sm_md: "border radius/md = 6"
+  dot: "border radius/full"
+
+token_map:
+  information:
+    bg: "Flat/sky/sky-50"
+    text: "Flat/sky/sky-600"
+  warning:
+    bg: "surface/warning-background"
+    text: "typography/text-warning"
+  success:
+    bg: "surface/success-background"
+    text: "typography/text-success"
+  destructive:
+    bg: "surface/destructive-background"
+    text: "typography/text-destructive"
+
+typography:
+  sm: "type/xs/normal/semibold"  # 12/16/600
+  md: "type/xs/tight/semibold"
+
+padding:
+  sm: "spacing/0-5 = 2 H"
+  md_h: "spacing/1 = 4"
+  md_v: "spacing/0-5 = 2"
+icon_size_md: 24
+
+position: "top-right of host with -4 px outset"
+shadow: "shadow/base on outlined variants"
+```
 
 ### 13.16 Stepper (Step-Wizard)
 
-- Horizontal (default) or vertical. Step circle 24 px, gap to label **8 px**, gap between steps **24 px**.
-- Circle pending: `Flat/zinc/zinc-300`. Current: `BlogVault Brand/bv-emerald-900`. Complete: `BlogVault Brand/bv-emerald-700`. Error: `typography/text-destructive`.
-- Circle text: `typography/text-white` (current/complete), `typography/text-primary` (pending). Number: `type/xs/normal/medium` (12/16/500).
-- Connector line 1 px: incomplete `surface/border`, complete `BlogVault Brand/bv-emerald-700`.
-- Label: `type/xs/tight/regular` (12/12/400) `typography/text-secondary`. Active: `type/xs/normal/medium`.
-- States: pending / current / complete / error. Vertical gap `spacing_gap/gap_2` = 8.
+```yaml
+orientation: "Horizontal (default) or vertical"
+
+step_circle: 24  # px
+gap_circle_to_label: 8  # px
+gap_between_steps: 24  # px
+
+circle_colors:
+  pending: "Flat/zinc/zinc-300"
+  current: "BlogVault Brand/bv-emerald-900"
+  complete: "BlogVault Brand/bv-emerald-700"
+  error: "typography/text-destructive"
+
+circle_text:
+  current_complete: "typography/text-white"
+  pending: "typography/text-primary"
+  number_style: "type/xs/normal/medium"  # 12/16/500
+
+connector_line:
+  thickness: "1 px"
+  incomplete: "surface/border"
+  complete: "BlogVault Brand/bv-emerald-700"
+
+label:
+  style: "type/xs/tight/regular"  # 12/12/400
+  color: "typography/text-secondary"
+  active_style: "type/xs/normal/medium"
+
+states: [pending, current, complete, error]
+vertical_gap: "spacing_gap/gap_2 = 8"
+```
 
 ### 13.17 Indicator (status dot)
 
-- Sizes 8 / 16 / 24 px.
-- Variants: Default / Pulse (animated) / Step.
-- Colors: Success `Flat/emerald/emerald-100` bg + `typography/text-success`. Destructive `surface/destructive-background` + `typography/text-destructive`. Warning `surface/warning-background` + `Flat/amber/amber-600`. Neutral `Flat/zinc/zinc-200` + `typography/text-primary`.
-- Pulse: scale 1.0→1.4→1.0, 2000 ms infinite. Label: `type/xs/normal/regular` (12/16/400). Step number: `type/xs/tight/regular`.
-- Use inline beside text to convey state. Always paired with an aria-label.
+```yaml
+sizes: [8, 16, 24]  # px
+
+variants: [Default, "Pulse (animated)", Step]
+
+colors:
+  success:
+    bg: "Flat/emerald/emerald-100"
+    fg: "typography/text-success"
+  destructive:
+    bg: "surface/destructive-background"
+    fg: "typography/text-destructive"
+  warning:
+    bg: "surface/warning-background"
+    fg: "Flat/amber/amber-600"
+  neutral:
+    bg: "Flat/zinc/zinc-200"
+    fg: "typography/text-primary"
+
+pulse_animation: "scale 1.0 -> 1.4 -> 1.0, 2000 ms infinite"
+
+label_style: "type/xs/normal/regular"  # 12/16/400
+step_number_style: "type/xs/tight/regular"
+
+usage: "Use inline beside text to convey state. Always paired with an aria-label."
+```
 
 ### 13.18 Notification (Running Task tray)
 
-- Anchored top-right of Top Nav, opens as a 400 px wide tray. Shadow `Box Shadow/shadow-lg`. Radius `radius/rounded_4` = 16.
-- Each row 64 px, padding 16 px, 1 px `surface/border` bottom. Hover: `Flat/zinc/zinc-100` bg.
-- Title: `type/sm/tight/medium` (14/14/500). Subtext: `type/xs/tight/regular` (12/12/400) `typography/text-secondary`. Time: `type/xs/tight/regular` `typography/text-tertiary`.
-- Status icon 24×24, color per variant. Composition: icon → title + subtext → action / dismiss.
+```yaml
+anchor: "top-right of Top Nav"
+width: 400  # px
+shadow: "Box Shadow/shadow-lg"
+radius: "radius/rounded_4 = 16"
+
+row:
+  height: 64  # px
+  padding: 16
+  border: "1 px surface/border bottom"
+  hover_bg: "Flat/zinc/zinc-100"
+
+typography:
+  title: "type/sm/tight/medium"  # 14/14/500
+  subtext: "type/xs/tight/regular"  # 12/12/400
+  subtext_color: "typography/text-secondary"
+  time: "type/xs/tight/regular"
+  time_color: "typography/text-tertiary"
+
+status_icon: "24x24, color per variant"
+composition: "icon -> title + subtext -> action / dismiss"
+```
 
 ### 13.19 Pre-Checks
 
-- Vertical checklist used in environment / readiness flows.
-- Each row 48 px min-height, 16 px gap between rows.
-- States: pending (grey dot) → running (spinner replacing dot) → success (check `Flat/emerald/emerald-700`) → error (cross `typography/text-destructive` + retry button).
-- Status icon: 24×24. Label: `type/sm/normal/regular` (14/20/400) `typography/text-primary`. Subtext: `type/xs/normal/regular` `typography/text-secondary`.
-- Blur backdrop: `backdrop-blur/3xl` = 64 px behind the checklist overlay.
-- Container: `surface/card-background`, radius `radius/rounded_2` = 8, padding 24, shadow `shadow/lg`.
+```yaml
+description: "Vertical checklist used in environment / readiness flows"
+
+row:
+  min_height: 48  # px
+  gap_between_rows: 16
+
+states:
+  pending: "grey dot"
+  running: "spinner replacing dot"
+  success: "check Flat/emerald/emerald-700"
+  error: "cross typography/text-destructive + retry button"
+
+status_icon: "24x24"
+
+typography:
+  label: "type/sm/normal/regular"  # 14/20/400
+  label_color: "typography/text-primary"
+  subtext: "type/xs/normal/regular"
+  subtext_color: "typography/text-secondary"
+
+blur_backdrop: "backdrop-blur/3xl = 64 px behind the checklist overlay"
+
+container:
+  bg: "surface/card-background"
+  radius: "radius/rounded_2 = 8"
+  padding: 24
+  shadow: "shadow/lg"
+```
 
 ### 13.20 Calendar / Date Picker
 
-- Cell 32×32 px, cell radius `radius/rounded_2` = 8. Day grid gap 0.
-- Header (month/year) 48 px, padding 16 px. Month/year: `type/sm/tight/semibold` (14/14/600). Day labels: `type/xs/tight/regular` (12/12/400) `typography/text-secondary`.
-- Nav arrows: 16×16, gap `spacing/2` = 8 from month text.
-- Today: 1 px ring `surface/border`. Selected: bg `BlogVault Brand/bv-emerald-900`, text `typography/text-white`. Range middle: `Flat/zinc/zinc-100` bg.
-- Disabled days: `opacity/opacity-50`, no pointer events. Shadow `shadow/base` when in popover.
-- Variants: single date / range / multi.
+```yaml
+cell:
+  size: "32x32 px"
+  radius: "radius/rounded_2 = 8"
+  day_grid_gap: 0
+
+header:
+  height: 48  # px
+  padding: 16
+  month_year_style: "type/sm/tight/semibold"  # 14/14/600
+  day_labels_style: "type/xs/tight/regular"  # 12/12/400
+  day_labels_color: "typography/text-secondary"
+
+nav_arrows:
+  size: "16x16"
+  gap_from_month_text: "spacing/2 = 8"
+
+today: "1 px ring surface/border"
+
+selected:
+  bg: "BlogVault Brand/bv-emerald-900"
+  text: "typography/text-white"
+
+range_middle_bg: "Flat/zinc/zinc-100"
+
+disabled: "opacity/opacity-50, no pointer events"
+popover_shadow: "shadow/base"
+
+variants: ["single date", "range", "multi"]
+```
 
 ### 13.21 Command Search (⌘K palette)
 
-- Width 640 px, max-height 480 px, radius `border radius/lg` = 8. Shadow `shadow/md`. Border 1 px `surface/border`.
-- Backdrop same as Modal. Input height 40 px (`height/h-10`). Search icon 16×16 `typography/text-secondary`.
-- Row 40 px, padding 16 L/R, gap 8 icon→label→keybind. Active row: `Flat/zinc/zinc-100` bg. Icon 16×16.
-- Section headers `type/xs/tight/medium` `typography/text-tertiary`, 8 px V padding. Keybind: `type/xs/normal/regular` `typography/text-secondary`.
-- Footer 32 px with hint chips ↑↓ · ↵ · esc. Empty state: `type/sm/normal/regular` centered `typography/text-secondary`.
+```yaml
+width: 640  # px
+max_height: 480
+radius: "border radius/lg = 8"
+shadow: "shadow/md"
+border: "1 px surface/border"
+
+backdrop: "Same as Modal"
+
+input:
+  height: "40 px (height/h-10)"
+  search_icon: "16x16 typography/text-secondary"
+
+row:
+  height: 40  # px
+  padding_lr: 16
+  gap: "8 icon -> label -> keybind"
+  active_bg: "Flat/zinc/zinc-100"
+  icon: "16x16"
+
+section_headers:
+  style: "type/xs/tight/medium"
+  color: "typography/text-tertiary"
+  padding_v: 8
+
+keybind:
+  style: "type/xs/normal/regular"
+  color: "typography/text-secondary"
+
+footer:
+  height: 32
+  hint_chips: "up/down, enter, esc"
+
+empty_state:
+  style: "type/sm/normal/regular"
+  color: "typography/text-secondary"
+  alignment: centered
+```
 
 ### 13.22 Carousel
 
-- Snap-x scroll. Item gap **16 px** (default) or 24 px (large). Container radius `border radius/xl` = 12.
-- Arrow: 40×40, `surface/card-background`, border `surface/border`, `border radius/full` = 9999, `shadow/sm`. Icon 16×16 `typography/text-black`.
-- Dots: 8 px, gap 8 px. Active `typography/text-black` `opacity/opacity-100`. Inactive `Flat/zinc/zinc-200` `opacity/opacity-50`.
-- Always show 1 partial peek of the next item to signal scrollability.
+```yaml
+scroll: "snap-x"
+
+item_gap:
+  default: 16  # px
+  large: 24
+
+container_radius: "border radius/xl = 12"
+
+arrow:
+  size: "40x40"
+  bg: "surface/card-background"
+  border: "surface/border"
+  radius: "border radius/full = 9999"
+  shadow: "shadow/sm"
+  icon: "16x16 typography/text-black"
+
+dots:
+  size: 8  # px
+  gap: 8
+  active: "typography/text-black, opacity/opacity-100"
+  inactive: "Flat/zinc/zinc-200, opacity/opacity-50"
+
+peek: "Always show 1 partial peek of the next item to signal scrollability"
+```
 
 ### 13.23 Range Slider
 
-- Track 6 px (`height/h-1,5`) in `Flat/zinc/zinc-200`, fill `BlogVault Brand/bv-emerald-900`. Track radius `border radius/full`.
-- Thumb 16×16 (`width/w-4`, `height/h-4`) circle, `Flat/base/base-white`, `shadow/base`. Thumb border 1 px `Flat/zinc/zinc-200`.
-- Step ticks 8 px height on the track when `withMarks=true`.
-- Variants: single / dual handle.
+```yaml
+track:
+  height: "6 px (height/h-1,5)"
+  bg: "Flat/zinc/zinc-200"
+  fill: "BlogVault Brand/bv-emerald-900"
+  radius: "border radius/full"
+
+thumb:
+  size: "16x16 (width/w-4, height/h-4)"
+  shape: circle
+  bg: "Flat/base/base-white"
+  shadow: "shadow/base"
+  border: "1 px Flat/zinc/zinc-200"
+
+step_ticks: "8 px height on the track when withMarks=true"
+
+variants: ["single", "dual handle"]
+```
 
 ### 13.24 Switch
 
-- Track sizes: **Small 24×16 / Medium 36×20**. Thumb: SM 12 px · MD 16 px, 2 px inset.
-- Track radius `border radius/full` = 9999. Thumb `surface/card-background` with `shadow/lg`.
-- Off: `Flat/zinc/zinc-200` (#e4e4e7). On: `BlogVault Brand/bv-emerald-900` (#064e3b). **Correction:** previous docs said off = `surface/muted-background`, on = `typography/text-primary`.
-- 160 ms ease-out toggle. Disabled: `opacity/opacity-50`.
-- Focus: 2 px ring `BlogVault Brand/bv-emerald-900` offset 2 px.
-- Label: `type/sm/tight/medium` (14/14/500), gap `spacing/2` = 8.
+```yaml
+track_sizes:
+  sm: "24x16"
+  md: "36x20"
+
+thumb:
+  sm: 12  # px
+  md: 16
+  inset: 2
+  bg: "surface/card-background"
+  shadow: "shadow/lg"
+
+track_radius: "border radius/full = 9999"
+
+colors:
+  off: "Flat/zinc/zinc-200 (#e4e4e7)"
+  on: "BlogVault Brand/bv-emerald-900 (#064e3b)"
+  # Correction: previous docs said off = surface/muted-background, on = typography/text-primary.
+
+animation: "160 ms ease-out toggle"
+disabled: "opacity/opacity-50"
+
+focus: "2 px ring BlogVault Brand/bv-emerald-900 offset 2 px"
+
+label:
+  style: "type/sm/tight/medium"  # 14/14/500
+  gap: "spacing/2 = 8"
+```
 
 ### 13.25 Radio Button
 
-- Sizes **Small 16 / Medium 24 px**. Outer ring 1 px `surface/border`. Inner dot 8 px (Small) / 12 px (Medium).
-- Selected ring: `BlogVault Brand/bv-emerald-900` (#064e3b). Inner dot: `Flat/base/base-white`. **Correction:** previous docs said `typography/text-primary`.
-- Hover: border darkens to `Flat/zinc/zinc-300`. Focus: 2 px ring offset 2 px. Shadow `shadow/base` on focus.
-- Disabled: `surface/muted-foreground` ring + dot, `opacity/opacity-50` on label.
-- Label: `type/sm/normal/regular` (14/20/400) primary · `type/sm/tight/regular` secondary. Gap **8 px**.
+```yaml
+sizes:
+  sm: 16  # px
+  md: 24
+
+outer_ring: "1 px surface/border"
+
+inner_dot:
+  sm: 8
+  md: 12
+
+selected_ring: "BlogVault Brand/bv-emerald-900 (#064e3b)"
+inner_dot_color: "Flat/base/base-white"
+# Correction: previous docs said typography/text-primary.
+
+hover: "border darkens to Flat/zinc/zinc-300"
+focus: "2 px ring offset 2 px"
+focus_shadow: "shadow/base"
+
+disabled: "surface/muted-foreground ring + dot, opacity/opacity-50 on label"
+
+label:
+  primary: "type/sm/normal/regular"  # 14/20/400
+  secondary: "type/sm/tight/regular"
+  gap: 8  # px
+```
 
 ### 13.26 Checkbox
 
-- Sizes **Small 16 / Medium 24 px**. Square `rounded` = 4.
-- Border (unchecked): 1 px `surface/border`. Checked bg: `BlogVault Brand/bv-emerald-900`.
-- Check icon: `typography/text-white`, SM 12×12 / MD 16×16. Indeterminate dash: SM 8×2 / MD 12×2.
-- Hover: border darkens to `Flat/zinc/zinc-300`. Focus: 2 px ring offset 2 px `BlogVault Brand/bv-emerald-900` + `Box Shadow/shadow-sm`.
-- Error: border → `typography/text-destructive`. Disabled: `opacity/opacity-50`.
-- States: default / hover / focus / checked / indeterminate / disabled / error.
-- Label: `type/sm/normal/regular` (14/20/400), description `type/sm/tight/medium`. Gap **8 px**.
+```yaml
+sizes:
+  sm: 16  # px
+  md: 24
+
+radius: "rounded = 4"
+
+border_unchecked: "1 px surface/border"
+checked_bg: "BlogVault Brand/bv-emerald-900"
+
+check_icon:
+  color: "typography/text-white"
+  sm: "12x12"
+  md: "16x16"
+
+indeterminate_dash:
+  sm: "8x2"
+  md: "12x2"
+
+hover: "border darkens to Flat/zinc/zinc-300"
+focus: "2 px ring offset 2 px BlogVault Brand/bv-emerald-900 + Box Shadow/shadow-sm"
+
+error: "border -> typography/text-destructive"
+disabled: "opacity/opacity-50"
+
+states: [default, hover, focus, checked, indeterminate, disabled, error]
+
+label:
+  style: "type/sm/normal/regular"  # 14/20/400
+  description_style: "type/sm/tight/medium"
+  gap: 8  # px
+```
 
 ### 13.27 Progress
 
-- **Linear** (default): height 8 px, radius `border radius/full` = 9999. Track: `Flat/zinc/zinc-100`. Fill: `BlogVault Brand/bv-emerald-600`.
-- **Circular**: 24 / 32 / 40 / 48 px diameter, stroke 4 px.
-- **Ring** (KPI): 64 / 80 px, stroke 8 px, value centre in `type/lg/tight/semibold`.
-- Semantic fills: success `BlogVault Brand/bv-emerald-700`, warning `typography/text-warning`, destructive `typography/text-destructive`.
-- Label: `type/sm/tight/medium` (14/14/500). Value: `type/micro-10/normal/regular` (10/14/400) or larger per ring size.
-- Indeterminate state animates 1 600 ms loop.
+```yaml
+linear:
+  height: 8  # px
+  radius: "border radius/full = 9999"
+  track: "Flat/zinc/zinc-100"
+  fill: "BlogVault Brand/bv-emerald-600"
+
+circular:
+  diameters: [24, 32, 40, 48]
+  stroke: 4  # px
+
+ring:
+  diameters: [64, 80]  # KPI variant
+  stroke: 8
+  value_center_style: "type/lg/tight/semibold"
+
+semantic_fills:
+  success: "BlogVault Brand/bv-emerald-700"
+  warning: "typography/text-warning"
+  destructive: "typography/text-destructive"
+
+label: "type/sm/tight/medium"  # 14/14/500
+value: "type/micro-10/normal/regular"  # 10/14/400, or larger per ring size
+
+indeterminate_animation: "1600 ms loop"
+```
 
 ### 13.28 Data Visualization (Charts)
 
-- Chart palette: `surface/chart-1` (#2a9d90), `surface/chart-2` (#e76e50), `surface/chart-3` (#274754), `surface/chart-4` (#e8c468), `surface/chart-5` (#f4a462).
-- Axis text `type/xs/normal/regular` (12/16/400) `surface/muted-foreground`. Axis tick: `type/xs/tight/regular`.
-- Grid line 1 px `surface/border` at `opacity/opacity-20`. Chart area radius `border radius/sm` = 2.
-- Tooltip = the standard Tooltip component (§13.7). Popover shadow `shadow/md`.
-- Padding around chart canvas 16 px. Title: `type/base/tight/semibold` or `type/2xl/tight/semibold` for KPI charts.
-- Value labels: `type/3xl/normal/bold` (30/36/700) or `type/4xl/normal/bold` (36/40/700) for hero numbers.
+```yaml
+palette:
+  chart_1: "surface/chart-1 (#2a9d90)"
+  chart_2: "surface/chart-2 (#e76e50)"
+  chart_3: "surface/chart-3 (#274754)"
+  chart_4: "surface/chart-4 (#e8c468)"
+  chart_5: "surface/chart-5 (#f4a462)"
+
+axis:
+  text: "type/xs/normal/regular"  # 12/16/400
+  text_color: "surface/muted-foreground"
+  tick_style: "type/xs/tight/regular"
+
+grid_line:
+  thickness: "1 px"
+  color: "surface/border"
+  opacity: "opacity/opacity-20"
+
+chart_area_radius: "border radius/sm = 2"
+
+tooltip: "Standard Tooltip component (section 13.7)"
+popover_shadow: "shadow/md"
+
+canvas_padding: 16  # px
+
+title:
+  default: "type/base/tight/semibold"
+  kpi_charts: "type/2xl/tight/semibold"
+
+value_labels:
+  standard: "type/3xl/normal/bold"  # 30/36/700
+  hero: "type/4xl/normal/bold"  # 36/40/700
+```
 
 ### 13.29 Map
 
-- Tile size 256 px (standard).
-- Pin: standard 24 px or large 32 px, drop-shadow `effect/level_1`.
-- Heat layer uses `charts/Chart 1` → `Chart 5` blended at `alpha/40` → `alpha/80`.
+```yaml
+tile_size: 256  # px (standard)
+
+pin:
+  standard: 24  # px
+  large: 32
+  shadow: "effect/level_1"
+
+heat_layer:
+  palette: "charts/Chart 1 -> Chart 5"
+  blend_range: "alpha/40 -> alpha/80"
+```
 
 ### 13.30 Widget (dashboard tile)
 
-- Background `surface/widget-background` (#fdfdfd). Border 1 px `surface/border`. Shadow `shadow/sm`.
-- Sizes (responsive grid): 1×1 (264 px) / 2×1 / 2×2 / 4×2.
-- Padding 16 px, gap to next widget **16 px**, radius `rounded-3xl` = 24.
-- Header: `type/lg/normal/medium` (18/28/500) + optional 16×16 icon. Body: flexible, chart/value.
-- KPI value: `type/2xl/tight/semibold` or larger. Delta pill uses standard Pill component.
+```yaml
+background: "surface/widget-background (#fdfdfd)"
+border: "1 px surface/border"
+shadow: "shadow/sm"
+
+sizes:  # responsive grid
+  - "1x1 (264 px)"
+  - "2x1"
+  - "2x2"
+  - "4x2"
+
+padding: 16  # px
+gap_to_next_widget: 16
+radius: "rounded-3xl = 24"
+
+header:
+  style: "type/lg/normal/medium"  # 18/28/500
+  optional_icon: "16x16"
+
+body: "flexible, chart/value"
+
+kpi_value: "type/2xl/tight/semibold or larger"
+delta_pill: "Standard Pill component"
+```
 
 ### 13.31 Summary (KPI strip)
 
-- Horizontal row of 2–6 KPI cells.
-- Cell padding 16 px, gap between cells 0 (separated by a 1 px `surface/border` divider).
-- Composition: small label `type/xs/tight/medium` `typography/text-secondary` → big value `type/2xl/tight/semibold` → optional delta pill.
+```yaml
+layout: "Horizontal row of 2-6 KPI cells"
+
+cell_padding: 16  # px
+gap_between_cells: "0 (separated by a 1 px surface/border divider)"
+
+composition:
+  small_label: "type/xs/tight/medium"  # typography/text-secondary
+  big_value: "type/2xl/tight/semibold"
+  optional: "delta pill"
+```
 
 ### 13.32 Mega Menu
 
-- Anchored from a Top Nav item, full-width or 720 / 960 / 1 200 px.
-- Padding 24 px. Inner grid 2 / 3 / 4 columns, column gap **24 px**.
-- Each link row: icon 24 → label `type/sm/normal/medium` → subtext `type/xs/normal/regular`.
+```yaml
+anchor: "From a Top Nav item"
+width: "full-width or 720 / 960 / 1200 px"
+
+padding: 24  # px
+inner_grid_columns: [2, 3, 4]
+column_gap: 24  # px
+
+link_row:
+  icon: 24
+  label_style: "type/sm/normal/medium"
+  subtext_style: "type/xs/normal/regular"
+```
 
 ### 13.33 Layout templates
 
-- **Page**: Top Nav + Sidebar + Page Content Area (default).
-- **Two-pane**: 248 px Section 1 + dynamic Section 2.
-- **Three-pane**: 248 + dynamic + 320 px (right rail for context, e.g. detail sheet).
-- All templates obey §4 (12-col grid) and §8 (max 3 sections).
+```yaml
+templates:
+  page: "Top Nav + Sidebar + Page Content Area (default)"
+  two_pane: "248 px Section 1 + dynamic Section 2"
+  three_pane: "248 + dynamic + 320 px (right rail for context, e.g. detail sheet)"
+
+constraints: "All templates obey section 4 (12-col grid) and section 8 (max 3 sections)"
+```
 
 ### 13.34 Mobile deltas (from Mobile Design Guidelines page)
 
-- Min target size **48×48 px**.
-- Top Nav collapses to 56 px height; Sidebar becomes a Sheet Slider (§13.5).
-- Forms use 1-column layout always.
-- Modals become full-screen Sheets below 640 px viewport.
-- Tabs become scrollable horizontally; the underline becomes a pill on small screens.
+```yaml
+min_target_size: "48x48 px"
+
+top_nav: "Collapses to 56 px height"
+sidebar: "Becomes a Sheet Slider (section 13.5)"
+
+forms: "1-column layout always"
+modals: "Become full-screen Sheets below 640 px viewport"
+tabs: "Scrollable horizontally; underline becomes a pill on small screens"
+```
 
 ### 13.35 Navigation Bars
 
-- **Top Nav:** Height 80 px, bg `surface/navigation-background` (#ffffff), bottom `Box Shadow/shadow-sm`.
-  - Logo 28 h, left-aligned. Nav items: `type/sm/tight/medium` (14/14/500), gap `spacing_gap/gap_2` = 8, height 28 (`height/h-7`).
-  - Active nav item: `typography/text-primary` + `Flat/emerald/emerald-50` bg + `border radius/md` = 6.
-  - Account menu: Avatar md 32 + dropdown.
-- **Sidebar:** Open 296 w, collapsed 48 w. Bg `surface/page-background-content`, border-right 1 px `surface/border`.
-  - Menu item: 32 h, padding `px-3`/`py-2` = 12/8, radius `border radius/md` = 6.
-  - Active: `Flat/emerald/emerald-50` bg, `BlogVault Brand/bv-emerald-900` text. Hover: `Flat/zinc/zinc-100` bg.
-  - Icon 16×16, gap `spacing_gap/gap_2` = 8. Section header: `type/xs/tight/medium` `typography/text-tertiary`, 24 px top margin.
-  - Collapsed: show tooltip on hover.
-- **Mobile Nav:** 56 h, hamburger 24×24 opens Sheet Slider sidebar.
+```yaml
+top_nav:
+  height: 80  # px
+  bg: "surface/navigation-background (#ffffff)"
+  bottom_shadow: "Box Shadow/shadow-sm"
+  logo_height: 28
+  logo_alignment: left
+  nav_items:
+    style: "type/sm/tight/medium"  # 14/14/500
+    gap: "spacing_gap/gap_2 = 8"
+    height: "28 (height/h-7)"
+  active_nav_item:
+    text: "typography/text-primary"
+    bg: "Flat/emerald/emerald-50"
+    radius: "border radius/md = 6"
+  account_menu: "Avatar md 32 + dropdown"
+
+sidebar:
+  open_width: 296
+  collapsed_width: 48
+  bg: "surface/page-background-content"
+  border_right: "1 px surface/border"
+  menu_item:
+    height: 32
+    padding: "px-3/py-2 = 12/8"
+    radius: "border radius/md = 6"
+  active:
+    bg: "Flat/emerald/emerald-50"
+    text: "BlogVault Brand/bv-emerald-900"
+  hover_bg: "Flat/zinc/zinc-100"
+  icon:
+    size: "16x16"
+    gap: "spacing_gap/gap_2 = 8"
+  section_header:
+    style: "type/xs/tight/medium"
+    color: "typography/text-tertiary"
+    top_margin: 24
+  collapsed_tooltip: "show tooltip on hover"
+
+mobile_nav:
+  height: 56
+  hamburger: "24x24 opens Sheet Slider sidebar"
+```
 
 ### 13.36 Tables
 
-- **Cell:** Height 72 default / 40 compact. Padding `pl-4`=16 L, `py-4`=16 V, `spacing/2-5`=10 R.
-- **Head:** 40 h, bg `Flat/zinc/zinc-50`, `type/sm/normal/medium` (14/20/500) `typography/text-secondary`. Sort icon 16×16.
-- **Cell text:** `type/sm/normal/regular` (14/20/400) primary. Secondary text: `type/xs/normal/regular` (12/16/400).
-- **Row border:** 1 px `surface/border` bottom. Hover: `Flat/zinc/zinc-50` bg. Selected: `Flat/emerald/emerald-50` bg.
-- **Checkbox column:** 44 px width. Action column: right-aligned, icon-only 32×32.
-- **Footer:** 56 h, padding 16. Pagination right-aligned. Bulk action bar: 48 h, padding 12, `shadow/sm`, sticky bottom.
-- **Layout:** Column-major — vertical auto-layout columns inside horizontal Columns frame.
-- Optional stripe: `Flat/zinc/zinc-50` on even rows.
+```yaml
+cell:
+  height_default: 72
+  height_compact: 40
+  padding_left: "pl-4 = 16"
+  padding_vertical: "py-4 = 16"
+  padding_right: "spacing/2-5 = 10"
+
+head:
+  height: 40
+  bg: "Flat/zinc/zinc-50"
+  typography: "type/sm/normal/medium"  # 14/20/500
+  text_color: "typography/text-secondary"
+  sort_icon: "16x16"
+
+cell_text:
+  primary: "type/sm/normal/regular"  # 14/20/400
+  secondary: "type/xs/normal/regular"  # 12/16/400
+
+row_border: "1 px surface/border bottom"
+row_hover_bg: "Flat/zinc/zinc-50"
+row_selected_bg: "Flat/emerald/emerald-50"
+
+checkbox_column_width: 44  # px
+action_column: "right-aligned, icon-only 32x32"
+
+footer:
+  height: 56
+  padding: 16
+  pagination: right-aligned
+  bulk_action_bar:
+    height: 48
+    padding: 12
+    shadow: "shadow/sm"
+    position: "sticky bottom"
+
+layout: "Column-major — vertical auto-layout columns inside horizontal Columns frame"
+optional_stripe: "Flat/zinc/zinc-50 on even rows"
+```
 
 ### 13.37 Forms (complete anatomy)
 
-- **Single form:** Max-width `max-w-sm` = 384 px, top-left in content area.
-- **Double form:** Full content area width, 2-column grid.
-- Field gap `spacing/3` = 12. Section gap `spacing/6` = 24.
-- Label: `type/sm/tight/medium` (14/14/500). Required: red asterisk `typography/text-destructive`.
-- Helper: `type/xs/normal/regular` (12/16/400) `typography/text-secondary`. Error: same in `typography/text-destructive`.
-- Button group gap `spacing_gap/gap_4` = 16. Double form function container: `surface/border` border, `border radius/lg` = 8.
+```yaml
+single_form:
+  max_width: "max-w-sm = 384 px"
+  alignment: "top-left in content area"
+
+double_form:
+  width: "Full content area width"
+  layout: "2-column grid"
+
+field_gap: "spacing/3 = 12"
+section_gap: "spacing/6 = 24"
+
+label:
+  style: "type/sm/tight/medium"  # 14/14/500
+  required_indicator: "red asterisk typography/text-destructive"
+
+helper:
+  style: "type/xs/normal/regular"  # 12/16/400
+  color: "typography/text-secondary"
+  error_color: "typography/text-destructive"
+
+button_group_gap: "spacing_gap/gap_4 = 16"
+
+double_form_function_container:
+  border: "surface/border"
+  radius: "border radius/lg = 8"
+```
 
 ### 13.38 Menu / Dropdown
 
-- Width min 200 px, max 320 px. Outer padding `spacing/1` = 4.
-- Item: 32 h, padding `px-3`=12 / `py-2`=8, radius `border radius/sm` = 2.
-- Hover: `Flat/zinc/zinc-100` bg. Active: `Flat/zinc/zinc-100` + check icon right.
-- Separator: 1 px `surface/border`, `spacing_gap/gap_0,5` = 2 V margin.
-- Section label: `type/xs/normal/medium` (12/16/500) `typography/text-secondary`, padding `spacing/1` = 4.
-- Icon 16×16. Shadow `shadow/md`. Container radius `radius/rounded_3` = 12. Border 1 px `surface/border`.
-- Destructive items: `typography/text-destructive`. Nested: 8 px chevron-right.
+```yaml
+width:
+  min: 200  # px
+  max: 320
+
+outer_padding: "spacing/1 = 4"
+
+item:
+  height: 32
+  padding: "px-3=12 / py-2=8"
+  radius: "border radius/sm = 2"
+
+hover_bg: "Flat/zinc/zinc-100"
+active: "Flat/zinc/zinc-100 + check icon right"
+
+separator:
+  thickness: "1 px"
+  color: "surface/border"
+  v_margin: "spacing_gap/gap_0,5 = 2"
+
+section_label:
+  style: "type/xs/normal/medium"  # 12/16/500
+  color: "typography/text-secondary"
+  padding: "spacing/1 = 4"
+
+icon: "16x16"
+shadow: "shadow/md"
+container_radius: "radius/rounded_3 = 12"
+border: "1 px surface/border"
+
+destructive_items: "typography/text-destructive"
+nested_chevron: "8 px chevron-right"
+```
 
 ### 13.39 Feedback / Banner
 
-- Padding `p-4` = 16. Radius `rounded` = 4. Icon 16×16.
-- Title: `type/sm/tight/semibold` (14/14/600). Body: `type/xs/tight/regular` (12/12/400).
-- Success: bg `surface/success-background`, left 3 px `Flat/emerald/emerald-700`, icon `typography/text-success`.
-- Warning: bg `surface/warning-background`, left 3 px `Flat/amber/amber-600`, icon `typography/text-warning`.
-- Destructive: bg `surface/destructive-background`, left 3 px `typography/text-destructive`.
-- Info: bg `Flat/sky/sky-50`, left 3 px `Flat/sky/sky-700`, icon `Flat/sky/sky-600`.
-- Dismiss: 16×16 icon, right-aligned.
+```yaml
+padding: "p-4 = 16"
+radius: "rounded = 4"
+icon: "16x16"
+
+typography:
+  title: "type/sm/tight/semibold"  # 14/14/600
+  body: "type/xs/tight/regular"  # 12/12/400
+
+variants:
+  success:
+    bg: "surface/success-background"
+    left_accent: "3 px Flat/emerald/emerald-700"
+    icon_color: "typography/text-success"
+  warning:
+    bg: "surface/warning-background"
+    left_accent: "3 px Flat/amber/amber-600"
+    icon_color: "typography/text-warning"
+  destructive:
+    bg: "surface/destructive-background"
+    left_accent: "3 px typography/text-destructive"
+  info:
+    bg: "Flat/sky/sky-50"
+    left_accent: "3 px Flat/sky/sky-700"
+    icon_color: "Flat/sky/sky-600"
+
+dismiss: "16x16 icon, right-aligned"
+```
 
 ### 13.40 Input OTP
 
-- **Slot size:** 36×36 (`width/w-9`, `height/h-9`). Radius `border radius/md` = 6.
-- **Typography:** `type/sm/normal/regular` (14/20/400) `typography/text-primary`. Caret color: `typography/text-black`.
-- **Border:** 1 px `surface/border`. Focus: 2 px ring `BlogVault Brand/bv-emerald-900`. Shadow `shadow/sm` on focus.
-- **Background:** `surface/card-background` (#ffffff).
-- **Variants:**
-  - **Pattern:** 6 adjacent slots, gap `spacing/2` = 8. Total width 216 + gaps.
-  - **Separator:** 6 slots with a dash separator between groups of 3. Gap `spacing/2` = 8 between slots and separator.
-  - **Controlled:** 6 slots in a 2-row layout (3×2), gap `spacing/2` = 8. Total height 72 px (36 + 8 gap + 36 - but actually shows as 72h with 8px top padding).
-- **States:** Default (empty, border only), Filled (digit visible), Focus (ring + shadow).
-- **Interaction:** Auto-advance to next slot on digit entry. Backspace returns to previous slot.
+```yaml
+slot_size: "36x36 (width/w-9, height/h-9)"
+radius: "border radius/md = 6"
+
+typography: "type/sm/normal/regular"  # 14/20/400
+text_color: "typography/text-primary"
+caret_color: "typography/text-black"
+
+border:
+  default: "1 px surface/border"
+  focus: "2 px ring BlogVault Brand/bv-emerald-900"
+  focus_shadow: "shadow/sm"
+
+background: "surface/card-background (#ffffff)"
+
+variants:
+  pattern:
+    slots: 6  # adjacent
+    gap: "spacing/2 = 8"
+    total_width: "216 + gaps"
+  separator:
+    slots: 6
+    separator: "dash between groups of 3"
+    gap: "spacing/2 = 8 between slots and separator"
+  controlled:
+    slots: 6
+    layout: "2-row (3x2)"
+    gap: "spacing/2 = 8"
+    total_height: "72 px (36 + 8 gap + 36 — actually shows as 72h with 8px top padding)"
+
+states:
+  default: "empty, border only"
+  filled: "digit visible"
+  focus: "ring + shadow"
+
+interaction: "Auto-advance to next slot on digit entry. Backspace returns to previous slot."
+```
 
 ### 13.41 Pagination
 
-- Button size: 36×36 (`width/w-9`, `height/h-9`). Radius `border radius/md` = 6.
-- Active: bg `Flat/emerald/emerald-800`, text `typography/text-white`, `shadow/sm`.
-- Inactive: `typography/text-primary`, transparent bg. Hover: `Flat/zinc/zinc-100` bg.
-- Disabled (prev/next at bounds): `opacity/opacity-50`, no pointer events.
-- Gap between buttons: `spacing/1` = 4.
-- Ellipsis: `…` in `typography/text-secondary` when total pages > visible slots.
-- Composition: ← prev · 1 · 2 · … · 9 · 10 · next →. Always show first, last, and ±1 around current.
+```yaml
+button_size: "36x36 (width/w-9, height/h-9)"
+radius: "border radius/md = 6"
+
+active:
+  bg: "Flat/emerald/emerald-800"
+  text: "typography/text-white"
+  shadow: "shadow/sm"
+
+inactive:
+  text: "typography/text-primary"
+  bg: transparent
+
+hover_bg: "Flat/zinc/zinc-100"
+
+disabled: "opacity/opacity-50, no pointer events (prev/next at bounds)"
+
+gap_between_buttons: "spacing/1 = 4"
+
+ellipsis:
+  text: "..."
+  color: "typography/text-secondary"
+  condition: "when total pages > visible slots"
+
+composition: "prev <- 1 - 2 - ... - 9 - 10 -> next. Always show first, last, and +/-1 around current."
+```
 
 ---
 
