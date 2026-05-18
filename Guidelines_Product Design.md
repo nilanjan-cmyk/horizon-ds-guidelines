@@ -537,8 +537,9 @@ This section documents every component page in the Horizon DS. Each entry covers
 
 ### 13.22 Carousel
 
-- Snap-x scroll. Item gap **16 px** (default) or 24 px (large).
-- Controls: arrows (40×40, anchored centre L/R) or dots (8 px, gap 8 px) or both.
+- Snap-x scroll. Item gap **16 px** (default) or 24 px (large). Container radius `border radius/xl` = 12.
+- Arrow: 40×40, `surface/card-background`, border `surface/border`, `border radius/full` = 9999, `shadow/sm`. Icon 16×16 `typography/text-black`.
+- Dots: 8 px, gap 8 px. Active `typography/text-black` `opacity/opacity-100`. Inactive `Flat/zinc/zinc-200` `opacity/opacity-50`.
 - Always show 1 partial peek of the next item to signal scrollability.
 
 ### 13.23 Range Slider
