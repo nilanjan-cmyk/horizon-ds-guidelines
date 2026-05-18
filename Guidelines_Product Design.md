@@ -413,6 +413,7 @@ types: [Input, Search, Dropdown, ColourPicker, TextBox]
 states: [Default, Typing, Filled, Selected, Disabled, Error]
 
 border_radius: "border radius/md = 6"
+background: "surface/card-background"  # base/card = #ffffff
 
 border:
   default: "1 px surface/border (#e4e4e6)"

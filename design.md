@@ -713,15 +713,21 @@ button:
 
 input_field:
   heights: { md: 36, sm: 32 }
+  default_width: 320                                 # fill-container in forms
   radius: "border radius/md"                         # 6
   border: "surface/border"
+  bg: "surface/card-background"                      # base/card = #ffffff
   padding: { h: "px-3=12", v: "py-2=8" }
+  types: [Input, Search, Dropdown, ColourPicker, TextBox]
+  states: [Default, Typing, Filled, Selected, Disabled, Error]
   typography: "type/sm/normal/regular"               # 14/20/400
   placeholder_color: "typography/text-secondary"
+  filled_text_color: "typography/text-primary"
+  left_icon: { size: 16, color: "typography/text-secondary" }
   label: { style: "type/sm/tight/medium", gap_below: "spacing/1-5=6" }
-  helper: { style: "type/xs/normal/regular", color: "typography/text-secondary" }
+  helper: { style: "type/xs/normal/regular", color: "typography/text-secondary", gap_above: 4 }
   error: { border: "typography/text-destructive", text: "typography/text-destructive" }
-  focus: { ring: "BlogVault Brand/bv-emerald-900", width: 2 }
+  focus: { ring: "BlogVault Brand/bv-emerald-900", width: 2, shadow: "shadow/sm" }
 
 card:
   radius: { default: "radius/rounded_2=8", large: "border radius/xl=12" }
