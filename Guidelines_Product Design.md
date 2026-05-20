@@ -1681,6 +1681,31 @@ ellipsis:
 composition: "prev <- 1 - 2 - ... - 9 - 10 -> next. Always show first, last, and +/-1 around current."
 ```
 
+### 13.42 Separator (Divider)
+
+```yaml
+figma_page: "760:21263"
+thickness: 1  # px
+color: "surface/border"
+margin: "spacing/2 = 8 (default), also 4/16/24/32"
+
+orientation: [horizontal, vertical]
+label_variant: "optional centered text on dark bg, typography/text-white"
+
+bg: N/A  # the line IS the component
+border: "1 px surface/border"
+radius: N/A
+padding: N/A
+shadow: N/A
+states: N/A  # non-interactive
+variants: [horizontal, vertical]
+disabled: N/A
+focus: N/A
+icon_size: N/A
+gap: N/A
+animation: N/A
+```
+
 ---
 
 ## 14. Reading Figma frames — names, artifacts, components, and properties

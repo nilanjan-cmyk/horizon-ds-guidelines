@@ -709,9 +709,11 @@ button:
     ghosted:     { bg: transparent, text: "typography/text-primary" }
     destructive: { bg: "typography/text-destructive", text: "typography/text-white" }
     link:        { bg: transparent, text: "typography/text-url", underline_on_hover: true }
-  disabled: "opacity/opacity-50"
+  disabled: "opacity/opacity-50, no pointer events"
   states: [Default, Active, Hover, Pressed, Disabled, Loading, PrimaryAction, Inverted]
+  variants: [Primary, Secondary, Outlined, Ghosted, Destructive, Link, Icon, Indicator, Special, Loading]
   focus: { ring: "surface/border", width: 2 }  # programmatic 2px ring
+  animation: "background-color 150ms ease-in-out on hover/press"
 
 input_field:
   heights: { md: 36, sm: 32 }
@@ -722,6 +724,7 @@ input_field:
   padding: { h: "px-3=12", v: "py-2=8" }
   types: [Input, Search, Dropdown, ColourPicker, TextBox]
   states: [Default, Typing, Filled, Selected, Disabled, Error]
+  variants: [Input, Search, Dropdown, ColourPicker, TextBox]
   typography: "type/sm/normal/regular"               # 14/20/400
   placeholder_color: "typography/text-secondary"
   filled_text_color: "typography/text-primary"
@@ -729,8 +732,10 @@ input_field:
   label: { style: "type/sm/tight/medium", gap_below: "spacing/1-5=6" }
   helper: { style: "type/xs/normal/regular", color: "typography/text-secondary", gap_above: 4 }
   error: { border: "typography/text-destructive", text: "typography/text-destructive" }
+  disabled: "opacity/opacity-50, no pointer events"
   focus: { ring: "BlogVault Brand/bv-emerald-900", width: 2, shadow: "shadow/sm" }
   shadow_on_focus: "shadow/sm"  # standalone shadow field on focus
+  animation: "border-color 150ms ease on focus"
 
 card:
   radius: { default: "radius/rounded_2=8", large: "border radius/xl=12" }
@@ -740,8 +745,13 @@ card:
   body: { style: "type/sm/normal/regular", color: "typography/text-secondary" }
   bg: "surface/card-background"
   border: "1px surface/border"  # optional
+  states: [Default, Hover, Active]
+  variants: [default, interactive, feature]
   disabled: "opacity/opacity-50"
+  focus: { ring: "surface/border", width: 2 }  # interactive cards only
+  icon_size: 16  # optional title icon
   gap_from_title: 16  # spacing/4
+  header_min_h: 36  # height/h-9
   animation: "scale(1.01) 200ms on hover"
 
 modal:
@@ -750,9 +760,18 @@ modal:
   padding: 24
   shadow: "Box Shadow/shadow-lg"
   backdrop: { bg: "surface/page-background-content", alpha: "alpha/80" }
+  bg: "surface/card-background"
   title: "type/lg/normal/medium"
+  body_typography: "type/sm/normal/regular"
   close_btn: { size: 36 }
   border: "1px surface/border"  # dividers between sections
+  states: [Open, Closing]
+  variants: [sm, md, lg, xl]
+  disabled: N/A
+  focus: { trap: true, restore_on_close: true }  # focus trap required
+  gap: { header_to_body: 16, body_to_footer: 16 }
+  min_vertical_margin: 48  # px from viewport edge
+  body_overflow: "overflow-y: auto"
   animation: "scale 0.95->1.0 + fade, 200ms ease-out"
 
 dialog:
@@ -761,7 +780,13 @@ dialog:
   title: "type/lg/normal/semibold"
   body: { style: "type/xs/normal/regular", color: "typography/text-secondary" }
   padding: 24  # spacing/6
+  bg: "surface/card-background"
   shadow: "Box Shadow/shadow-lg"
+  border: N/A  # no visible border, dividers via gap
+  states: [Open, Closing]
+  variants: [confirmation, destructive]
+  disabled: N/A
+  focus: { trap: true, restore_on_close: true }
   gap_title_to_body: 8  # spacing/2
   gap_body_to_buttons: 24  # gap_6
   animation: "scale 0.95->1.0 + fade, 200ms ease-out"  # same as modal
@@ -773,8 +798,15 @@ drawer:
   header_title: "type/lg/normal/medium"
   close_btn: 32
   body_padding: { h: 16, v: 12 }
+  bg: "surface/card-background"
+  radius: "0 (flush to edge)"
   shadow: "shadow/sm + shadow/base"  # layered
   border: "1px surface/border"  # footer divider
+  states: [Open, Closing]
+  variants: [right, left]
+  disabled: N/A
+  focus: { trap: true, restore_on_close: true }
+  gap: { header_to_body: 0, footer_sticky: true, footer_min_h: 56 }
   animation: "slide from edge, 200ms ease-out"
   backdrop: { bg: "surface/foreground", opacity: "20%" }
 
@@ -786,6 +818,12 @@ tooltip:
   typography: "type/xs/normal/medium"
   max_width: 320
   shadow: "Box Shadow/shadow (base)"
+  border: N/A  # no visible border
+  states: [Hidden, Visible]
+  variants: [top, bottom, left, right]  # position × alignment
+  disabled: N/A
+  focus: N/A  # hover-triggered only
+  triangle: { size: 8, positions: [top, bottom, left, right], alignments: [left, center, right] }
   animation: "show delay 200ms, hide delay 0"
 
 tabs:
@@ -794,19 +832,30 @@ tabs:
   active_text: "typography/text-primary"
   inactive_text: "typography/text-secondary"
   bg: "surface/card-background + shadow/sm on pill variant active"
+  border: "2px underline_color on active (underline variant)"
   radius: "radius/rounded_2=8"  # pill container
-  typography: "implied via text color tokens"  # lacks explicit text style key
+  typography: "type/sm/tight/medium"  # 14/14/500
   variants: [underline, pill, segmented]
+  states: [Default, Active, Hover, Disabled]
+  disabled: "opacity/opacity-50, no pointer events"
+  focus: { ring: "surface/border", width: 2 }
   gap_between_tabs: 0
+  tab_height: 40  # content-driven typical
   icon: { size: 16, gap: "spacing/gap_0,5=2" }
   shadow: "shadow/sm"  # on active pill
+  animation: "underline slide 150ms ease-out"
 
 switch:
   tracks: { sm: "24x16", md: "36x20" }
-  thumb: { sm: 12, md: 16 }
+  thumb: { sm: 12, md: 16, inset: 2, bg: "surface/card-background", shadow: "shadow/lg" }
   off_track: "Flat/zinc/zinc-200"                    # Corrected from muted-background
   on_track: "BlogVault Brand/bv-emerald-900"         # Corrected from text-primary
   radius: "border radius/full=9999"  # on track
+  border: N/A
+  padding: N/A  # thumb inset handles spacing
+  shadow: "shadow/lg on thumb"
+  states: [Off, On, Disabled]
+  variants: [sm, md]
   disabled: "opacity/opacity-50"
   focus: { ring: "BlogVault Brand/bv-emerald-900", width: 2, offset: 2 }
   animation: "160ms ease-out toggle"
@@ -818,24 +867,42 @@ checkbox:
   unchecked_border: "surface/border"
   checked_bg: "BlogVault Brand/bv-emerald-900"
   check_icon_color: "typography/text-white"
+  check_icon: { sm: 12, md: 16 }
+  indeterminate_dash: { sm: "8x2", md: "12x2" }
+  padding: N/A  # icon fills the box
+  shadow: "Box Shadow/shadow-sm on focus"
   states: [default, hover, focus, checked, indeterminate, disabled, error]
-  focus: { ring: "2px offset 2px", shadow: "Box Shadow/shadow-sm" }
+  variants: [sm, md]
+  disabled: "opacity/opacity-50"
+  focus: { ring: "2px offset 2px BlogVault Brand/bv-emerald-900", shadow: "Box Shadow/shadow-sm" }
+  error: { border: "typography/text-destructive" }
+  hover: "border darkens to Flat/zinc/zinc-300"
   gap: 8  # label gap
-  label: { style: "type/sm/normal/regular" }  # + description style
+  label: { style: "type/sm/normal/regular", description: "type/sm/tight/medium" }
+  animation: "check scale-in 100ms ease-out"
 
 radio:
   sizes: { sm: 16, md: 24 }
   outer_ring: "surface/border"
   selected_ring: "BlogVault Brand/bv-emerald-900"    # Corrected from text-primary
-  inner_dot: "Flat/base/base-white"
-  disabled: "opacity/opacity-50"  # on label
+  inner_dot: { color: "Flat/base/base-white", sm: 8, md: 12 }
+  bg: N/A  # ring-based, no fill
+  border: "1px surface/border"
+  radius: "border radius/full=9999"
+  padding: N/A
+  shadow: "shadow/base on focus"
+  states: [Default, Hover, Focus, Selected, Disabled]
+  variants: [sm, md]
+  disabled: "opacity/opacity-50 on label, surface/muted-foreground ring+dot"
   focus: { ring: "2px offset 2px", shadow: "shadow/base" }
   gap: 8  # label gap
   label: { primary: "type/sm/normal/regular", secondary: "type/sm/tight/regular" }
   hover: "border darkens to Flat/zinc/zinc-300"
+  animation: "dot scale-in 100ms ease-out"
 
 pill:
   heights: { sm: 24, md: 32 }
+  padding_h: { sm: 8, md: 16 }
   radius: "border radius/full=9999"
   typography: { sm: "type/xs/normal/medium", md: "type/sm/normal/medium" }
   neutral:     { bg: "Flat/zinc/zinc-100", text: "typography/text-primary" }
@@ -843,23 +910,35 @@ pill:
   informative: { bg: "Flat/sky/sky-50", text: "Flat/sky/sky-600" }
   warning:     { bg: "surface/warning-background", text: "typography/text-warning" }
   destructive: { bg: "surface/destructive-background", text: "typography/text-destructive" }
-  states: { hover: "alpha/10 darken", pressed: "alpha/20 darken" }  # pill button
+  states: { default: true, hover: "alpha/10 darken", pressed: "alpha/20 darken" }  # pill button
+  variants: [Neutral, Success, Informative, Warning, Destructive]
+  disabled: "opacity/opacity-50"
+  focus: { ring: "surface/border", width: 2 }  # pill button only
   icon: { sm: 8, md: 16, gap_to_text: "spacing/1=4" }
   gap: "spacing/1=4"  # icon gap_to_text
   shadow: "shadow/md"  # on outlined pill button
   border: "surface/border"  # on neutral variant
+  animation: "background-color 100ms ease on hover"
 
 badge:
   sizes: { dot: 8, sm: 16, md: 24 }
   radius: { sm_md: "border radius/md=6", dot: "border radius/full" }
-  # Same color tokens as pill per variant
   typography: { sm: "type/xs/normal/semibold", md: "type/xs/tight/semibold" }
   padding: { sm: "spacing/0-5=2 H", md: "spacing/1=4 H", md_v: "spacing/0-5=2" }
-  bg_map: { info: "Flat/sky/sky-50", warning: "surface/warning-background" }  # per-variant
+  bg_map: { info: "Flat/sky/sky-50", warning: "surface/warning-background", success: "surface/success-background", destructive: "surface/destructive-background" }
+  border: N/A  # no explicit border
   shadow: "shadow/base"  # on outlined variants
+  states: N/A  # non-interactive
+  variants: [Information, Warning, Success, Destructive]
+  disabled: N/A
+  focus: N/A  # non-interactive
   icon_size: 24  # icon_size_md
+  gap: N/A
+  position: "top-right of host, -4px outset"
+  animation: N/A
 
 toast:
+  width: 360  # flexible
   padding: 16
   radius: "border radius/lg=8"
   shadow: "shadow/lg"
@@ -867,17 +946,37 @@ toast:
   border: "surface/border"
   title: "type/sm/normal/semibold"
   body: { style: "type/sm/normal/regular", color: "typography/text-secondary" }
+  states: [Entering, Visible, Dismissing]
+  variants: [success, info, warning, destructive]
+  disabled: N/A
+  focus: N/A  # transient, not focusable
   auto_dismiss: 4000
-  slide_in: 240
+  close_icon: 24  # top-right
   icon_size: 24  # 24x24 (width/w-6)
+  gap: { stack_offset: 8 }
+  animation: "slide in 240ms, auto-dismiss 4s"
 
 breadcrumb:
   text: "type/sm/normal/medium"
   separator_color: "typography/text-secondary"       # Corrected from text-tertiary
-  hover: "Flat/emerald/emerald-700"
+  hover: "Flat/emerald/emerald-700 underline"
   home_icon: 20
   gap: 8  # item_gap 8px
   link_style: "type/sm/tight/regular"  # 14/14/400
+  active_item_color: "typography/text-primary"  # last item
+  earlier_items_color: "typography/text-secondary"
+  separator_icon: "chevron-right 16x16"
+  bg: N/A
+  border: N/A
+  radius: N/A
+  padding: N/A  # inherits from Top Nav
+  shadow: N/A
+  states: [Default, Hover, Truncated]
+  variants: N/A
+  disabled: N/A
+  focus: { link_ring: "surface/border", width: 2 }
+  truncation: "middle items collapse into ... overflow menu"
+  animation: N/A
 
 accordion:
   padding: 16
@@ -888,8 +987,14 @@ accordion:
   expand_duration: 200
   shadow: "shadow/sm"  # on outer wrapper
   bg: "surface/card-background"
+  border: "1px surface/border bottom separator between items"
   states: [Collapsed, Expanded, Disabled]
+  variants: ["Single expand", "Multi expand"]
+  disabled: "opacity/opacity-50, no interaction"
+  focus: { ring: "surface/border", width: 2 }  # on trigger row
+  icon_size: 16  # chevron
   gap: { between_items: 0, separator: "1px border", from_title: "spacing/2=8" }
+  animation: "chevron rotate 180deg + content height 200ms ease-out"
 
 nav_bars:
   top_nav:
@@ -898,6 +1003,8 @@ nav_bars:
     shadow: "Box Shadow/shadow-sm"
     item_h: 28
     active_bg: "Flat/emerald/emerald-50"
+    logo_h: 28
+    account_menu: "Avatar md 32 + dropdown"
   sidebar:
     open_w: 296
     collapsed_w: 48
@@ -905,66 +1012,127 @@ nav_bars:
     active_bg: "Flat/emerald/emerald-50"
     active_text: "BlogVault Brand/bv-emerald-900"
     hover_bg: "Flat/zinc/zinc-100"
+    section_header: { style: "type/xs/tight/medium", color: "typography/text-tertiary", top_margin: 24 }
+    collapsed_tooltip: "show tooltip on hover"
+  mobile_nav: { height: 56, hamburger: "24x24 opens Sheet Slider sidebar" }
   radius: "border radius/md=6"  # on active items and sidebar items
   typography: "type/sm/tight/medium"  # on nav items
   border: "1px surface/border"  # right on sidebar
   padding: { sidebar_item: "px-3/py-2=12/8" }
+  states: [Default, Active, Hover, Collapsed]
+  variants: [Top, Sidebar, Mobile]
+  disabled: N/A
+  focus: { ring: "surface/border", width: 2 }
+  icon: { size: 16, gap: "spacing_gap/gap_2=8" }
+  gap: { nav_items: "spacing_gap/gap_2=8" }
+  animation: "sidebar collapse 200ms ease-out"
 
 table:
   cell_h: { default: 72, compact: 40 }
   head_h: 40
   head_bg: "Flat/zinc/zinc-50"
   head_text: { style: "type/sm/normal/medium", color: "typography/text-secondary" }
-  cell_text: "type/sm/normal/regular"
+  cell_text: { primary: "type/sm/normal/regular", secondary: "type/xs/normal/regular" }
   row_border: "surface/border"
   hover_bg: "Flat/zinc/zinc-50"
   selected_bg: "Flat/emerald/emerald-50"
+  radius: N/A  # tables are sharp-cornered
   padding: { cell: "pl-4=16, py-4=16, pr spacing/2-5=10" }
   shadow: "shadow/sm"  # on bulk action bar
+  states: [Default, Hover, Selected]
+  variants: [Default, Compact, Striped]
+  disabled: N/A
+  focus: N/A  # row selection via checkbox
+  icon_size: { sort: 16, action: 32 }
+  gap: N/A  # column-based layout
+  checkbox_column_width: 44
+  footer: { height: 56, padding: 16, bulk_action_h: 48, bulk_shadow: "shadow/sm" }
+  optional_stripe: "Flat/zinc/zinc-50 on even rows"
+  animation: N/A
 
 form:
   single_max_w: 384
+  double_layout: "2-column grid, full content width"
   field_gap: "spacing/3=12"
   section_gap: "spacing/6=24"
+  bg: "surface/card-background"  # on form container
   label: "type/sm/tight/medium"
+  required_indicator: "red asterisk typography/text-destructive"
   helper: { style: "type/xs/normal/regular", color: "typography/text-secondary" }
   error_color: "typography/text-destructive"
   border: "surface/border"  # on double form function container
   radius: "border radius/lg=8"  # on double form function container
+  padding: { container: 16, field_internal: "per input_field spec" }
+  shadow: N/A
+  states: [Default, Validating, Error, Submitting]
+  variants: [Single, Double]
+  disabled: N/A  # individual fields handle disabled
+  focus: N/A  # individual fields handle focus
+  icon_size: N/A
+  button_group_gap: "spacing_gap/gap_4=16"
+  animation: N/A
 
 menu:
   min_w: 200
   max_w: 320
   item_h: 32
   item_radius: "border radius/sm=2"
+  bg: "surface/card-background"
   hover_bg: "Flat/zinc/zinc-100"
+  active_bg: "Flat/zinc/zinc-100 + check icon right"
   shadow: "shadow/md"
   container_radius: "radius/rounded_3=12"
   border: "1px surface/border"
   padding: { outer: "spacing/1=4", item: "px-3=12/py-2=8" }
-  typography: { section_label: "type/xs/normal/medium" }
+  typography: { item: "type/sm/normal/regular", section_label: "type/xs/normal/medium" }
   destructive: "typography/text-destructive"  # for destructive items
+  separator: { thickness: 1, color: "surface/border", v_margin: "spacing_gap/gap_0,5=2" }
+  icon: { size: 16, nested_chevron: 8 }
+  states: [Default, Hover, Active, Disabled]
+  variants: [dropdown, context, nested]
+  disabled: "opacity/opacity-50 on item"
+  focus: { ring: "surface/border", width: 2 }
+  gap: N/A  # items flush
+  animation: "fade-in + scale 0.95->1.0, 100ms ease-out"
 
 feedback:
   padding: 16
   radius: "rounded=4"
   title: "type/sm/tight/semibold"
   body: "type/xs/tight/regular"
+  bg: "per variant (see below)"
   success: { bg: "surface/success-background", accent: "Flat/emerald/emerald-700", icon: "typography/text-success" }
   warning: { bg: "surface/warning-background", accent: "Flat/amber/amber-600", icon: "typography/text-warning" }
   destructive: { bg: "surface/destructive-background", accent: "typography/text-destructive" }
   info: { bg: "Flat/sky/sky-50", accent: "Flat/sky/sky-700", icon: "Flat/sky/sky-600" }
   border: { left_accent: "3px per variant" }
+  shadow: N/A
+  states: [Visible, Dismissed]
+  variants: [success, warning, destructive, info]
+  disabled: N/A
+  focus: N/A
   icon_size: 16  # 16x16
+  gap: N/A
   dismiss: { icon_size: 16, position: "right-aligned" }
+  animation: "fade-out on dismiss, 200ms"
 
 progress:
   linear: { h: 8, radius: "border radius/full", track: "Flat/zinc/zinc-100", fill: "BlogVault Brand/bv-emerald-600" }
-  circular_diameters: [24, 32, 40, 48]
-  ring_diameters: [64, 80]
+  circular: { diameters: [24, 32, 40, 48], stroke: 4 }
+  ring: { diameters: [64, 80], stroke: 8, value_center: "type/lg/tight/semibold" }
   success_fill: "BlogVault Brand/bv-emerald-700"
   warning_fill: "typography/text-warning"
   destructive_fill: "typography/text-destructive"
+  bg: "track color per variant"
+  border: N/A
+  padding: N/A
+  shadow: N/A
+  states: [Indeterminate, Determinate, Complete]
+  variants: [linear, circular, ring]
+  disabled: N/A
+  focus: N/A  # non-interactive
+  icon_size: N/A
+  gap: N/A
   typography: { label: "type/sm/tight/medium", value: "type/micro-10/normal/regular" }
   animation: "indeterminate 1600ms loop"
 
@@ -974,21 +1142,40 @@ stepper:
   current: "BlogVault Brand/bv-emerald-900"
   complete: "BlogVault Brand/bv-emerald-700"
   error: "typography/text-destructive"
-  connector: { incomplete: "surface/border", complete: "BlogVault Brand/bv-emerald-700" }
+  circle_text: { current_complete: "typography/text-white", pending: "typography/text-primary" }
+  connector: { incomplete: "surface/border", complete: "BlogVault Brand/bv-emerald-700", thickness: 1 }
+  bg: "per state (circle colors above)"
+  border: "connector line (see above)"
+  radius: "border radius/full on circles"
+  padding: N/A
+  shadow: N/A
   states: [pending, current, complete, error]
+  variants: [horizontal, vertical, numbered, dotted]
+  disabled: N/A
+  focus: N/A  # non-interactive indicator
+  icon_size: N/A  # number inside circle
   gap: { circle_to_label: 8, between_steps: 24, vertical: "gap_2=8" }
   label: { style: "type/xs/tight/regular", active_style: "type/xs/normal/medium" }
+  animation: "step transition fade 200ms"
 
 pagination:
   btn_size: 36
   radius: "border radius/md=6"
   active: { bg: "Flat/emerald/emerald-800", text: "typography/text-white" }
+  inactive: { bg: "transparent", text: "typography/text-primary" }
   gap: "spacing/1=4"
-  bg: { inactive: "transparent", active: "Flat/emerald/emerald-800", hover: "Flat/zinc/zinc-100" }
-  typography: "implied by text color tokens"
-  disabled: "opacity/opacity-50"  # at bounds
+  padding: N/A  # btn_size defines touch target
+  border: N/A
+  typography: "type/sm/tight/medium"
+  disabled: "opacity/opacity-50, no pointer events"  # at bounds (prev/next)
   shadow: "shadow/sm"  # on active
   hover: "Flat/zinc/zinc-100"  # hover_bg
+  states: [Default, Active, Hover, Disabled]
+  variants: [numbered, prev-next, load-more]
+  focus: { ring: "surface/border", width: 2 }
+  icon_size: N/A
+  ellipsis: { text: "...", color: "typography/text-secondary" }
+  animation: N/A
 
 skeleton:
   bg: "Flat/zinc/zinc-200"
@@ -996,22 +1183,57 @@ skeleton:
   pulse: "1400ms ease-in-out"
   line_h: 16
   line_gap: "spacing/2=8"
+  border: N/A
+  padding: N/A
+  typography: N/A  # placeholder shapes only
+  shadow: N/A
+  states: [Loading]  # always loading state
+  variants: [text, avatar, card-block]
+  disabled: N/A
+  focus: N/A
+  icon_size: N/A
+  avatar_placeholder: "48x48 circle"
+  dimension_tolerance: "+/-4px of real content"
+  animation: "Flat/zinc/zinc-200 <-> surface/card-background pulse, 1400ms ease-in-out"
 
 separator:
   thickness: 1
   color: "surface/border"
   margin_default: "spacing/2=8"
   orientation_label_color: "typography/text-white"  # label on dark bg variant
+  bg: N/A
+  border: "1px surface/border"  # the separator IS the border
+  radius: N/A
+  padding: N/A
+  typography: N/A
+  shadow: N/A
+  states: N/A  # non-interactive
+  variants: [horizontal, vertical]
+  disabled: N/A
+  focus: N/A
+  icon_size: N/A
+  gap: N/A
+  animation: N/A
 
 range_slider:
   track_h: 6
   track_color: "Flat/zinc/zinc-200"
   fill_color: "BlogVault Brand/bv-emerald-900"
   thumb_size: 16
+  thumb_bg: "Flat/base/base-white"
   thumb_shadow: "shadow/base"
   radius: "border radius/full"  # on track
   border: "1px Flat/zinc/zinc-200"  # on thumb
+  padding: N/A
+  typography: N/A  # value shown via tooltip
+  states: [Default, Hover, Dragging, Disabled]
   variants: [single, dual handle]
+  disabled: "opacity/opacity-50"
+  focus: { ring: "BlogVault Brand/bv-emerald-900", width: 2 }  # on thumb
+  icon_size: N/A
+  gap: N/A
+  step_ticks: "8px on track when withMarks=true"
+  animation: "thumb scale 1.2 on hover, 100ms"
 
 calendar:
   cell: 32x32
@@ -1020,13 +1242,20 @@ calendar:
   selected: { bg: "BlogVault Brand/bv-emerald-900", text: "typography/text-white" }
   range_middle: "Flat/zinc/zinc-100"
   today_ring: "surface/border"
+  bg: "surface/card-background"
+  border: "today 1px ring"
   cell_radius: "radius/rounded_2=8"
   padding: { header: 16 }
-  disabled: "opacity/opacity-50"
+  disabled: "opacity/opacity-50, no pointer events"
   shadow: "shadow/base"  # popover_shadow
+  states: [Default, Hover, Selected, RangeMiddle, Today, Disabled]
   variants: [single date, range, multi]
+  focus: { ring: "surface/border", width: 2 }  # on cell
+  icon_size: N/A
+  gap: { day_grid: 0 }
   month_year_type: "type/sm/tight/semibold"
   nav_arrows: { size: 16, gap: "spacing/2=8" }
+  animation: "month slide 200ms ease-out"
 
 command_search:
   width: 640
@@ -1034,13 +1263,22 @@ command_search:
   radius: "border radius/lg=8"
   input_h: 40
   row_h: 40
+  bg: "surface/card-background"
   shadow: "shadow/md"
   active_row: "Flat/zinc/zinc-100"
   border: "1px surface/border"
   padding: { row_lr: 16, section_v: 8 }
-  typography: { section_headers: "type/xs/tight/medium", keybind: "type/xs/normal/regular" }
+  typography: { section_headers: "type/xs/tight/medium", keybind: "type/xs/normal/regular", item: "type/sm/normal/regular" }
   backdrop: "same as modal"  # surface/page-background-content at alpha/80
   footer: { height: 32, hint_chips: true }
+  states: [Open, Typing, Empty, Navigating]
+  variants: N/A  # single pattern
+  disabled: N/A
+  focus: { trap: true, restore_on_close: true }
+  icon_size: { search: 16, row: 16 }
+  gap: { row_icon_label: 8 }
+  empty_state: { style: "type/sm/normal/regular", color: "typography/text-secondary", alignment: "centered" }
+  animation: "same as modal (scale + fade)"
 
 avatar:
   sizes: { xs: 16, sm: 24, md: 32, lg: 40, xl: 48, 2xl: 64 }
@@ -1058,9 +1296,18 @@ avatar:
   group_overlap: -8
   group_max: 4                                    # +N counter after 4
   counter_pill: { bg: "Flat/zinc/zinc-100", type: "type/xs/normal/medium" }
+  bg: "Flat/zinc/zinc-200 (initials), image (photo)"
   border: "surface/border"                        # 1px when stacked
-  online_dot: { size: 8, color: "Flat/emerald/emerald-500" }
+  padding: N/A
+  shadow: N/A
+  states: N/A  # non-interactive display element
+  variants: [photo, initials, icon-fallback, group]
+  disabled: N/A
+  focus: N/A  # non-interactive
+  icon_size: N/A
+  online_dot: { size: 8, color: "Flat/emerald/emerald-500", position: "bottom-right" }
   icon_fallback_color: "typography/text-tertiary"
+  animation: N/A
 
 indicator:
   sizes: [8, 16, 24]
@@ -1069,14 +1316,25 @@ indicator:
   destructive: { bg: "surface/destructive-background", fg: "typography/text-destructive" }
   warning: { bg: "surface/warning-background", fg: "Flat/amber/amber-600" }
   neutral: { bg: "Flat/zinc/zinc-200", fg: "typography/text-primary" }
+  border: N/A
+  radius: "border radius/full"
+  padding: N/A
+  shadow: N/A
+  states: N/A  # non-interactive
+  disabled: N/A
+  focus: N/A
+  icon_size: N/A
+  gap: N/A
   pulse: "scale 1.0→1.4→1.0, 2000ms infinite"
   label: "type/xs/normal/regular"
   step_number: "type/xs/tight/regular"
+  animation: "pulse variant: scale 1.0→1.4→1.0, 2000ms infinite"
 
 notification:
   tray_w: 400
   tray_shadow: "Box Shadow/shadow-lg"
   tray_radius: "radius/rounded_4=16"
+  bg: "surface/card-background"
   row_h: 64
   row_padding: 16
   row_border: "surface/border"                    # 1px bottom
@@ -1084,7 +1342,14 @@ notification:
   title: "type/sm/tight/medium"
   subtext: { style: "type/xs/tight/regular", color: "typography/text-secondary" }
   time: { style: "type/xs/tight/regular", color: "typography/text-tertiary" }
+  states: [Open, Closed]
+  variants: N/A  # single tray pattern
+  disabled: N/A
+  focus: N/A
   status_icon: 24
+  gap: N/A
+  composition: "icon -> title + subtext -> action/dismiss"
+  animation: "slide-in from top, 200ms"
 
 pre_checks:
   row_min_h: 48
@@ -1094,15 +1359,29 @@ pre_checks:
   error_icon: "typography/text-destructive"
   blur_backdrop: "backdrop-blur/3xl=64"
   container: { bg: "surface/card-background", radius: "radius/rounded_2=8", padding: 24, shadow: "shadow/lg" }
+  border: N/A
   label: "type/sm/normal/regular"
   subtext: { style: "type/xs/normal/regular", color: "typography/text-secondary" }
   states: [pending, running, success, error]
+  variants: N/A  # single checklist pattern
+  disabled: N/A
+  focus: N/A
+  animation: "spinner on running state, check/cross fade-in 200ms"
 
 carousel:
   item_gap: { default: 16, large: 24 }
   container_radius: "border radius/xl=12"
   arrow: { size: 40, bg: "surface/card-background", border: "surface/border", radius: "border radius/full=9999", shadow: "shadow/sm", icon: 16 }
   dot: { size: 8, gap: 8, active: "typography/text-black", inactive: "Flat/zinc/zinc-200" }
+  scroll: "snap-x"
+  padding: N/A
+  typography: N/A  # content-driven
+  states: [Default, Scrolling]
+  variants: [with-arrows, with-dots]
+  disabled: N/A
+  focus: { arrow_ring: "surface/border", width: 2 }
+  peek: "always show 1 partial next item"
+  animation: "snap scroll 300ms ease-out"
 
 sheet_slider:
   anchor: bottom
@@ -1110,10 +1389,19 @@ sheet_slider:
   top_radius: "rounded-3xl=24"
   drag_handle: { w: 32, h: 4, opacity: "opacity/opacity-70" }
   backdrop: { bg: "surface/page-background-content", alpha: "alpha/80" }
+  bg: "surface/card-background"
+  border: N/A
   shadow: "shadow/lg"
   header_title: "type/lg/normal/semibold"
   close_btn: 36
   body_padding: { h: 16, v: 24 }
+  body_max_w: "max-w-sm=384 for form content"
+  states: [Open, Closing]
+  variants: N/A  # bottom-anchored only
+  disabled: N/A
+  focus: { trap: true, restore_on_close: true }
+  icon_size: N/A
+  gap: N/A
   animation: "slide up from bottom, 200ms ease-out"
 
 empty_state:
@@ -1124,12 +1412,36 @@ empty_state:
   subtext: { style: "type/sm/normal/regular", color: "typography/text-secondary" }
   gap_subtext_cta: 24
   max_w: 360
+  bg: N/A  # inherits from container
+  border: N/A
+  radius: N/A
+  padding: N/A  # centered in parent
+  shadow: N/A
+  states: N/A
+  variants: N/A
+  disabled: N/A
+  focus: N/A
+  alignment: "centered within Page Content Area or Card"
+  animation: N/A
 
 search_bar:
   width: 320                                      # 100% on mobile
   height: 40
   left_icon: 16
+  right_icon: "clear x when filled"
   placeholder_color: "typography/text-tertiary"
+  bg: "surface/card-background"
+  border: "surface/border"
+  radius: "border radius/md=6"  # inherits input_field
+  padding: { h: 12, v: 8 }  # inherits input_field
+  typography: "type/sm/normal/regular"
+  shadow: "shadow/sm on focus"
+  states: [Default, Focused, Filled]
+  variants: N/A  # inherits input_field search type
+  disabled: "opacity/opacity-50"
+  focus: { ring: "BlogVault Brand/bv-emerald-900", width: 2 }
+  gap: N/A
+  animation: "border-color 150ms ease on focus"
 
 data_viz:
   palette: ["surface/chart-1=#2a9d90", "surface/chart-2=#e76e50", "surface/chart-3=#274754", "surface/chart-4=#e8c468", "surface/chart-5=#f4a462"]
@@ -1137,11 +1449,21 @@ data_viz:
   grid_line: { width: 1, color: "surface/border", opacity: "opacity/opacity-20" }
   chart_radius: "border radius/sm=2"
   canvas_padding: 16
+  bg: N/A  # inherits container
+  border: N/A
   title: "type/base/tight/semibold"
   hero_value: "type/3xl/normal/bold"
-  shadow: "shadow/md"  # popover_shadow
+  shadow: "shadow/md"  # popover_shadow (tooltip)
+  states: N/A  # data-driven
+  variants: N/A  # chart type is data-driven
+  disabled: N/A
+  focus: N/A
+  icon_size: N/A
+  gap: N/A
   kpi_type: "type/2xl/tight/semibold"
   value_labels: "type/3xl/normal/bold"
+  tooltip: "Standard Tooltip component (§13.7)"
+  animation: "chart entry animation per library (recharts default)"
 
 widget:
   bg: "surface/widget-background"
@@ -1151,8 +1473,15 @@ widget:
   sizes: ["1x1=264", "2x1", "2x2", "4x2"]
   padding: 16
   gap: 16
-  header: "type/lg/normal/medium"
+  header: { style: "type/lg/normal/medium", optional_icon: 16 }
   kpi_value: "type/2xl/tight/semibold"
+  delta_pill: "Standard Pill component"
+  states: N/A  # display only
+  variants: [kpi, chart-tile, custom]
+  disabled: N/A
+  focus: N/A
+  icon_size: 16  # header icon
+  animation: N/A
 
 summary:
   cell_padding: 16
@@ -1160,34 +1489,154 @@ summary:
   divider: "surface/border"
   label: { style: "type/xs/tight/medium", color: "typography/text-secondary" }
   value: "type/2xl/tight/semibold"
+  bg: N/A  # inherits container
+  border: "1px surface/border between cells"
+  radius: N/A
+  shadow: N/A
+  states: N/A
+  variants: N/A
+  disabled: N/A
+  focus: N/A
+  icon_size: N/A
+  layout: "horizontal row of 2-6 KPI cells"
+  optional_delta_pill: "Standard Pill component"
+  animation: N/A
 
 mega_menu:
   widths: [720, 960, 1200]
   padding: 24
   columns: [2, 3, 4]
   column_gap: 24
+  bg: "surface/card-background"
+  border: "1px surface/border"
+  radius: "radius/rounded_3=12"
+  shadow: "shadow/lg"
   link_icon: 24
   link_label: "type/sm/normal/medium"
   link_subtext: "type/xs/normal/regular"
+  states: [Open, Closed]
+  variants: [2-col, 3-col, featured]
+  disabled: N/A
+  focus: { link_ring: "surface/border", width: 2 }
+  anchor: "From a Top Nav item"
+  animation: "fade-in 150ms ease-out"
 
 input_otp:
   slot_size: 36                                   # width/w-9, height/h-9
   slot_radius: "border radius/md=6"
   border: "surface/border"
   bg: "surface/card-background"
+  padding: N/A  # slot_size defines dimensions
   typography: "type/sm/normal/regular"
   text_color: "typography/text-primary"
+  caret_color: "typography/text-black"
+  shadow: "shadow/sm on focus"
+  states: [Default, Filled, Focus]
+  disabled: "opacity/opacity-50"
   focus: { ring: "BlogVault Brand/bv-emerald-900", width: 2, shadow: "shadow/sm" }
+  icon_size: N/A
+  gap: "spacing/2=8"
   variants:
     pattern: { slots: 6, gap: "spacing/2=8", layout: "horizontal" }
     separator: { slots: 6, gap: "spacing/2=8", separator: "dash between groups of 3" }
     controlled: { slots: 6, gap: "spacing/2=8", layout: "2-row 3x2", total_h: 72 }
+  interaction: "Auto-advance on digit entry, Backspace returns to previous"
+  animation: "caret blink 1000ms"
 
 map:
   tile_size: 256
   pin: { standard: 24, large: 32, shadow: "effect/level_1" }
   heat_palette: "chart-1→chart-5"
   heat_alpha: { min: "alpha/40", max: "alpha/80" }
+  bg: N/A  # map tiles are external
+  border: N/A
+  radius: N/A
+  padding: N/A
+  typography: N/A
+  states: N/A
+  variants: [world, region, pin, heat]
+  disabled: N/A
+  focus: N/A
+  gap: N/A
+  animation: "pan/zoom via map library"
+
+# --- Missing standalone YAML blocks ---
+
+page_header:
+  height: "auto (content-driven)"
+  composition: "Page Icon + Title + Subtext + (optional Search) + Button Group"
+  page_icon: { size: 32 }
+  title: "type/2xl/tight/semibold"  # 24px
+  subtext: { style: "type/sm/normal/regular", color: "typography/text-secondary" }
+  title_subtext_gap: 4
+  bg: N/A  # inherits page content area
+  border: N/A
+  radius: N/A
+  padding: { bottom: 24 }  # gap before content
+  shadow: N/A
+  states: N/A
+  variants: [with-search, with-tabs, minimal]
+  disabled: N/A
+  focus: N/A
+  icon_size: 32
+  gap: { icon_to_title: 8, title_to_subtext: 4, header_to_buttons: "auto (right-aligned)" }
+  animation: N/A
+
+page_wrapper:
+  figma_page: "4417:6389"
+  composition: "Top Nav + Sidebar + Page Content Area"
+  content_area: { max_w: 1392, grid: "12-col, 88px col, 24px gutter, 24px offset" }
+  bg: "surface/page-background-content"
+  border: N/A
+  radius: N/A
+  padding: { content: 24 }  # L/R offset
+  shadow: N/A
+  states: [sidebar-open, sidebar-collapsed]
+  variants: N/A
+  disabled: N/A
+  focus: N/A
+  icon_size: N/A
+  gap: N/A
+  animation: "sidebar collapse 200ms ease-out"
+
+layout_templates:
+  templates:
+    page: "Top Nav + Sidebar + Page Content Area (default)"
+    two_pane: "248px Section 1 + dynamic Section 2"
+    three_pane: "248 + dynamic + 320px (right rail)"
+  constraints: "All obey 12-col grid (§4) and max 3 sections (§8)"
+  bg: N/A
+  border: N/A
+  radius: N/A
+  padding: N/A
+  shadow: N/A
+  states: N/A
+  variants: [page, two_pane, three_pane]
+  disabled: N/A
+  focus: N/A
+  icon_size: N/A
+  gap: N/A
+  animation: N/A
+
+mobile_deltas:
+  min_target_size: "48x48"
+  top_nav: { height: 56 }  # collapsed from 80
+  sidebar: "becomes Sheet Slider (§13.5)"
+  forms: "1-column layout always"
+  modals: "full-screen Sheets below 640px viewport"
+  tabs: "scrollable horizontally, underline -> pill on small screens"
+  bg: N/A
+  border: N/A
+  radius: N/A
+  padding: N/A
+  shadow: N/A
+  states: N/A
+  variants: N/A
+  disabled: N/A
+  focus: N/A
+  icon_size: N/A
+  gap: N/A
+  animation: N/A
 ```
 
 ---
