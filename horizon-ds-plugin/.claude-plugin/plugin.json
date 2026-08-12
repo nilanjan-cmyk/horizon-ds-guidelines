@@ -1,0 +1,28 @@
+{
+  "name": "horizon-ds",
+  "version": "1.3.0",
+  "description": "Complete Horizon Design System bridge for Claude Code \u2014 agents (Atlas + Sirius), skills (tokens, figma-bridge, atomic-audit), and the canonical Guidelines + design.md reference. Drop-in for WPRemote / BlogVault / MalCare / Airlift, or any project that consumes the Horizon Figma library.",
+  "author": {
+    "name": "BlogVault Product Team",
+    "url": "https://github.com/nilanjan-cmyk/horizon-ds-guidelines"
+  },
+  "homepage": "https://nilanjan-cmyk.github.io/horizon-ds-guidelines/",
+  "repository": "https://github.com/nilanjan-cmyk/horizon-ds-guidelines",
+  "license": "MIT",
+  "keywords": [
+    "design-system",
+    "figma",
+    "horizon",
+    "tokens",
+    "atomic-design",
+    "product-design",
+    "frontend",
+    "react",
+    "tailwind",
+    "claude-code"
+  ],
+  "skills": "./skills/",
+  "commands": "./commands/",
+  "agents": "./agents/",
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json"
+}

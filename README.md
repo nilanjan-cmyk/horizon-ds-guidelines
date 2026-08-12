@@ -4,9 +4,26 @@
 
 This folder contains every artifact produced for the Figma ↔ Code AI bridge.
 
-## 📦 Plugin download
+## 📦 Plugin download — v1.3.0
 
 **[horizon-ds-plugin.zip](horizon-ds-plugin.zip)** — the entire kit as a Claude Code plugin (manifest, 2 agents, 4 skills, 4 slash-commands, all reference docs). Unzip into `~/.claude/plugins/` (or `<project>/.claude/plugins/`) and restart Claude Code.
+
+Direct link (GitHub Pages): <https://nilanjan-cmyk.github.io/horizon-ds-guidelines/horizon-ds-plugin.zip>
+
+Or install straight from this repo without downloading anything:
+
+```
+/plugin marketplace add nilanjan-cmyk/horizon-ds-guidelines
+/plugin install horizon-ds@horizon-ds-guidelines
+```
+
+The unzipped plugin also lives in [`horizon-ds-plugin/`](horizon-ds-plugin/) if you'd rather symlink or copy it by hand.
+
+### What's new in 1.3.0 (2026-08-12) — synced against the live Horizon Figma file
+
+- **§3.1 Mode tokens now carry resolved Light/Dark values + Figma variable ids** for all 35 semantic tokens, mirrored from the new `Mode Tokens` ledger page (`4537:25378`). Documented gotchas: the `alpha/*` scale is **inverted** (`alpha/10` = 90 % opacity), `card-background` ≠ `page-background-content` in Light, and `text-tertiary` resolves to pure white in Dark.
+- **Breadcrumbs** (`714:41570`) added to the catalog — now a 4-symbol family: Breadcrumb (Size md/sm × Sidebar Open/Collapsed, 10 item slots), Item (Default/Hover/**Current**), Separator (Chevron/Slash), Dashboard Button (Open/Collapsed/Back). ⚠️ Breaking: the old Item state `Truncated` no longer exists — use `Current`. Item gap is 20 px, not 8 px.
+- **Announcement Popup** (`7191:1631`) documented for the first time — 568×588, corner ribbon, media carousel, emerald-accent title, ghost + primary CTA pair.
 
 ## Files
 

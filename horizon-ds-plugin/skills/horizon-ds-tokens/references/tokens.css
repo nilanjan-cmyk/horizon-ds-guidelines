@@ -1,0 +1,235 @@
+/* Horizon Design System · tokens.css
+ * Auto-generated from Figma file UfHICFSU9PJl9OkE84mUk9 (⚙️ Horizon Design System ✨)
+ * Source of truth — do not edit by hand. Re-run `node build-tokens.mjs` to regenerate.
+ * https://nilanjan-cmyk.github.io/horizon-ds-guidelines/
+ */
+
+/* Pull primitives first */
+@import "./variables.css";
+
+:root {
+  /* ─ Semantic — Light mode (default) ─ */
+  --surface-border: #E4E4E6;
+  --surface-destructive-background: #FEF2F2;
+  --surface-page-background-content: #FDFDFD;
+  --surface-warning-background: #FFFBEB;
+  --surface-card-background: #FFFFFF;
+  --surface-page-background-backlight: #F4F4F5;
+  --surface-header-background: #FFFFFF;
+  --surface-navigation-background: #FFFFFF;
+  --surface-widget-background: #FDFDFD;
+  --surface-muted-background: #F4F4F5;
+  --surface-overlay-background: rgba(255, 255, 255, 0.2);
+  --surface-success-background: #ECFDF5;
+  --alpha-10: rgba(255, 255, 255, 0.9);
+  --alpha-20: rgba(255, 255, 255, 0.8);
+  --alpha-30: rgba(255, 255, 255, 0.7);
+  --alpha-40: rgba(255, 255, 255, 0.6);
+  --alpha-50: rgba(255, 255, 255, 0.5);
+  --alpha-60: rgba(255, 255, 255, 0.4);
+  --alpha-70: rgba(255, 255, 255, 0.3);
+  --alpha-80: rgba(255, 255, 255, 0.2);
+  --alpha-90: rgba(255, 255, 255, 0.1);
+  --chart-1: #2A9D90;
+  --chart-2: #E76E50;
+  --chart-3: #274754;
+  --chart-4: #E8C468;
+  --chart-5: #F4A462;
+  --text-white: #FAFAFA;
+  --text-black: #09090B;
+  --text-primary: #3F3F46;
+  --text-secondary: #71717A;
+  --text-tertiary: #A1A1AA;
+  --text-destructive: #DC2626;
+  --text-warning: #B45309;
+  --text-success: #047857;
+  --text-url: #065F46;
+
+  /* ─ Shadows ─ */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* ─ Semantic — Dark mode (toggle via [data-theme='dark'] or .dark class on <html>) ─ */
+html[data-theme='dark'], html.dark, :root[data-theme='dark'] {
+  --surface-border: #3F3F46;
+  --surface-destructive-background: #FEE2E2;
+  --surface-page-background-content: #27272A;
+  --surface-warning-background: #FEF3C7;
+  --surface-card-background: #27272A;
+  --surface-page-background-backlight: #3F3F46;
+  --surface-header-background: #18181B;
+  --surface-navigation-background: #18181B;
+  --surface-widget-background: #27272A;
+  --surface-muted-background: #3F3F46;
+  --surface-overlay-background: rgba(9, 9, 11, 0.5);
+  --surface-success-background: #D1FAE5;
+  --alpha-10: rgba(9, 9, 11, 0.9);
+  --alpha-20: rgba(9, 9, 11, 0.8);
+  --alpha-30: rgba(9, 9, 11, 0.7);
+  --alpha-40: rgba(9, 9, 11, 0.6);
+  --alpha-50: rgba(9, 9, 11, 0.5);
+  --alpha-60: rgba(9, 9, 11, 0.4);
+  --alpha-70: rgba(9, 9, 11, 0.3);
+  --alpha-80: rgba(9, 9, 11, 0.2);
+  --alpha-90: rgba(9, 9, 11, 0.1);
+  --chart-1: #2662D9;
+  --chart-2: #E23670;
+  --chart-3: #E88C30;
+  --chart-4: #AF57DB;
+  --chart-5: #2EB88A;
+  --text-white: #FAFAFA;
+  --text-black: #09090B;
+  --text-primary: #FAFAFA;
+  --text-secondary: #D4D4D8;
+  --text-tertiary: #FFFFFF;
+  --text-destructive: #EF4444;
+  --text-warning: #F59E0B;
+  --text-success: #10B981;
+  --text-url: #10B981;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --surface-border: #3F3F46;
+    --surface-destructive-background: #FEE2E2;
+    --surface-page-background-content: #27272A;
+    --surface-warning-background: #FEF3C7;
+    --surface-card-background: #27272A;
+    --surface-page-background-backlight: #3F3F46;
+    --surface-header-background: #18181B;
+    --surface-navigation-background: #18181B;
+    --surface-widget-background: #27272A;
+    --surface-muted-background: #3F3F46;
+    --surface-overlay-background: rgba(9, 9, 11, 0.5);
+    --surface-success-background: #D1FAE5;
+    --alpha-10: rgba(9, 9, 11, 0.9);
+    --alpha-20: rgba(9, 9, 11, 0.8);
+    --alpha-30: rgba(9, 9, 11, 0.7);
+    --alpha-40: rgba(9, 9, 11, 0.6);
+    --alpha-50: rgba(9, 9, 11, 0.5);
+    --alpha-60: rgba(9, 9, 11, 0.4);
+    --alpha-70: rgba(9, 9, 11, 0.3);
+    --alpha-80: rgba(9, 9, 11, 0.2);
+    --alpha-90: rgba(9, 9, 11, 0.1);
+    --chart-1: #2662D9;
+    --chart-2: #E23670;
+    --chart-3: #E88C30;
+    --chart-4: #AF57DB;
+    --chart-5: #2EB88A;
+    --text-white: #FAFAFA;
+    --text-black: #09090B;
+    --text-primary: #FAFAFA;
+    --text-secondary: #D4D4D8;
+    --text-tertiary: #FFFFFF;
+    --text-destructive: #EF4444;
+    --text-warning: #F59E0B;
+    --text-success: #10B981;
+    --text-url: #10B981;
+  }
+}
+
+/* ─ Typography styles (84 named ramps · type/{size}/{lh}/{weight}) ─ */
+.type\/xs\/tight\/regular { font-family: var(--font-family-primary); font-size: 12px; line-height: 12px; font-weight: 400;  }
+.type\/xs\/tight\/medium { font-family: var(--font-family-primary); font-size: 12px; line-height: 12px; font-weight: 500;  }
+.type\/xs\/tight\/semibold { font-family: var(--font-family-primary); font-size: 12px; line-height: 12px; font-weight: 600;  }
+.type\/xs\/tight\/bold { font-family: var(--font-family-primary); font-size: 12px; line-height: 12px; font-weight: 700;  }
+.type\/xs\/tight\/italic { font-family: var(--font-family-primary); font-size: 12px; line-height: 12px; font-weight: 400; font-style:italic; }
+.type\/xs\/tight\/underlined { font-family: var(--font-family-primary); font-size: 12px; line-height: 12px; font-weight: 400; text-decoration:underline; }
+.type\/xs\/tight\/strikethrough { font-family: var(--font-family-primary); font-size: 12px; line-height: 12px; font-weight: 400; text-decoration:line-through; }
+.type\/xs\/normal\/regular { font-family: var(--font-family-primary); font-size: 12px; line-height: 16px; font-weight: 400;  }
+.type\/xs\/normal\/medium { font-family: var(--font-family-primary); font-size: 12px; line-height: 16px; font-weight: 500;  }
+.type\/xs\/normal\/semibold { font-family: var(--font-family-primary); font-size: 12px; line-height: 16px; font-weight: 600;  }
+.type\/xs\/normal\/bold { font-family: var(--font-family-primary); font-size: 12px; line-height: 16px; font-weight: 700;  }
+.type\/xs\/normal\/italic { font-family: var(--font-family-primary); font-size: 12px; line-height: 16px; font-weight: 400; font-style:italic; }
+.type\/xs\/normal\/underlined { font-family: var(--font-family-primary); font-size: 12px; line-height: 16px; font-weight: 400; text-decoration:underline; }
+.type\/xs\/normal\/strikethrough { font-family: var(--font-family-primary); font-size: 12px; line-height: 16px; font-weight: 400; text-decoration:line-through; }
+.type\/sm\/tight\/regular { font-family: var(--font-family-primary); font-size: 14px; line-height: 14px; font-weight: 400;  }
+.type\/sm\/tight\/medium { font-family: var(--font-family-primary); font-size: 14px; line-height: 14px; font-weight: 500;  }
+.type\/sm\/tight\/semibold { font-family: var(--font-family-primary); font-size: 14px; line-height: 14px; font-weight: 600;  }
+.type\/sm\/tight\/bold { font-family: var(--font-family-primary); font-size: 14px; line-height: 14px; font-weight: 700;  }
+.type\/sm\/tight\/italic { font-family: var(--font-family-primary); font-size: 14px; line-height: 14px; font-weight: 400; font-style:italic; }
+.type\/sm\/tight\/underlined { font-family: var(--font-family-primary); font-size: 14px; line-height: 14px; font-weight: 400; text-decoration:underline; }
+.type\/sm\/tight\/strikethrough { font-family: var(--font-family-primary); font-size: 14px; line-height: 14px; font-weight: 400; text-decoration:line-through; }
+.type\/sm\/normal\/regular { font-family: var(--font-family-primary); font-size: 14px; line-height: 20px; font-weight: 400;  }
+.type\/sm\/normal\/medium { font-family: var(--font-family-primary); font-size: 14px; line-height: 20px; font-weight: 500;  }
+.type\/sm\/normal\/semibold { font-family: var(--font-family-primary); font-size: 14px; line-height: 20px; font-weight: 600;  }
+.type\/sm\/normal\/bold { font-family: var(--font-family-primary); font-size: 14px; line-height: 20px; font-weight: 700;  }
+.type\/sm\/normal\/italic { font-family: var(--font-family-primary); font-size: 14px; line-height: 20px; font-weight: 400; font-style:italic; }
+.type\/sm\/normal\/underlined { font-family: var(--font-family-primary); font-size: 14px; line-height: 20px; font-weight: 400; text-decoration:underline; }
+.type\/sm\/normal\/strikethrough { font-family: var(--font-family-primary); font-size: 14px; line-height: 20px; font-weight: 400; text-decoration:line-through; }
+.type\/base\/tight\/regular { font-family: var(--font-family-primary); font-size: 16px; line-height: 16px; font-weight: 400;  }
+.type\/base\/tight\/medium { font-family: var(--font-family-primary); font-size: 16px; line-height: 16px; font-weight: 500;  }
+.type\/base\/tight\/semibold { font-family: var(--font-family-primary); font-size: 16px; line-height: 16px; font-weight: 600;  }
+.type\/base\/tight\/bold { font-family: var(--font-family-primary); font-size: 16px; line-height: 16px; font-weight: 700;  }
+.type\/base\/tight\/italic { font-family: var(--font-family-primary); font-size: 16px; line-height: 16px; font-weight: 400; font-style:italic; }
+.type\/base\/tight\/underlined { font-family: var(--font-family-primary); font-size: 16px; line-height: 16px; font-weight: 400; text-decoration:underline; }
+.type\/base\/tight\/strikethrough { font-family: var(--font-family-primary); font-size: 16px; line-height: 16px; font-weight: 400; text-decoration:line-through; }
+.type\/base\/normal\/regular { font-family: var(--font-family-primary); font-size: 16px; line-height: 24px; font-weight: 400;  }
+.type\/base\/normal\/medium { font-family: var(--font-family-primary); font-size: 16px; line-height: 24px; font-weight: 500;  }
+.type\/base\/normal\/semibold { font-family: var(--font-family-primary); font-size: 16px; line-height: 24px; font-weight: 600;  }
+.type\/base\/normal\/bold { font-family: var(--font-family-primary); font-size: 16px; line-height: 24px; font-weight: 700;  }
+.type\/base\/normal\/italic { font-family: var(--font-family-primary); font-size: 16px; line-height: 24px; font-weight: 400; font-style:italic; }
+.type\/base\/normal\/underlined { font-family: var(--font-family-primary); font-size: 16px; line-height: 24px; font-weight: 400; text-decoration:underline; }
+.type\/base\/normal\/strikethrough { font-family: var(--font-family-primary); font-size: 16px; line-height: 24px; font-weight: 400; text-decoration:line-through; }
+.type\/lg\/tight\/regular { font-family: var(--font-family-primary); font-size: 18px; line-height: 18px; font-weight: 400;  }
+.type\/lg\/tight\/medium { font-family: var(--font-family-primary); font-size: 18px; line-height: 18px; font-weight: 500;  }
+.type\/lg\/tight\/semibold { font-family: var(--font-family-primary); font-size: 18px; line-height: 18px; font-weight: 600;  }
+.type\/lg\/tight\/bold { font-family: var(--font-family-primary); font-size: 18px; line-height: 18px; font-weight: 700;  }
+.type\/lg\/tight\/italic { font-family: var(--font-family-primary); font-size: 18px; line-height: 18px; font-weight: 400; font-style:italic; }
+.type\/lg\/tight\/underlined { font-family: var(--font-family-primary); font-size: 18px; line-height: 18px; font-weight: 400; text-decoration:underline; }
+.type\/lg\/tight\/strikethrough { font-family: var(--font-family-primary); font-size: 18px; line-height: 18px; font-weight: 400; text-decoration:line-through; }
+.type\/lg\/normal\/regular { font-family: var(--font-family-primary); font-size: 18px; line-height: 28px; font-weight: 400;  }
+.type\/lg\/normal\/medium { font-family: var(--font-family-primary); font-size: 18px; line-height: 28px; font-weight: 500;  }
+.type\/lg\/normal\/semibold { font-family: var(--font-family-primary); font-size: 18px; line-height: 28px; font-weight: 600;  }
+.type\/lg\/normal\/bold { font-family: var(--font-family-primary); font-size: 18px; line-height: 28px; font-weight: 700;  }
+.type\/lg\/normal\/italic { font-family: var(--font-family-primary); font-size: 18px; line-height: 28px; font-weight: 400; font-style:italic; }
+.type\/lg\/normal\/underlined { font-family: var(--font-family-primary); font-size: 18px; line-height: 28px; font-weight: 400; text-decoration:underline; }
+.type\/lg\/normal\/strikethrough { font-family: var(--font-family-primary); font-size: 18px; line-height: 28px; font-weight: 400; text-decoration:line-through; }
+.type\/xl\/tight\/regular { font-family: var(--font-family-primary); font-size: 20px; line-height: 20px; font-weight: 400;  }
+.type\/xl\/tight\/medium { font-family: var(--font-family-primary); font-size: 20px; line-height: 20px; font-weight: 500;  }
+.type\/xl\/tight\/semibold { font-family: var(--font-family-primary); font-size: 20px; line-height: 20px; font-weight: 600;  }
+.type\/xl\/tight\/bold { font-family: var(--font-family-primary); font-size: 20px; line-height: 20px; font-weight: 700;  }
+.type\/xl\/tight\/italic { font-family: var(--font-family-primary); font-size: 20px; line-height: 20px; font-weight: 400; font-style:italic; }
+.type\/xl\/tight\/underlined { font-family: var(--font-family-primary); font-size: 20px; line-height: 20px; font-weight: 400; text-decoration:underline; }
+.type\/xl\/tight\/strikethrough { font-family: var(--font-family-primary); font-size: 20px; line-height: 20px; font-weight: 400; text-decoration:line-through; }
+.type\/xl\/normal\/regular { font-family: var(--font-family-primary); font-size: 20px; line-height: 28px; font-weight: 400;  }
+.type\/xl\/normal\/medium { font-family: var(--font-family-primary); font-size: 20px; line-height: 28px; font-weight: 500;  }
+.type\/xl\/normal\/semibold { font-family: var(--font-family-primary); font-size: 20px; line-height: 28px; font-weight: 600;  }
+.type\/xl\/normal\/bold { font-family: var(--font-family-primary); font-size: 20px; line-height: 28px; font-weight: 700;  }
+.type\/xl\/normal\/italic { font-family: var(--font-family-primary); font-size: 20px; line-height: 28px; font-weight: 400; font-style:italic; }
+.type\/xl\/normal\/underlined { font-family: var(--font-family-primary); font-size: 20px; line-height: 28px; font-weight: 400; text-decoration:underline; }
+.type\/xl\/normal\/strikethrough { font-family: var(--font-family-primary); font-size: 20px; line-height: 28px; font-weight: 400; text-decoration:line-through; }
+.type\/2xl\/tight\/regular { font-family: var(--font-family-primary); font-size: 24px; line-height: 24px; font-weight: 400;  }
+.type\/2xl\/tight\/medium { font-family: var(--font-family-primary); font-size: 24px; line-height: 24px; font-weight: 500;  }
+.type\/2xl\/tight\/semibold { font-family: var(--font-family-primary); font-size: 24px; line-height: 24px; font-weight: 600;  }
+.type\/2xl\/tight\/bold { font-family: var(--font-family-primary); font-size: 24px; line-height: 24px; font-weight: 700;  }
+.type\/2xl\/tight\/italic { font-family: var(--font-family-primary); font-size: 24px; line-height: 24px; font-weight: 400; font-style:italic; }
+.type\/2xl\/tight\/underlined { font-family: var(--font-family-primary); font-size: 24px; line-height: 24px; font-weight: 400; text-decoration:underline; }
+.type\/2xl\/tight\/strikethrough { font-family: var(--font-family-primary); font-size: 24px; line-height: 24px; font-weight: 400; text-decoration:line-through; }
+.type\/2xl\/normal\/regular { font-family: var(--font-family-primary); font-size: 24px; line-height: 32px; font-weight: 400;  }
+.type\/2xl\/normal\/medium { font-family: var(--font-family-primary); font-size: 24px; line-height: 32px; font-weight: 500;  }
+.type\/2xl\/normal\/semibold { font-family: var(--font-family-primary); font-size: 24px; line-height: 32px; font-weight: 600;  }
+.type\/2xl\/normal\/bold { font-family: var(--font-family-primary); font-size: 24px; line-height: 32px; font-weight: 700;  }
+.type\/2xl\/normal\/italic { font-family: var(--font-family-primary); font-size: 24px; line-height: 32px; font-weight: 400; font-style:italic; }
+.type\/2xl\/normal\/underlined { font-family: var(--font-family-primary); font-size: 24px; line-height: 32px; font-weight: 400; text-decoration:underline; }
+.type\/2xl\/normal\/strikethrough { font-family: var(--font-family-primary); font-size: 24px; line-height: 32px; font-weight: 400; text-decoration:line-through; }
+.type\/3xl\/tight\/regular { font-family: var(--font-family-primary); font-size: 30px; line-height: 30px; font-weight: 400;  }
+.type\/3xl\/tight\/medium { font-family: var(--font-family-primary); font-size: 30px; line-height: 30px; font-weight: 500;  }
+.type\/3xl\/tight\/semibold { font-family: var(--font-family-primary); font-size: 30px; line-height: 30px; font-weight: 600;  }
+.type\/3xl\/tight\/bold { font-family: var(--font-family-primary); font-size: 30px; line-height: 30px; font-weight: 700;  }
+.type\/3xl\/tight\/italic { font-family: var(--font-family-primary); font-size: 30px; line-height: 30px; font-weight: 400; font-style:italic; }
+.type\/3xl\/tight\/underlined { font-family: var(--font-family-primary); font-size: 30px; line-height: 30px; font-weight: 400; text-decoration:underline; }
+.type\/3xl\/tight\/strikethrough { font-family: var(--font-family-primary); font-size: 30px; line-height: 30px; font-weight: 400; text-decoration:line-through; }
+.type\/3xl\/normal\/regular { font-family: var(--font-family-primary); font-size: 30px; line-height: 36px; font-weight: 400;  }
+.type\/3xl\/normal\/medium { font-family: var(--font-family-primary); font-size: 30px; line-height: 36px; font-weight: 500;  }
+.type\/3xl\/normal\/semibold { font-family: var(--font-family-primary); font-size: 30px; line-height: 36px; font-weight: 600;  }
+.type\/3xl\/normal\/bold { font-family: var(--font-family-primary); font-size: 30px; line-height: 36px; font-weight: 700;  }
+.type\/3xl\/normal\/italic { font-family: var(--font-family-primary); font-size: 30px; line-height: 36px; font-weight: 400; font-style:italic; }
+.type\/3xl\/normal\/underlined { font-family: var(--font-family-primary); font-size: 30px; line-height: 36px; font-weight: 400; text-decoration:underline; }
+.type\/3xl\/normal\/strikethrough { font-family: var(--font-family-primary); font-size: 30px; line-height: 36px; font-weight: 400; text-decoration:line-through; }
